@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traveler Directory &amp; Guide | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Prepare for your Sri Lanka trip. Read about visa requirements, monthly monsoon weather advice, interactive packing checklists, and local etiquette." />
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80" alt="Scenic Sigiriya landscape" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Traveler Directory &amp; Guide</h1>
+        <p>Essential tips, weather calculators, packing guides, and visa facts for a seamless trip.</p>
+      </div>
+    </header>
+
+    <main class="container section" style="padding-top: 60px;">
+      <!-- Tab Controls -->
+      <div class="guide-tabs">
+        <button class="guide-tab-btn active" data-tab="weather">Weather &amp; Monsoons</button>
+        <button class="guide-tab-btn" data-tab="checklist">Interactive Packing List</button>
+        <button class="guide-tab-btn" data-tab="visa">Visa &amp; ETA Requirements</button>
+        <button class="guide-tab-btn" data-tab="phrases">Etiquette &amp; Language</button>
+      </div>
+
+      <!-- Tab 1: Weather & Monsoons -->
+      <div class="guide-panel active" id="weather">
+        <div style="margin-bottom: 40px; max-width: 800px;">
+          <h3>Smart Monthly Weather Guide</h3>
+          <p style="margin-top: 10px;">Sri Lanka's climate is governed by two separate monsoon seasons. This means that at any given month of the year, one side of the island is experiencing rain while the other side is sunny, warm, and perfect for beaches. Select a month below to view the best regions to visit.</p>
+        </div>
+
+        <div class="monsoon-layout">
+          <!-- Left: Month Selectors -->
+          <div>
+            <h4 style="margin-bottom: 15px;">Select Your Travel Month</h4>
+            <div class="monsoon-selectors">
+              <button class="month-btn active" data-month="jan">Jan</button>
+              <button class="month-btn" data-month="feb">Feb</button>
+              <button class="month-btn" data-month="mar">Mar</button>
+              <button class="month-btn" data-month="apr">Apr</button>
+              <button class="month-btn" data-month="may">May</button>
+              <button class="month-btn" data-month="jun">Jun</button>
+              <button class="month-btn" data-month="jul">Jul</button>
+              <button class="month-btn" data-month="aug">Aug</button>
+              <button class="month-btn" data-month="sep">Sep</button>
+              <button class="month-btn" data-month="oct">Oct</button>
+              <button class="month-btn" data-month="nov">Nov</button>
+              <button class="month-btn" data-month="dec">Dec</button>
+            </div>
+          </div>
+
+          <!-- Right: Weather Recommendation Result Card -->
+          <div class="monsoon-result-card" id="monsoon-result">
+            <h4 id="monsoon-month-title">January Weather Forecast</h4>
+            <p id="monsoon-month-desc" style="color: #b0c7c2; font-size: 0.9rem; line-height: 1.4; margin-bottom: 20px;">The island is experiencing excellent weather. The northwest monsoon has passed, meaning the entire southern coast is dry and sunny.</p>
+            
+            <div class="weather-indicator">
+              <div>
+                <span class="glance-label">Best to Visit (Sunny)</span>
+                <span class="glance-value" id="monsoon-sunny-regions" style="color: var(--accent-gold); font-weight: 600;">Southern Beaches, Galle, Ella, Kandy, Sigiriya</span>
+              </div>
+            </div>
+
+            <div class="weather-indicator rainy">
+              <div>
+                <span class="glance-label" style="color: #a2c6e6;">Avoid / Showery (Wet)</span>
+                <span class="glance-value" id="monsoon-wet-regions" style="color: #8bbce5; font-weight: 600;">Northeast Coast, Trincomalee (Intermittent Showers)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Interactive Packing Checklist -->
+      <div class="guide-panel" id="checklist">
+        <div style="margin-bottom: 40px; max-width: 800px;">
+          <h3>Interactive Traveler Packing Checklist</h3>
+          <p style="margin-top: 10px;">Tailor your bags for Sri Lanka's varying climate zones. Check items off directly on your screen as you pack them!</p>
+        </div>
+
+        <div class="packing-grid">
+          <!-- Card 1: Coast & Beach -->
+          <div class="packing-card">
+            <h4>Coast &amp; Beaches</h4>
+            <div class="packing-list-items">
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Light linen/cotton clothes</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Swimwear &amp; cover-ups</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>High-SPF Sunscreen &amp; SPF lip balm</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Flip flops &amp; sun hat</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Microfiber travel towel</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 2: Highlands & Hiking -->
+          <div class="packing-card">
+            <h4>Mountain Highlands</h4>
+            <div class="packing-list-items">
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Warm fleece or sweater (Nuwara Eliya)</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Waterproof windbreaker</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Sturdy hiking shoes &amp; thick socks</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Leech socks (for rainy forest hikes)</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Reusable water flask</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 3: Cultural Temples -->
+          <div class="packing-card">
+            <h4>Temple Attire</h4>
+            <div class="packing-list-items">
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>White/light clothing (preferred)</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Sarong or long skirt covering knees</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Light shawl covering shoulders</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Easy slip-on shoes / sandals</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Spare socks (hot temple stones)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 4: Essentials & Health -->
+          <div class="packing-card">
+            <h4>Health &amp; Gadgets</h4>
+            <div class="packing-list-items">
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Insect repellent (DEET 30%+)</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Universal UK plug adapter (Type G/D)</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Anti-diarrhea tablets &amp; rehydration salts</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Dry bag for boat safaris</span>
+              </label>
+              <label class="packing-item">
+                <input type="checkbox">
+                <span>Hand sanitizer &amp; wet wipes</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Visa Requirements -->
+      <div class="guide-panel" id="visa">
+        <div style="max-width: 800px; line-height: 1.8;">
+          <h3>Electronic Travel Authorization (ETA)</h3>
+          <p style="margin: 15px 0 30px 0;">All international visitors (except passport holders of Singapore, Maldives, and Seychelles) require an Electronic Travel Authorization (ETA) to enter Sri Lanka for tourism. You can apply easily online or obtain it upon arrival.</p>
+
+          <div style="background-color: var(--white); border: 1px solid var(--light-gray); padding: 40px; margin-bottom: 40px;">
+            <h4 style="margin-bottom: 20px;">Step-by-Step Visa Guide</h4>
+            
+            <ol style="margin-left: 20px; display: flex; flex-direction: column; gap: 15px;">
+              <li>
+                <strong>Apply Online Before Flight:</strong> Visit the official government portal online to file your ETA application. Standard tourist ETAs grant 30 days of stay with double entry.
+              </li>
+              <li>
+                <strong>Pay Processing Fees:</strong> Standard fees are $50 USD for most nationalities (South Asian SAARC countries pay $20 USD). Children under 12 are free.
+              </li>
+              <li>
+                <strong>Receive ETA Email Approval:</strong> Processing takes 24 to 48 hours. Print out the approval confirmation letter sent to your email.
+              </li>
+              <li>
+                <strong>Passport Validity Checklist:</strong> Ensure your passport is valid for at least <strong>6 months</strong> from your date of arrival in Sri Lanka.
+              </li>
+              <li>
+                <strong>Flight &amp; Funds Proof:</strong> Have a printed copy of your return flight ticket out of Sri Lanka and sufficient funds for your stay.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Etiquette & Language -->
+      <div class="guide-panel" id="phrases">
+        <div style="max-width: 800px;">
+          <h3>Cultural Customs &amp; Etiquette</h3>
+          <p style="margin-top: 10px;">Being mindful of local traditions goes a long way. Sri Lankans are warm, friendly, and hospitable people. Familiarize yourself with these core guidelines.</p>
+        </div>
+
+        <div class="etiquette-grid">
+          <div class="etiquette-box">
+            <h4 style="color: var(--seafoam);">Do's</h4>
+            <ul class="etiquette-list">
+              <li>Greet people with "Ayubowan" (Sinhala) or "Vanakkam" (Tamil) with hands pressed together at chest level.</li>
+              <li>Dress respectfully when visiting temples: cover shoulders and knees, and remove shoes/hats before entering.</li>
+              <li>Use both hands (or only your right hand) when giving or receiving money, items, or food.</li>
+              <li>Tear roti or bread using only your right hand when eating traditional meals.</li>
+            </ul>
+          </div>
+
+          <div class="etiquette-box dont">
+            <h4 style="color: #c0392b;">Don'ts</h4>
+            <ul class="etiquette-list">
+              <li>Do not take photographs standing with your back turned directly to a Buddha statue (highly offensive).</li>
+              <li>Do not touch or point with your feet, or touch anyone on the head (the head is considered sacred).</li>
+              <li>Do not take photos of military bases, checkpoints, or tea plantation workers without permission.</li>
+              <li>Do not sunbathe topless on beaches—modesty is highly valued off resort properties.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 50px;">Helpful Local Vocabulary</h3>
+        <p style="margin-top: 10px; margin-bottom: 20px;">A few words in Sinhala and Tamil will put smiles on the faces of locals you meet on your journey.</p>
+
+        <div class="phrase-table-container">
+          <table class="phrase-table">
+            <thead>
+              <tr>
+                <th>English Phrase</th>
+                <th>Sinhala Translation</th>
+                <th>Tamil Translation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hello / Welcome</strong></td>
+                <td>Ayubowan (May you live long)</td>
+                <td>Vanakkam</td>
+              </tr>
+              <tr>
+                <td><strong>Thank You</strong></td>
+                <td>Istuti</td>
+                <td>Nandri</td>
+              </tr>
+              <tr>
+                <td><strong>Please</strong></td>
+                <td>Karunakarala</td>
+                <td>Thayavu seidhu</td>
+              </tr>
+              <tr>
+                <td><strong>How much is this?</strong></td>
+                <td>Meka kiyada?</td>
+                <td>Idhu evvalavu?</td>
+              </tr>
+              <tr>
+                <td><strong>Yes</strong></td>
+                <td>Ow</td>
+                <td>Aamaam</td>
+              </tr>
+              <tr>
+                <td><strong>No</strong></td>
+                <td>Nae</td>
+                <td>Illai</td>
+              </tr>
+              <tr>
+                <td><strong>Delicious!</strong></td>
+                <td>Hari rasai</td>
+                <td>Miga suvaiyaaga ulladhu</td>
+              </tr>
+              <tr>
+                <td><strong>Goodbye</strong></td>
+                <td>Gihillan ennam (I will go and return)</td>
+                <td>Poitu varugiren</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

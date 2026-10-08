@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Find answers to common travel questions about Sri Lanka: Visas, currency, safety, weather, SIM cards, transport, and tipping etiquette." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+      
+
+      
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-serif);
+        color: #ffffff;
+      }
+
+      p {
+        color: var(--medium-text);
+      }
+
+      /* Navbar link active overrides */
+      .nav-links a {
+        color: #ffffff;
+      }
+      .nav-links a:hover {
+        color: var(--accent-gold);
+      }
+      
+      .mobile-menu-btn {
+        color: #ffffff;
+      }
+
+      /* Header language selector style */
+      .lang-selector-container {
+        position: relative;
+        display: inline-block;
+      }
+      .lang-selector-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        padding: 8px 12px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        height: 38px;
+      }
+      .lang-selector-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+      .lang-caret {
+        transition: transform 0.3s;
+      }
+      .lang-selector-container:hover .lang-caret {
+        transform: rotate(180deg);
+      }
+      .lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background-color: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 90px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1010;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+      .lang-selector-container:hover .lang-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .lang-dropdown a {
+        display: block;
+        padding: 10px 15px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        color: #b0c7c2;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-align: center;
+        font-weight: 500;
+      }
+      .lang-dropdown a:hover, .lang-dropdown a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Floating Language Selector Widget (Bottom Left) */
+      .floating-lang-selector {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 999;
+      }
+      .floating-lang-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--accent-gold);
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(200, 155, 60, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+      .floating-lang-btn svg {
+        margin-bottom: 2px;
+        width: 16px;
+        height: 16px;
+      }
+      .floating-lang-btn:hover {
+        background-color: var(--accent-gold-hover);
+        transform: scale(1.05);
+      }
+      .floating-lang-menu {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        background-color: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 140px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+      .floating-lang-selector:hover .floating-lang-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .floating-lang-menu a {
+        display: block;
+        padding: 12px 18px;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: #b0c7c2;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-align: left;
+      }
+      .floating-lang-menu a:hover, .floating-lang-menu a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Subpage Hero */
+      .subpage-hero {
+        position: relative;
+        height: 40vh;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+      .subpage-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(5, 20, 17, 0.4) 0%, rgba(5, 20, 17, 0.95) 100%);
+        z-index: 2;
+      }
+      .subpage-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        filter: brightness(0.7);
+      }
+      .subpage-hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 0 24px;
+        max-width: 800px;
+      }
+      .subpage-hero-content h1 {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        margin-bottom: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+      .subpage-hero-content p {
+        font-size: 1.1rem;
+        font-style: italic;
+        font-family: var(--font-serif);
+      }
+
+      /* FAQ Layout wrapper */
+      .faq-wrapper {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 50px;
+        margin-top: 60px;
+      }
+      .faq-sidebar {
+        position: sticky;
+        top: 130px;
+        height: fit-content;
+      }
+      .faq-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        padding-left: 20px;
+      }
+      .faq-nav-link {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--medium-text);
+        padding: 8px 0;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .faq-nav-link:hover, .faq-nav-link.active {
+        color: var(--accent-gold);
+        transform: translateX(5px);
+      }
+      .faq-nav-link svg {
+        transition: color 0.3s;
+      }
+      .faq-nav-link:hover svg, .faq-nav-link.active svg {
+        color: var(--accent-gold);
+      }
+
+      .faq-section-group {
+        margin-bottom: 70px;
+        scroll-margin-top: 130px;
+      }
+      .faq-section-title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .faq-section-title svg {
+        color: var(--accent-gold);
+        flex-shrink: 0;
+      }
+
+      .accordion-item {
+        background-color: #0c231f; /* Lighter dark green */
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 16px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .accordion-item:hover {
+        border-color: rgba(200, 155, 60, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      }
+      .accordion-item.active {
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(11, 47, 39, 0.4);
+      }
+      .accordion-header {
+        padding: 24px 30px;
+      }
+      .accordion-header h4 {
+        color: #ffffff;
+        font-size: 1.15rem;
+        font-family: var(--font-sans);
+        font-weight: 500;
+      }
+      .accordion-content-inner {
+        padding: 0 30px 24px 69px;
+        color: #b0c7c2;
+        line-height: 1.8;
+      }
+
+      /* Call to action */
+      .faq-cta {
+        background: linear-gradient(135deg, rgba(11, 47, 39, 0.6) 0%, rgba(5, 20, 17, 0.8) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 60px 40px;
+        text-align: center;
+        margin-top: 100px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      }
+      .faq-cta h3 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .faq-cta p {
+        max-width: 600px;
+        margin: 0 auto 30px auto;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 992px) {
+        .faq-wrapper {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .faq-sidebar {
+          display: none;
+        }
+      }
+      @media (max-width: 768px) {
+        .accordion-header {
+          padding: 20px;
+        }
+        .accordion-content-inner {
+          padding: 0 20px 20px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80" alt="Scenic highlands tea fields" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Traveler Directory FAQ</h1>
+        <p>Your comprehensive guide to visa regulations, currency payments, local custom etiquette, and logistics in Sri Lanka.</p>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container section" style="padding-top: 60px;">
+      <div class="faq-wrapper">
+        
+        <!-- Left Sticky Sidebar (Desktop only) -->
+        <aside class="faq-sidebar">
+          <div class="faq-nav">
+            <button class="faq-nav-link active" onclick="scrollToSection('faq-visa')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Visa &amp; Entry
+            </button>
+            <button class="faq-nav-link" onclick="scrollToSection('faq-currency')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              Currency &amp; Cash
+            </button>
+            <button class="faq-nav-link" onclick="scrollToSection('faq-safety')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Safety &amp; Tips
+            </button>
+            <button class="faq-nav-link" onclick="scrollToSection('faq-sim')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              SIM Cards &amp; Data
+            </button>
+            <button class="faq-nav-link" onclick="scrollToSection('faq-weather')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+              Monsoons &amp; Weather
+            </button>
+            <button class="faq-nav-link" onclick="scrollToSection('faq-transport')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              Transport &amp; Trains
+            </button>
+            <button class="faq-nav-link" onclick="scrollToSection('faq-payments')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              Payments &amp; Tipping
+            </button>
+          </div>
+        </aside>
+
+        <!-- Right FAQ Content Sections -->
+        <div class="faq-content">
+          
+          <!-- Category 1: Visa -->
+          <section id="faq-visa" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Visa &amp; Entry Requirements
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>Do I need a visa to visit Sri Lanka, and how do I apply?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Yes, all international travelers (except citizens of Singapore, Maldives, and Seychelles) must obtain an Electronic Travel Authorization (ETA) to enter Sri Lanka for tourism. You should apply online before you travel through the official government ETA portal. Applying in advance takes only 24–48 hours to process and helps you bypass the long "Visa on Arrival" queues at Bandaranaike International Airport in Colombo.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>How long is the tourist visa valid, and what does it cost?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    A standard tourist ETA is valid for 30 days from your date of entry and permits double-entry. The standard fee is $50 USD for most nationalities, while travelers from SAARC countries (South Asian Association for Regional Cooperation) pay a discounted rate of $20 USD. Children under the age of 12 are exempt from visa fees but still require a registered online ETA.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>What are the passport validity and onward travel requirements?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    To enter Sri Lanka, your passport must be valid for at least 6 months beyond your entry date. Immigration officers at Colombo airport also regularly request proof of a confirmed return or onward flight ticket, as well as evidence of sufficient funds to cover your expenses during your stay.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category 2: Currency -->
+          <section id="faq-currency" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              Currency, Banking &amp; Cash
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>What is the local currency, and is credit card acceptance widespread?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    The local currency is the Sri Lankan Rupee (LKR). Credit cards (predominantly Visa and MasterCard) are accepted at premium hotels, fine dining establishments, boutique stores, and supermarket chains in major areas like Colombo, Kandy, and Galle Fort. However, cash remains absolutely king for smaller purchases, local restaurants (kades), street vendors, three-wheelers (tuk-tuks), national park guides, and temple admission fees.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>Where is the best place to exchange money and withdraw cash?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    We highly recommend exchanging a small portion of your currency (major currencies like USD, EUR, GBP, AUD work best) at the 24/7 bank booths located in the arrival lobby of Colombo airport. For withdrawing cash, ATMs are widely available in cities and tourist towns. Banks like Commercial Bank, Bank of Ceylon (BOC), and Sampath Bank accept foreign cards. It is critical to alert your home bank of your travels to Sri Lanka to prevent foreign transaction blocks.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category 3: Safety -->
+          <section id="faq-safety" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Safety &amp; Local Etiquette
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>Is Sri Lanka safe for travelers, including solo female travelers?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Sri Lanka is a very safe country for tourists. Local people are exceptionally hospitable and helpful. Violent crime against tourists is extremely rare. However, petty theft like bag snatching and pickpocketing can occur in crowded areas. For solo female travelers, it is safe, though standard precautions apply: avoid walking in unlit areas alone at night, ignore persistent beach touts, dress modestly when away from resort beaches, and use registered ride-hailing apps rather than unmetered street tuk-tuks. The dedicated Tourist Police emergency line is 1912.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>What temple etiquette should I follow when visiting sacred sites?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    When visiting Buddhist and Hindu temples, modesty is essential. Both men and women must cover their shoulders and knees. Slip-on shoes are ideal as you must remove footwear and headwear before entering temple grounds. Crucially, never pose for a photo with your back turned directly to a Buddha statue, as it is considered a severe sign of disrespect. Avoid pointing your feet at people or sacred items, and do not touch monks.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category 4: SIM cards -->
+          <section id="faq-sim" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              SIM Cards &amp; Connectivity
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>How do I buy a tourist SIM card and what are the best network providers?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Purchasing a local SIM card is very cheap and highly recommended. In the arrivals lobby of Bandaranaike International Airport in Colombo, there are dedicated booths for the major operators: Dialog Axiata and Mobitel. Dialog generally offers the best 4G LTE coverage and data speeds throughout the island, including deep inside the national parks and high-altitude tea hills. You will need your passport to register and purchase the card. A tourist pack containing 30GB to 50GB of data, local calls, and international credit costs approximately $10 to $15 USD.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category 5: Weather -->
+          <section id="faq-weather" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+              Weather, Seasons &amp; Monsoons
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>How do the monsoon seasons affect travel planning?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Sri Lanka experiences a tropical climate governed by two distinct monsoon systems, meaning there is always a sunny side of the island at any point in the year:
+                    <ul style="margin-left: 20px; margin-top: 10px; list-style: disc;">
+                      <li><strong>Southwest Monsoon (Yala):</strong> Brings rain to the south coast, west coast, and central highlands from May to September. During this time, the east coast (Trincomalee, Pasikudah) and north are dry, sunny, and perfect.</li>
+                      <li><strong>Northeast Monsoon (Maha):</strong> Brings rain to the north and east coasts from November to February. During this time, the south-western coast beaches, Kandy, and Ella are beautiful and sunny.</li>
+                    </ul>
+                    October and November are inter-monsoonal months, bringing unstable weather and frequent afternoon thunderstorms island-wide.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category 6: Transport -->
+          <section id="faq-transport" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              Transport, Trains &amp; Getting Around
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>What is the best way to travel around Sri Lanka?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    For short journeys within towns, local three-wheelers (tuk-tuks) are cheap and fun. We advise using ride-hailing apps like PickMe or Uber in Colombo, Kandy, and Galle to secure metered rates and avoid fare haggling. For long distances between cities, the most comfortable, stress-free, and common choice for boutique travelers is booking a private air-conditioned vehicle with a professional chauffeur-guide. This lets you stop at scenic spots at your own pace.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>How do I book tickets for the Kandy-to-Ella scenic train route?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    The mountain railway between Kandy, Nuwara Eliya (Nanu Oya), and Ella is celebrated as one of the world's most beautiful train journeys. Standard tickets for reserved seats (1st class observation deck, 2nd class, or 3rd class) open up exactly 30 days prior to the travel date. They sell out almost instantly. We highly recommend booking through a reputable travel operator (like Kindred Travels) or using the official Sri Lanka Railways ticketing portal ahead of time. Unreserved tickets can be bought at the station on the day of travel, but these carriages are extremely packed.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Category 7: Payments -->
+          <section id="faq-payments" class="faq-section-group">
+            <h3 class="faq-section-title">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              Payments, Prices &amp; Tipping Etiquette
+            </h3>
+            <div class="accordion-list">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>What is the tipping culture in Sri Lanka?</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Tipping is a traditional and highly appreciated aspect of tourism in Sri Lanka. It serves as an acknowledgement of good service:
+                    <ul style="margin-left: 20px; margin-top: 10px; list-style: disc;">
+                      <li><strong>Restaurants:</strong> A 10% service charge is usually added, but an additional 5-10% in cash directly to your waiter is customary.</li>
+                      <li><strong>Private Drivers/Chauffeurs:</strong> We suggest tipping approximately $12 to $15 USD (equivalent in LKR) per day.</li>
+                      <li><strong>Safari Jeep Drivers &amp; Guides:</strong> Tipping 1,500 to 2,000 LKR ($5 - $7 USD) is standard.</li>
+                      <li><strong>Hotel Porters:</strong> 100 to 200 LKR per bag.</li>
+                    </ul>
+                    Always keep small Rupee notes (100, 500 LKR) handy for tips, shoe-keepers at temples, and parking helpers.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- FAQ CTA Block -->
+      <div class="faq-cta reveal">
+        <h3>Still Have Unanswered Questions?</h3>
+        <p>Our destination curators live and travel across Sri Lanka. Let us design your custom luxury tour, taking care of all logistics, trains, transfers, and accommodations.</p>
+        <a href="index.html#inquiry-section" class="btn btn-primary">Connect with a Local Curator</a>
+      </div>
+    </main>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Smooth scroll function for sidebar navigation
+      function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          // Update active link styling
+          document.querySelectorAll('.faq-nav-link').forEach(btn => {
+            btn.classList.remove('active');
+          });
+          const activeBtn = Array.from(document.querySelectorAll('.faq-nav-link')).find(btn => 
+            btn.getAttribute('onclick').includes(id)
+          );
+          if (activeBtn) activeBtn.classList.add('active');
+        }
+      }
+
+      // Highlight active sidebar section during scroll
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.faq-section-group');
+        const scrollPos = window.scrollY + 180;
+
+        sections.forEach(section => {
+          if (scrollPos >= section.offsetTop && scrollPos < (section.offsetTop + section.offsetHeight)) {
+            const id = section.getAttribute('id');
+            document.querySelectorAll('.faq-nav-link').forEach(btn => {
+              btn.classList.remove('active');
+            });
+            const activeBtn = Array.from(document.querySelectorAll('.faq-nav-link')).find(btn => 
+              btn.getAttribute('onclick').includes(id)
+            );
+            if (activeBtn) activeBtn.classList.add('active');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

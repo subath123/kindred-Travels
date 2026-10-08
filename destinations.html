@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destinations Directory | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Explore Sri Lanka's beautiful tourist regions: Sigiriya, Kandy, Ella, Yala safari, Galle Fort, and pristine Trincomalee beaches." />
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80" alt="Scenic Highlands tea fields" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Explore Sri Lanka by Region</h1>
+        <p>From misty tea plantations to ancient forest temples, find your perfect corner of the island.</p>
+      </div>
+    </header>
+
+    <main class="container section" style="padding-top: 60px;">
+      <!-- Category Filter Chips -->
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All Regions</button>
+        <button class="chip" data-filter="cultural">Cultural Triangle</button>
+        <button class="chip" data-filter="hills">Hill Country</button>
+        <button class="chip" data-filter="beaches">Southern Beaches</button>
+        <button class="chip" data-filter="wildlife">Wildlife Safaris</button>
+      </div>
+
+      <!-- Destinations Grid -->
+      <div class="destinations-subpage-grid">
+        <!-- 1. Colombo -->
+        <div class="dest-card dest-item show" data-dest="colombo" data-category="beaches">
+          <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Colombo Cityscape" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Urban Gateway</span>
+            <h3 class="dest-card-title">Colombo</h3>
+            <p class="dest-card-desc">Bustling capital blending historical heritage, coastal greens, and modern luxury.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Colombo&theme=Urban+Gateway" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Sigiriya -->
+        <div class="dest-card dest-item show" data-dest="sigiriya" data-category="cultural">
+          <img src="./sigiriya1.jpg" alt="Sigiriya Fortress" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Ancient Heritage</span>
+            <h3 class="dest-card-title">Sigiriya</h3>
+            <p class="dest-card-desc">Climb the legendary 5th-century palace in the clouds, built on a sheer 200m granite monolith.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Sigiriya&theme=Ancient+Heritage" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Kandy -->
+        <div class="dest-card dest-item show" data-dest="kandy" data-category="cultural">
+          <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Kandy Temple" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Royal Citadel</span>
+            <h3 class="dest-card-title">Kandy</h3>
+            <p class="dest-card-desc">Sri Lanka's last royal kingdom, nestled in mountains, hosting the sacred Temple of the Tooth.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Kandy&theme=Royal+Citadel" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Ella -->
+        <div class="dest-card dest-item show" data-dest="ella" data-category="hills">
+          <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Ella Winding Train Route" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Misty Highlands</span>
+            <h3 class="dest-card-title">Ella</h3>
+            <p class="dest-card-desc">Walk across the scenic Nine Arch Bridge, hike green peaks, and enjoy cascading waterfall views.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Ella&theme=Misty+Highlands" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Yala -->
+        <div class="dest-card dest-item show" data-dest="yala" data-category="wildlife">
+          <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Leopard Safari" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Wildlife Safaris</span>
+            <h3 class="dest-card-title">Yala</h3>
+            <p class="dest-card-desc">The crown jewel of Sri Lanka's wildlife, hosting the highest leopard densities globally.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Yala&theme=Wildlife+Safaris" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Galle Fort -->
+        <div class="dest-card dest-item show" data-dest="galle" data-category="beaches">
+          <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Galle Fort Lighthouse" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Colonial Heritage</span>
+            <h3 class="dest-card-title">Galle</h3>
+            <p class="dest-card-desc">Dutch-colonial fortified city with boutique hotels, stone ramparts, and narrow cobblestone lanes.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Galle+Fort&theme=Colonial+Heritage" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Mirissa -->
+        <div class="dest-card dest-item show" data-dest="mirissa" data-category="beaches">
+          <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Mirissa Beach" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Tropical Paradise</span>
+            <h3 class="dest-card-title">Mirissa</h3>
+            <p class="dest-card-desc">Famed for coconut hills, whale watching cruises, surf breaks, and sandy sunset bays.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Mirissa&theme=Tropical+Paradise" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Bentota -->
+        <div class="dest-card dest-item show" data-dest="bentota" data-category="beaches">
+          <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Bentota Beach" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Golden Sands</span>
+            <h3 class="dest-card-title">Bentota</h3>
+            <p class="dest-card-desc">Luxury beach resorts, thrilling water sports, river cruises, and pristine golden sand lines.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Bentota&theme=Golden+Sands" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Trincomalee -->
+        <div class="dest-card dest-item show" data-dest="trincomalee" data-category="beaches">
+          <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Nilaveli Beach" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">East Coast Beach</span>
+            <h3 class="dest-card-title">Trincomalee</h3>
+            <p class="dest-card-desc">Deep natural harbor with beautiful white-sand beaches, coral reefs, and blue whale pods.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Trincomalee&theme=East+Coast+Beach" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Arugam Bay -->
+        <div class="dest-card dest-item show" data-dest="arugam-bay" data-category="beaches">
+          <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Surf breaks" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Surfer Haven</span>
+            <h3 class="dest-card-title">Arugam Bay</h3>
+            <p class="dest-card-desc">World-renowned surf breaks, laid-back beach vibe, and stunning lagoon reserves.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Arugam+Bay&theme=Surfer+Haven" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Jaffna -->
+        <div class="dest-card dest-item show" data-dest="jaffna" data-category="cultural">
+          <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80" alt="Nallur Kandaswamy Temple" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Northern Culture</span>
+            <h3 class="dest-card-title">Jaffna</h3>
+            <p class="dest-card-desc">Rich Tamil heritage, majestic golden Hindu temples, fort ruins, and unique local cuisine.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Jaffna&theme=Northern+Culture" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Anuradhapura -->
+        <div class="dest-card dest-item show" data-dest="anuradhapura" data-category="cultural">
+          <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Anuradhapura Stupa" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Ancient Ruins</span>
+            <h3 class="dest-card-title">Anuradhapura</h3>
+            <p class="dest-card-desc">The first ancient kingdom, housing massive brick dome stupas and the sacred Bodhi tree.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Anuradhapura&theme=Ancient+Ruins" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Polonnaruwa -->
+        <div class="dest-card dest-item show" data-dest="polonnaruwa" data-category="cultural">
+          <img src="./sigiriya1.jpg" alt="Polonnaruwa ruins" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Medieval capital</span>
+            <h3 class="dest-card-title">Polonnaruwa</h3>
+            <p class="dest-card-desc">Stately medieval ruins of temples, royal palaces, giant Buddha statues, and stone basins.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Polonnaruwa&theme=Medieval+Capital" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Horton Plains -->
+        <div class="dest-card dest-item show" data-dest="horton-plains" data-category="hills">
+          <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Worlds End cliff" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Mountain Hiking</span>
+            <h3 class="dest-card-title">Horton Plains</h3>
+            <p class="dest-card-desc">High-altitude montane grasslands. Hike to the breathtaking sheer drop at World's End.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Horton+Plains&theme=Mountain+Hiking" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Udawalawe -->
+        <div class="dest-card dest-item show" data-dest="udawalawe" data-category="wildlife">
+          <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Wild Elephant" class="dest-card-img" />
+          <div class="dest-card-overlay">
+            <span class="dest-card-tag">Elephant Reserves</span>
+            <h3 class="dest-card-title">Udawalawe</h3>
+            <p class="dest-card-desc">Guaranteed wild elephant sightings, wetlands, and a critical elephant transit nursery.</p>
+            <div class="dest-card-actions" style="margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Details ↗</span>
+              <a href="contact.html?dest=Udawalawe&theme=Elephant+Reserves" class="btn btn-outline-gold" onclick="event.stopPropagation();" style="padding: 5px 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(5,20,17,0.85);">Inquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Details Modal Backdrop -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+
+        <div class="modal-img-container">
+          <img src="" alt="" class="modal-img" />
+          <div class="modal-img-overlay">
+            <div class="modal-header-info">
+              <span class="dest-card-tag" style="display: inline-block; margin-bottom: 8px;"></span>
+              <h3></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-meta-grid">
+            <div class="meta-item">
+              <div class="meta-icon-wrapper">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div>
+                <div class="meta-label">Best Time</div>
+                <div class="meta-value"></div>
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-icon-wrapper">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+              </div>
+              <div>
+                <div class="meta-label">Weather</div>
+                <div class="meta-value"></div>
+              </div>
+            </div>
+
+            <div class="meta-item">
+              <div class="meta-icon-wrapper">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+              </div>
+              <div>
+                <div class="meta-label">Suggested Stay</div>
+                <div class="meta-value"></div>
+              </div>
+            </div>
+          </div>
+
+          <p class="modal-description"></p>
+
+          <div class="modal-highlights">
+            <h4>Signature Experiences</h4>
+            <ul class="highlights-list"></ul>
+          </div>
+
+          <div class="modal-activities-section" style="margin-top: 25px;">
+            <h4 style="font-size: 1rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Popular Activities</h4>
+            <p class="modal-activities" style="color: var(--medium-text); font-size: 0.9rem; line-height: 1.5;"></p>
+          </div>
+
+          <div class="modal-hotels-section" style="margin-top: 25px;">
+            <h4 style="font-size: 1rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Recommended Stays</h4>
+            <p class="modal-hotels" style="color: var(--medium-text); font-size: 0.9rem; line-height: 1.5;"></p>
+          </div>
+          
+          <div style="margin-top: 40px; display: flex; justify-content: flex-end; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <a href="plan.html" class="btn btn-outline-gold" id="modal-plan-btn" style="padding: 12px 22px; font-size: 0.85rem;">
+              <span>Customize &amp; Book Tour</span>
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 6px;"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            </a>
+            <a href="contact.html" class="btn btn-primary" id="modal-inquire-btn" style="padding: 12px 24px; font-size: 0.85rem;">
+              <span>Inquire About This Destination</span>
+              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 6px;"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

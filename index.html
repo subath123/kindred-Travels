@@ -1,0 +1,1624 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kindred Travels | Premium Sri Lanka Tours &amp; Custom Itineraries</title>
+    <meta name="description" content="Discover the beauty of Sri Lanka with Kindred Travels. Explore curated custom itineraries, interactive travel maps, beaches, wildlife safaris, and tea plantations." />
+    <meta name="keywords" content="Sri Lanka tourism, Sri Lanka tours, Ella train, Sigiriya tour, Yala safari, Galle fort, bespoke travel, Sri Lanka itineraries" />
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- EmailJS SDK for background email delivery -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Centralized Booking Engine -->
+    <script src="./booking-engine.js"></script>
+  </head>
+  <body>
+    <!-- Luxury Intro Preloader -->
+    <div id="intro-loader" class="intro-loader" title="Click anywhere to enter">
+      <div class="intro-loader-content">
+        <div class="intro-logo-wrapper">
+          <img src="./logo.svg" alt="Kindred Travels Logo" class="intro-logo">
+        </div>
+        <div class="intro-divider"></div>
+        <p class="intro-slogan">Crafting Bespoke Ceylon Journeys</p>
+        <span class="intro-skip-hint">Click anywhere to enter</span>
+      </div>
+    </div>
+
+    <!-- Inline Preloader Controller & Fail-Safe: Guarantees site always opens -->
+    <script>
+      (function() {
+        var loader = document.getElementById('intro-loader');
+        if (!loader) return;
+        var dismissed = false;
+        function dismiss(fast) {
+          if (dismissed) return;
+          dismissed = true;
+          if (fast) {
+            loader.style.display = 'none';
+            loader.classList.add('hide');
+          } else {
+            loader.classList.add('hide');
+            setTimeout(function() {
+              if (loader) loader.style.display = 'none';
+            }, 1200);
+          }
+        }
+        loader.addEventListener('click', function() { dismiss(false); });
+        window.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismiss(false);
+        });
+        try {
+          if (sessionStorage.getItem('kindred_intro_seen')) {
+            dismiss(true);
+            return;
+          }
+          sessionStorage.setItem('kindred_intro_seen', 'true');
+        } catch (e) {}
+        setTimeout(function() { dismiss(false); }, 2200);
+        setTimeout(function() { dismiss(false); }, 3000);
+      })();
+    </script>
+
+    <!-- Floating Navigation Bar -->
+    <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 10px;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 54px; width: auto; object-fit: contain;">
+        <div style="display: flex; flex-direction: column; line-height: 1.1;">
+          <span style="font-family: var(--font-sans); font-size: 0.95rem; font-weight: 700; letter-spacing: 1.5px; color: #ffffff; text-transform: uppercase;">Kindred</span>
+          <span style="font-family: var(--font-sans); font-size: 0.58rem; letter-spacing: 3px; color: var(--accent-mint); text-transform: uppercase; font-weight: 600;">Sri Lanka</span>
+        </div>
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home active">Home</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <!-- Right Utility Actions -->
+      <div class="nav-actions-right">
+        <!-- Quick Search Icon -->
+        <button class="nav-icon-btn" id="nav-search-trigger" title="Search destinations" aria-label="Search">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+
+        <!-- Language Selector -->
+        <div class="nav-lang-selector">
+          <button class="nav-lang-trigger" id="nav-lang-btn" type="button" aria-label="Select Language">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span>EN</span>
+            <span style="font-size: 0.65rem;">▾</span>
+          </button>
+          <div class="nav-lang-dropdown">
+            <a href="#" class="active">English (EN)</a>
+            <a href="#">Deutsch (DE)</a>
+            <a href="#">Français (FR)</a>
+            <a href="#">Español (ES)</a>
+            <a href="#">中文 (ZH)</a>
+            <a href="#">Italiano (IT)</a>
+          </div>
+        </div>
+
+        <!-- Signature Mint Pill CTA -->
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 11px 24px; font-size: 0.8rem; font-weight: 700; border-radius: 9999px;">
+          Plan Your Trip
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Wanderlust Luxury Hero Section -->
+      <section class="hero-wanderlust" id="hero-section">
+        <!-- Panoramic Ocean & Cliff Backdrop -->
+        <div class="wanderlust-bg"></div>
+        <div class="wanderlust-bg-overlay"></div>
+
+        <!-- Curved Flight Path SVG Overlay with Animated Luxury Jet & Glow -->
+        <svg class="hero-flight-svg" viewBox="0 0 1440 850" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="flightTrailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4ce0b3" stop-opacity="0.95" />
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="0.85" />
+              <stop offset="100%" stop-color="#4ce0b3" stop-opacity="0.95" />
+            </linearGradient>
+            <filter id="flightGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Outer Luminous Flight Path Glow -->
+          <path class="flight-glow-path" d="M 740,130 C 790,230 770,360 650,490" />
+          <!-- Dashed Trajectory Arc -->
+          <path class="flight-curve-path" id="flightTrajectory" d="M 740,130 C 790,230 770,360 650,490" />
+
+          <!-- Dynamic Cruising Luxury Jetliner with Glowing Wake -->
+          <g class="hero-cruising-plane">
+            <animateMotion 
+              path="M 740,130 C 790,230 770,360 650,490" 
+              dur="10s" 
+              repeatCount="indefinite" 
+              rotate="auto" />
+            <!-- Glowing Jet Engine Wash -->
+            <circle cx="-13" cy="0" r="3.5" fill="#4ce0b3" opacity="0.75" filter="url(#flightGlow)">
+              <animate attributeName="r" values="2.5;5.5;2.5" dur="0.9s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.9;0.3;0.9" dur="0.9s" repeatCount="indefinite" />
+            </circle>
+            <!-- Jetliner Body -->
+            <path d="M 13,0 L 2,-3.5 L -3,-13 L -7,-13 L -3,-3.5 L -10,-2.5 L -13,-6 L -16,-6 L -14.5,0 L -16,6 L -13,6 L -10,2.5 L -3,3.5 L -7,13 L -3,13 L 2,3.5 Z" 
+                  fill="#ffffff" stroke="#061917" stroke-width="0.8" filter="url(#flightGlow)" />
+          </g>
+        </svg>
+
+        <!-- Waypoint 1: Departure Hub Badge (Top of Flight Path) -->
+        <div class="hero-waypoint-badge waypoint-origin" title="Arrival Hub: Bandaranaike Intl Airport">
+          <div class="waypoint-radar-ring"></div>
+          <div class="waypoint-card">
+            <span class="waypoint-icon">✈</span>
+            <div class="waypoint-info">
+              <span class="waypoint-label">DEPARTURE CORRIDOR</span>
+              <strong class="waypoint-title">CMB • Colombo Hub</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waypoint 2: Mid-Route Experience Highlight Pill -->
+        <div class="hero-mid-highlight-pill" title="Private SLTDA Guided Expedition">
+          <div class="mid-highlight-icon">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="mid-highlight-text">
+            <strong>Private Chauffeur Route</strong>
+            <span>SLTDA Certified • Tailor-Made</span>
+          </div>
+          <span class="mid-highlight-badge">100% Flex</span>
+        </div>
+
+        <!-- Waypoint 3: Destination Beacon & Interactive Discovery Card -->
+        <div class="hero-destination-showcase" id="hero-dest-showcase">
+          <!-- Pulsing Beacon Pin -->
+          <div class="pin-beacon-anchor hero-destination-pin" id="hero-pin-cove" title="Click to view Mirissa Lagoon details">
+            <div class="pin-pulse-ring"></div>
+            <div class="pin-pulse-ring"></div>
+            <div class="pin-marker-core">
+              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+          </div>
+
+          <!-- Live Frosted Glass Discovery Card -->
+          <a href="destinations.html?dest=Mirissa" class="hero-discovery-card" aria-label="Explore Mirissa Secret Cove">
+            <div class="discovery-card-header">
+              <div class="discovery-live-pill">
+                <span class="live-blink-dot"></span>
+                <span>FEATURED SANCTUARY</span>
+              </div>
+              <span class="discovery-rating">★ 4.9</span>
+            </div>
+            
+            <div class="discovery-card-body">
+              <div class="discovery-thumb">
+                <img src="./sigiriya1.jpg" alt="Mirissa Secret Cove" />
+                <span class="discovery-thumb-tag">Coast</span>
+              </div>
+              <div class="discovery-details">
+                <h4 class="discovery-title">Mirissa Blue Bay</h4>
+                <p class="discovery-sub">Secret Coves &amp; Whales</p>
+                <div class="discovery-action-link">
+                  <span>Explore Sanctuary</span>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Main 2-Column Hero Stage -->
+        <div class="wanderlust-main-stage">
+          <!-- Left Column: Editorial Headline & Actions -->
+          <div class="wanderlust-hero-left">
+            <span class="wanderlust-eyebrow">
+              <span class="eyebrow-dash"></span>
+              The Sri Lanka is Waiting
+            </span>
+            <h1 class="wanderlust-title">
+              Adventures<br>That Stay<br>With You
+            </h1>
+            <p class="wanderlust-subtext">
+              Discover breathtaking destinations, unique experiences and unforgettable memories across the jewel of the Indian Ocean.
+            </p>
+            <div class="wanderlust-cta-group">
+              <a href="destinations.html" class="btn-mint-pill">
+                Explore Destinations
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <button type="button" class="btn-video-watch" id="hero-video-trigger" aria-label="Watch Video Showcase">
+                <span class="video-play-pulse">
+                  <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </span>
+                <div class="video-text-group">
+                  <span class="video-main-txt">Watch Video</span>
+                  <span class="video-sub-txt">See Kindred in action</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Glassmorphism Booking Engine ("Where to next?") -->
+          <div class="wanderlust-hero-right">
+            <div class="hero-booking-card">
+              <div class="booking-card-head">
+                <h3>Where to next?</h3>
+                <p>Find your perfect escape</p>
+              </div>
+
+              <!-- Category Tabs -->
+              <div class="booking-tabs" role="tablist">
+                <button type="button" class="booking-tab active" data-tab="flights" id="tab-flights">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                  Transports
+                </button>
+                <button type="button" class="booking-tab" data-tab="hotels" id="tab-hotels">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M3 7v14M21 7v14M6 3h12v4H6zM9 10h2v2H9zM13 10h2v2h-2zM9 14h2v2H9zM13 14h2v2h-2z"/></svg>
+                  Hotels
+                </button>
+                <button type="button" class="booking-tab" data-tab="experiences" id="tab-experiences">
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  Experiences
+                </button>
+              </div>
+
+              <!-- Interactive Search Form -->
+              <form class="hero-booking-form" id="wanderlust-search-form" action="plan.html" method="GET">
+                <!-- From / Pickup Field -->
+                <div class="booking-input-row" id="row-from">
+                  <div class="input-indicator green-dot"></div>
+                  <div class="input-content">
+                    <label for="input-from" id="label-from">From (Pick-up)</label>
+                    <select id="input-from" name="origin">
+                      <option value="Bandaranaike Intl Airport (CMB)" selected>Bandaranaike Intl Airport (CMB)</option>
+                      <option value="Colombo City / Negombo">Colombo City / Negombo</option>
+                      <option value="Kandy Royal Citadel">Kandy Royal Citadel</option>
+                      <option value="Galle Dutch Fort">Galle Dutch Fort</option>
+                      <option value="Mirissa & Weligama Bay">Mirissa &amp; Weligama Bay</option>
+                      <option value="Ella & Central Highlands">Ella &amp; Central Highlands</option>
+                      <option value="Mattala Rajapaksa Airport (HRI)">Mattala Rajapaksa Airport (HRI)</option>
+                      <option value="Bentota / Beruwala">Bentota / Beruwala</option>
+                    </select>
+                  </div>
+                  <button type="button" class="swap-locations-btn" id="swap-locs-btn" title="Swap Pick-up &amp; Destination">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+                  </button>
+                </div>
+
+                <!-- To / Drop-off Field -->
+                <div class="booking-input-row" id="row-to">
+                  <div class="input-indicator green-dot"></div>
+                  <div class="input-content">
+                    <label for="input-to" id="label-to">To (Destination)</label>
+                    <select id="input-to" name="dest">
+                      <option value="Sigiriya & Cultural Triangle" selected>Sigiriya &amp; Cultural Triangle</option>
+                      <option value="Ella & Tea Highlands (Nine Arch)">Ella &amp; Tea Highlands (Nine Arch)</option>
+                      <option value="Yala National Park (Wildlife Safari)">Yala National Park (Wildlife Safari)</option>
+                      <option value="Galle Dutch Fort & South Coast">Galle Dutch Fort &amp; South Coast</option>
+                      <option value="Mirissa Beach & Whale Watching">Mirissa Beach &amp; Whale Watching</option>
+                      <option value="Kandy & Temple of the Tooth">Kandy &amp; Temple of the Tooth</option>
+                      <option value="Nuwara Eliya & Horton Plains">Nuwara Eliya &amp; Horton Plains</option>
+                      <option value="Trincomalee & Nilaveli Coast">Trincomalee &amp; Nilaveli Coast</option>
+                      <option value="All-Island Chauffeur Circuit">All-Island Chauffeur Circuit</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Dates & Travelers -->
+                <div class="booking-split-row">
+                  <div class="booking-input-row">
+                    <div class="input-icon">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+                    <div class="input-content">
+                      <label for="input-dates" id="label-dates">Travel Dates</label>
+                      <input type="text" id="input-dates" name="dates" value="Oct 20 – Oct 28" placeholder="Travel dates" />
+                    </div>
+                  </div>
+
+                  <div class="booking-input-row">
+                    <div class="input-icon">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="input-content">
+                      <label for="input-travelers" id="label-travelers">Travelers</label>
+                      <select id="input-travelers" name="guests">
+                        <option value="1">1 Solo Traveler</option>
+                        <option value="2" selected>2 Adults</option>
+                        <option value="3">3 Adults</option>
+                        <option value="4">4 Guests / Family</option>
+                        <option value="5+">5+ Group Expedition</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit CTA -->
+                <button type="submit" class="btn-search-flights" id="btn-hero-search">
+                  <span id="btn-hero-search-text">Search Chauffeur &amp; Transfers</span>
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Hero Stage (Popular Destinations & Trust Pillars) -->
+        <div class="wanderlust-bottom-row">
+          <!-- Popular Destinations Mini Carousel -->
+          <div class="popular-destinations-block">
+            <div class="pop-dest-header">
+              <h4>Popular Destinations</h4>
+              <a href="destinations.html" class="view-all-link">View all</a>
+              <div class="carousel-arrows">
+                <button type="button" class="carousel-arrow" id="car-prev-btn" aria-label="Previous destination">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="carousel-arrow" id="car-next-btn" aria-label="Next destination">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="popular-dest-cards" id="pop-dest-cards">
+              <!-- Card 1: Sigiriya -->
+              <a href="destinations.html?dest=Sigiriya" class="pop-card">
+                <img src="./sigiriya1.jpg" alt="Sigiriya Rock Fortress" />
+                <div class="pop-card-overlay">
+                  <div class="pop-card-info">
+                    <h5>Sigiriya</h5>
+                    <span>Cultural Citadel</span>
+                  </div>
+                  <div class="pop-card-rating">
+                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span>4.9</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Card 2: Ella -->
+              <a href="destinations.html?dest=Ella" class="pop-card">
+                <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=600&q=80" alt="Ella Highlands Train" />
+                <div class="pop-card-overlay">
+                  <div class="pop-card-info">
+                    <h5>Ella Peaks</h5>
+                    <span>Misty Highlands</span>
+                  </div>
+                  <div class="pop-card-rating">
+                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span>4.9</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Card 3: Yala -->
+              <a href="destinations.html?dest=Yala" class="pop-card">
+                <img src="./ww.jpg" alt="Yala Safari Leopards" onerror="this.src='https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80'" />
+                <div class="pop-card-overlay">
+                  <div class="pop-card-info">
+                    <h5>Yala Safari</h5>
+                    <span>Leopard Reserve</span>
+                  </div>
+                  <div class="pop-card-rating">
+                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span>4.8</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Card 4: Mirissa -->
+              <a href="destinations.html?dest=Mirissa" class="pop-card">
+                <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80" alt="Mirissa & Southern Coast" />
+                <div class="pop-card-overlay">
+                  <div class="pop-card-info">
+                    <h5>Mirissa Coast</h5>
+                    <span>Whale Sanctuary</span>
+                  </div>
+                  <div class="pop-card-rating">
+                    <svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span>4.8</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Trust Pillars Glass Bar -->
+          <div class="trust-pillars-bar">
+            <div class="trust-pillar-item">
+              <div class="pillar-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="pillar-text">
+                <strong>Best Price</strong>
+                <span>Guarantee</span>
+              </div>
+            </div>
+
+            <div class="trust-pillar-item">
+              <div class="pillar-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+              </div>
+              <div class="pillar-text">
+                <strong>24/7 Travel</strong>
+                <span>Support</span>
+              </div>
+            </div>
+
+            <div class="trust-pillar-item">
+              <div class="pillar-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div class="pillar-text">
+                <strong>Flexible</strong>
+                <span>Bookings</span>
+              </div>
+            </div>
+
+            <div class="trust-pillar-item">
+              <div class="pillar-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div class="pillar-text">
+                <strong>Secure</strong>
+                <span>Payments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Stats Counter Strip -->
+        <div class="wanderlust-stats-strip">
+          <div class="stat-col">
+            <div class="stat-num">500+</div>
+            <div class="stat-lbl">Destinations</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-col">
+            <div class="stat-num">10K+</div>
+            <div class="stat-lbl">Happy Travelers</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-col">
+            <div class="stat-num">150+</div>
+            <div class="stat-lbl">Travel Experts</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-col">
+            <div class="stat-num">4.9</div>
+            <div class="stat-lbl">
+              Average Rating
+              <span class="stat-stars">★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Destinations Grid Section: Pinterest Timed Card Opening Showcase -->
+      <section class="section destinations-section wonders-showcase-section" id="destinations-section">
+        <div class="container reveal">
+          <div class="wonders-section-header">
+            <span class="wonders-badge-pill">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ICONIC EXPEDITIONS &amp; WONDERS
+            </span>
+            <h2 class="wonders-main-title">Unveil Sri Lanka's Wonders</h2>
+            <p class="wonders-sub-title">
+              From misty mountains to sundrenched shores, explore six distinct worlds packed into one tropical island paradise.
+            </p>
+          </div>
+
+          <!-- Pinterest Timed Card Opening Showcase Stage -->
+          <div class="wonders-stage-viewport" id="wonders-viewport">
+            <!-- Background Backdrop with Ambient Vignette -->
+            <div class="wonders-stage-backdrop" id="wonders-backdrop" style="background-image: url('./sigiriya1.jpg');"></div>
+            <div class="wonders-stage-vignette"></div>
+
+            <!-- Stage Body: Left Editorial + Right Floating Cards Deck -->
+            <div class="wonders-stage-inner">
+              <!-- Left Column: Editorial Headline & Actions -->
+              <div class="wonders-stage-info">
+                <div class="wonders-stage-eyebrow">
+                  <span class="eyebrow-accent-dash"></span>
+                  <span id="wonders-eyebrow-text">Cultural Triangle • UNESCO Heritage</span>
+                </div>
+
+                <h3 class="wonders-display-title" id="wonders-display-title">
+                  SIGIRIYA<br>CITADEL
+                </h3>
+
+                <p class="wonders-display-desc" id="wonders-display-desc">
+                  Rise above emerald jungle canopies to the legendary 5th-century palace fortress of King Kasyapa, crowning a sheer 200-meter monolith adorned with celestial frescoes and ancient royal water gardens.
+                </p>
+
+                <!-- Meta Pills -->
+                <div class="wonders-meta-pills" id="wonders-meta-pills">
+                  <span class="meta-pill">5th-Century Fortress</span>
+                  <span class="meta-pill">200m Monolith</span>
+                  <span class="meta-pill">Mirror Wall Frescoes</span>
+                </div>
+
+                <!-- Action Button Group (Bookmark / Inquire + Discover Location) -->
+                <div class="wonders-stage-actions">
+                  <a href="contact.html?dest=Sigiriya" class="btn-wonders-bookmark" id="wonders-bookmark-btn" title="Quick Inquiry for Sigiriya" aria-label="Inquire this sanctuary">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  </a>
+
+                  <button type="button" class="btn-wonders-discover" id="wonders-discover-btn">
+                    <span>DISCOVER LOCATION</span>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Column: Horizontal Floating Preview Cards Deck -->
+              <div class="wonders-cards-deck">
+                <div class="wonders-cards-scroll" id="wonders-cards-scroll">
+                  <!-- Card 1: Sigiriya -->
+                  <div class="wonders-preview-card active" data-dest="sigiriya" data-index="0" role="button" tabindex="0">
+                    <div class="card-img-wrap">
+                      <img src="./sigiriya1.jpg" alt="Sigiriya Rock Citadel" loading="lazy" />
+                      <div class="card-gradient"></div>
+                    </div>
+                    <div class="card-caption">
+                      <span class="card-region">Cultural Triangle</span>
+                      <h4 class="card-name">SIGIRIYA CITADEL</h4>
+                    </div>
+                  </div>
+
+                  <!-- Card 2: Ella -->
+                  <div class="wonders-preview-card" data-dest="ella" data-index="1" role="button" tabindex="0">
+                    <div class="card-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Ella Highlands Train &amp; Peaks" loading="lazy" />
+                      <div class="card-gradient"></div>
+                    </div>
+                    <div class="card-caption">
+                      <span class="card-region">Misty Highlands</span>
+                      <h4 class="card-name">ELLA NINE ARCH</h4>
+                    </div>
+                  </div>
+
+                  <!-- Card 3: Yala (Authentic Leopard photography) -->
+                  <div class="wonders-preview-card" data-dest="yala" data-index="2" role="button" tabindex="0">
+                    <div class="card-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Yala Leopard Wilderness" loading="lazy" />
+                      <div class="card-gradient"></div>
+                    </div>
+                    <div class="card-caption">
+                      <span class="card-region">Wildlife Safari</span>
+                      <h4 class="card-name">YALA LEOPARDS</h4>
+                    </div>
+                  </div>
+
+                  <!-- Card 4: Galle -->
+                  <div class="wonders-preview-card" data-dest="galle" data-index="3" role="button" tabindex="0">
+                    <div class="card-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Galle Fort Lighthouse &amp; Ramparts" loading="lazy" />
+                      <div class="card-gradient"></div>
+                    </div>
+                    <div class="card-caption">
+                      <span class="card-region">Southern Coast</span>
+                      <h4 class="card-name">GALLE DUTCH FORT</h4>
+                    </div>
+                  </div>
+
+                  <!-- Card 5: Kandy -->
+                  <div class="wonders-preview-card" data-dest="kandy" data-index="4" role="button" tabindex="0">
+                    <div class="card-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Kandy Sacred Temple of the Tooth" loading="lazy" />
+                      <div class="card-gradient"></div>
+                    </div>
+                    <div class="card-caption">
+                      <span class="card-region">Royal Citadel</span>
+                      <h4 class="card-name">KANDY SACRED TOOTH</h4>
+                    </div>
+                  </div>
+
+                  <!-- Card 6: Mirissa -->
+                  <div class="wonders-preview-card" data-dest="mirissa" data-index="5" role="button" tabindex="0">
+                    <div class="card-img-wrap">
+                      <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=800&q=80" alt="Mirissa Whale Sanctuary" loading="lazy" />
+                      <div class="card-gradient"></div>
+                    </div>
+                    <div class="card-caption">
+                      <span class="card-region">Tropical Coast</span>
+                      <h4 class="card-name">MIRISSA BLUE COVE</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Navigation Bar & Timed Progress Strip -->
+            <div class="wonders-stage-controls">
+              <!-- Navigation Circle Buttons (< and >) -->
+              <div class="wonders-nav-arrows">
+                <button type="button" class="wonders-circle-btn" id="wonders-prev-btn" aria-label="Previous wonder destination">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button type="button" class="wonders-circle-btn" id="wonders-next-btn" aria-label="Next wonder destination">
+                  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+
+              <!-- Timed Opening Progress Bar -->
+              <div class="wonders-timer-wrapper" title="Timed card opening cycle">
+                <div class="wonders-timer-bar" id="wonders-timer-bar"></div>
+              </div>
+
+              <!-- Display Slide Counter (01 / 06) -->
+              <div class="wonders-counter-badge" id="wonders-counter-badge">
+                <span class="counter-num-active" id="wonders-counter-num">01</span>
+                <span class="counter-num-total">/ 06</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Details Modal Backdrop -->
+      <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+          <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+
+          <div class="modal-img-container">
+            <img src="" alt="" class="modal-img" />
+            <div class="modal-img-overlay">
+              <div class="modal-header-info">
+                <span class="dest-card-tag" style="display: inline-block; margin-bottom: 8px;"></span>
+                <h3></h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <div class="modal-meta-grid">
+              <div class="meta-item">
+                <div class="meta-icon-wrapper">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+                <div>
+                  <div class="meta-label">Best Time</div>
+                  <div class="meta-value"></div>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-icon-wrapper">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                </div>
+                <div>
+                  <div class="meta-label">Weather</div>
+                  <div class="meta-value"></div>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-icon-wrapper">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                </div>
+                <div>
+                  <div class="meta-label">Suggested Stay</div>
+                  <div class="meta-value"></div>
+                </div>
+              </div>
+            </div>
+
+            <p class="modal-description"></p>
+
+            <div class="modal-highlights">
+              <h4>Signature Experiences</h4>
+              <ul class="highlights-list"></ul>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: right;">
+              <a href="#" class="btn btn-outline-gold" id="modal-inquire-btn">
+                <span>Inquire About This Destination</span>
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Route Explorer Map -->
+      <section class="section map-section" id="map-section">
+        <div class="container reveal">
+          <h2>Interactive Route Explorer</h2>
+          <p style="text-align: center; max-width: 600px; margin: -40px auto 60px auto; font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: #b0c7c2;">
+            Click on any destination on the map to explore its altitude, local temperature, and key attractions along the golden route.
+          </p>
+
+          <div class="map-layout">
+            <!-- Left: SVGLandscape Map -->
+            <div class="map-container">
+              <svg viewBox="0 0 320 450" class="srilanka-svg">
+                <!-- Island Silhouette (Real shape of Sri Lanka) -->
+                <path 
+                  class="svg-bg-island"
+                  d="M 170, 25 C 165, 25 145, 30 135, 40 C 130, 45 145, 55 160, 60 C 150, 75 130, 90 115, 105 C 105, 110 95, 112 105, 118 C 115, 122 120, 130 120, 145 C 115, 155 105, 165 105, 185 C 108, 200 112, 230 115, 260 C 118, 280 115, 300 118, 320 C 120, 345 125, 375 130, 390 C 135, 400 155, 415 170, 415 C 190, 415 210, 395 225, 375 C 240, 350 250, 310 255, 280 C 260, 265 258, 250 250, 230 C 242, 210 230, 180 220, 150 C 218, 140 210, 130 205, 135 C 200, 140 205, 125 210, 120 C 215, 105 200, 80 185, 60 C 175, 45 175, 30 170, 25 Z"
+                />
+
+                <!-- Background Region Labels -->
+                <text x="175" y="110" class="region-bg-label">CULTURAL ZONE</text>
+                <text x="170" y="250" class="region-bg-label">HILL COUNTRY</text>
+
+                <!-- Water Body Labels -->
+                <text x="40" y="360" class="ocean-label" transform="rotate(-15 40 360)">INDIAN OCEAN</text>
+                <text x="240" y="420" class="ocean-label">INDIAN OCEAN</text>
+                <text x="40" y="110" class="ocean-label" transform="rotate(-30 40 110)">GULF OF MANNAR</text>
+
+                <!-- Compass Rose -->
+                <g transform="translate(260, 60)" class="compass-rose">
+                  <circle r="22" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+                  <circle r="18" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" />
+                  <polygon points="0,-20 3,-4 0,0" fill="var(--accent-gold)" opacity="0.8" />
+                  <polygon points="0,-20 -3,-4 0,0" fill="rgba(255,255,255,0.3)" />
+                  <polygon points="0,20 -3,4 0,0" fill="rgba(255,255,255,0.5)" />
+                  <polygon points="0,20 3,4 0,0" fill="rgba(255,255,255,0.2)" />
+                  <polygon points="20,0 4,-3 0,0" fill="rgba(255,255,255,0.5)" />
+                  <polygon points="20,0 4,3 0,0" fill="rgba(255,255,255,0.2)" />
+                  <polygon points="-20,0 -4,3 0,0" fill="rgba(255,255,255,0.5)" />
+                  <polygon points="-20,0 -4,-3 0,0" fill="rgba(255,255,255,0.2)" />
+                  <text x="0" y="-24" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="var(--font-sans)" font-weight="600">N</text>
+                </g>
+
+                <!-- Route lines connecting pins in order -->
+                <polyline 
+                  points="120,290 175,150 170,215 185,280 220,350 130,390 120,290"
+                  class="svg-route-line"
+                />
+
+                <!-- Pin groups and Labels -->
+                <!-- Colombo -->
+                <g class="map-pin" data-location="colombo" transform="translate(120, 290)">
+                  <circle r="7"></circle>
+                </g>
+                <text x="110" y="294" text-anchor="end" class="map-label">Colombo</text>
+                
+                <!-- Sigiriya -->
+                <g class="map-pin" data-location="sigiriya" transform="translate(175, 150)">
+                  <circle r="7"></circle>
+                </g>
+                <text x="187" y="154" text-anchor="start" class="map-label">Sigiriya</text>
+                
+                <!-- Kandy -->
+                <g class="map-pin" data-location="kandy" transform="translate(170, 215)">
+                  <circle r="7"></circle>
+                </g>
+                <text x="158" y="219" text-anchor="end" class="map-label">Kandy</text>
+                
+                <!-- Ella -->
+                <g class="map-pin" data-location="ella" transform="translate(185, 280)">
+                  <circle r="7"></circle>
+                </g>
+                <text x="197" y="284" text-anchor="start" class="map-label">Ella</text>
+                
+                <!-- Yala -->
+                <g class="map-pin" data-location="yala" transform="translate(220, 350)">
+                  <circle r="7"></circle>
+                </g>
+                <text x="232" y="354" text-anchor="start" class="map-label">Yala</text>
+                
+                <!-- Galle -->
+                <g class="map-pin" data-location="galle" transform="translate(130, 390)">
+                  <circle r="7"></circle>
+                </g>
+                <text x="118" y="394" text-anchor="end" class="map-label">Galle</text>
+              </svg>
+              <div class="map-legend">
+                <div class="legend-item"><span class="legend-dot route"></span><span>The Golden Route</span></div>
+                <div class="legend-item"><span class="legend-dot destination"></span><span>Key Destination</span></div>
+              </div>
+            </div>
+
+            <!-- Right: Info Panel Card -->
+            <div class="map-info-panel">
+              <!-- Placeholder State -->
+              <!-- Placeholder State (Sri Lanka at a Glance) -->
+              <div class="map-info-placeholder" id="map-info-placeholder">
+                <div class="country-glance-header">
+                  <span class="map-info-tag" style="margin-bottom: 5px;">Pearl of the Indian Ocean</span>
+                  <h3>Sri Lanka at a Glance</h3>
+                  <p style="font-size: 0.85rem; color: #b0c7c2; margin-top: 5px; line-height: 1.4;">Select any gold destination pin on the map to explore regional metrics, or review general travel facts below.</p>
+                </div>
+
+                <div class="glance-grid">
+                  <div class="glance-item">
+                    <span class="glance-label">Commercial Capital</span>
+                    <span class="glance-value">Colombo</span>
+                  </div>
+                  <div class="glance-item">
+                    <span class="glance-label">Official Currency</span>
+                    <span class="glance-value">LKR (Rupee)</span>
+                  </div>
+                  <div class="glance-item">
+                    <span class="glance-label">Time Zone</span>
+                    <span class="glance-value">GMT +5:30</span>
+                  </div>
+                  <div class="glance-item">
+                    <span class="glance-label">Entry Visa</span>
+                    <span class="glance-value">ETA Required</span>
+                  </div>
+                  <div class="glance-item">
+                    <span class="glance-label">Climate Range</span>
+                    <span class="glance-value">22°C - 32°C</span>
+                  </div>
+                  <div class="glance-item">
+                    <span class="glance-label">Main Airport</span>
+                    <span class="glance-value">CMB (Colombo)</span>
+                  </div>
+                </div>
+
+                <div class="glance-highlights">
+                  <div class="glance-high-item">
+                    <svg width="14" height="14" fill="none" stroke="var(--accent-gold)" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span>8 UNESCO Heritage Sites preserved across the island.</span>
+                  </div>
+                  <div class="glance-high-item">
+                    <svg width="14" height="14" fill="none" stroke="var(--accent-gold)" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span>World's densest leopard population (Yala National Park).</span>
+                  </div>
+                  <div class="glance-high-item">
+                    <svg width="14" height="14" fill="none" stroke="var(--accent-gold)" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span>Year-round travel season (one coast is always dry).</span>
+                  </div>
+                </div>
+                
+                <div class="glance-tip">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  <span style="font-size: 0.72rem; font-weight: 500;">Tip: Click any gold pin on the map to start plotting!</span>
+                </div>
+              </div>
+
+              <!-- Content Loaded State -->
+              <div class="map-info-content" id="map-info-content" style="display: none;">
+                <span class="map-info-tag"></span>
+                <h3 class="map-info-title"></h3>
+                <p class="map-info-desc"></p>
+                
+                <div class="map-info-stats">
+                  <div style="flex: 1;">
+                    <div class="map-stat-label">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                      Weather
+                    </div>
+                    <div class="map-stat-value"></div>
+                  </div>
+
+                  <div style="flex: 1;">
+                    <div class="map-stat-label">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                      Elevation
+                    </div>
+                    <div class="map-stat-value"></div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;">
+                  <div class="map-stat-label">Signature Sightseeing</div>
+                  <div class="map-stat-value-sight" style="color: var(--white); font-size: 1.15rem; font-family: var(--font-serif); margin-top: 5px;"></div>
+                </div>
+
+                <div style="margin-top: 30px; display: flex; gap: 15px;">
+                  <a href="#inquiry-section" class="btn btn-primary" style="padding: 12px 20px; font-size: 0.75rem; width: 100%; letter-spacing: 1px;">
+                    Customize This Itinerary Route
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Curated Travel Itineraries Selector -->
+      <section class="section itinerary-section" id="itinerary-section">
+        <div class="container reveal">
+          <h2>Curated Travel Itineraries</h2>
+          <p style="text-align: center; max-width: 600px; margin: -40px auto 60px auto; font-family: var(--font-serif); font-size: 1.25rem; font-style: italic;">
+            Select one of our signature packages tailored by local guides, or use our planner below to customize your dream route.
+          </p>
+
+          <!-- Tab Bar -->
+          <div class="itinerary-selector">
+            <button class="itinerary-tab active" data-itin="classic-7">Classic Ceylon Highlights</button>
+            <button class="itinerary-tab" data-itin="wildlife-10">Highlands &amp; Wildlife Quest</button>
+            <button class="itinerary-tab" data-itin="grand-14">Grand Ceylon Discovery</button>
+          </div>
+
+          <!-- Itinerary 1 Details -->
+          <div class="itinerary-details active" id="classic-7">
+            <div class="itinerary-header">
+              <div>
+                <h3>Classic Ceylon Highlights</h3>
+                <p style="max-width: 600px; font-size: 0.95rem;">A perfect introductory loop taking you through the cultural core, scenic hill country, and historic colonial coasts of the island.</p>
+              </div>
+              
+              <div class="itinerary-meta">
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>7 Days / 6 Nights</span>
+                </div>
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <span>Ideal for First-timers</span>
+                </div>
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <span>Easy - Moderate</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 1</div>
+                <h4 class="timeline-title">Arrival in Colombo</h4>
+                <p class="timeline-desc">Welcome to Sri Lanka! Transfer from the airport to your boutique city hotel. Enjoy a evening sunset walk along Galle Face Green.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 2</div>
+                <h4 class="timeline-title">Sigiriya &amp; Dambulla Caves</h4>
+                <p class="timeline-desc">Journey north. Stop to explore the massive gilded cave temples of Dambulla, then check in to your jungle lodge near Sigiriya.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 3</div>
+                <h4 class="timeline-title">Sigiriya Fortress &amp; Kandy</h4>
+                <p class="timeline-desc">Climb the iconic Lion Rock at sunrise for breathtaking 360-degree views. In the afternoon, transfer to the royal hill capital, Kandy.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 4</div>
+                <h4 class="timeline-title">Royal Botanicals &amp; Tea Country</h4>
+                <p class="timeline-desc">Visit Kandy’s Temple of the Tooth. Board the scenic train to the highlands and watch the landscape change into emerald rolling tea hills.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 5</div>
+                <h4 class="timeline-title">Colonial Galle Fort</h4>
+                <p class="timeline-desc">Travel down to the south-west coast. Explore Galle Fort, walking its cobblestone lanes, lighthouses, and fortified walls.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 6</div>
+                <h4 class="timeline-title">Beach Relaxation in Mirissa</h4>
+                <p class="timeline-desc">Spend a lazy day on the sand, go whale watching, or try your hand at surfing the mellow waves of Weligama beach.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 7</div>
+                <h4 class="timeline-title">Departure from Colombo</h4>
+                <p class="timeline-desc">Take a final morning walk, collect souvenirs, and transfer back to Bandaranaike International Airport for your flight home.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Itinerary 2 Details -->
+          <div class="itinerary-details" id="wildlife-10">
+            <div class="itinerary-header">
+              <div>
+                <h3>Highlands &amp; Wildlife Quest</h3>
+                <p style="max-width: 600px; font-size: 0.95rem;">Deepen your connection with Sri Lanka’s raw wilderness, tracking leopards in Yala, spotting elephants, and trekking cloud forests.</p>
+              </div>
+              
+              <div class="itinerary-meta">
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>10 Days / 9 Nights</span>
+                </div>
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <span>For Nature Lovers</span>
+                </div>
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <span>Moderate</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 1</div>
+                <h4 class="timeline-title">Arrival &amp; Negombo Beach</h4>
+                <p class="timeline-desc">Arrive at the airport and check in at a coastal resort in Negombo. Rest up after your flight.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 2</div>
+                <h4 class="timeline-title">Minneriya Elephant Gathering</h4>
+                <p class="timeline-desc">Drive to the north-central dry zone. Take an afternoon 4x4 safari in Minneriya to see hundreds of elephants by the reservoir.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 3</div>
+                <h4 class="timeline-title">Sigiriya Climb &amp; Hiriwadunna</h4>
+                <p class="timeline-desc">Conquer the 1,200 steps of Sigiriya. Afterwards, enjoy a traditional village catamaran ride and rural clay-pot lunch.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 4</div>
+                <h4 class="timeline-title">Spices of Matale &amp; Kandy</h4>
+                <p class="timeline-desc">Explore an organic spice garden on your way to Kandy. Experience a vibrant traditional Kandyan dance show in the evening.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 5</div>
+                <h4 class="timeline-title">Trek Horton Plains &amp; Nuwara Eliya</h4>
+                <p class="timeline-desc">Rise early for a dramatic hike in Horton Plains National Park to see World’s End cliff, dropping 880m into the abyss.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 6</div>
+                <h4 class="timeline-title">Scenic Train to Ella</h4>
+                <p class="timeline-desc">Take the scenic blue train to Ella. Climb Little Adam’s Peak for sunset views over the famous Ella Gap.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 7</div>
+                <h4 class="timeline-title">Leopard Country Safari (Yala)</h4>
+                <p class="timeline-desc">Travel down the mountains to Yala. Embark on a late afternoon jeep safari to seek out the elusive Sri Lankan leopards.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 8</div>
+                <h4 class="timeline-title">Elephant Transit Home &amp; Galle</h4>
+                <p class="timeline-desc">Visit the Udawalawe Elephant Transit Home to watch baby elephant feeding time. Proceed to Galle Fort to explore Dutch colonial heritage.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 9</div>
+                <h4 class="timeline-title">Whale Expedition &amp; Mirissa Reefs</h4>
+                <p class="timeline-desc">Board a morning boat to search for giant Blue Whales in the deep ocean, followed by snorkeling in sea turtle areas.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 10</div>
+                <h4 class="timeline-title">Galle to Colombo Airport</h4>
+                <p class="timeline-desc">Transfer to Colombo via the southern expressway, reflecting on ten days of wild adventure as you catch your flight.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Itinerary 3 Details -->
+          <div class="itinerary-details" id="grand-14">
+            <div class="itinerary-header">
+              <div>
+                <h3>Grand Ceylon Discovery</h3>
+                <p style="max-width: 600px; font-size: 0.95rem;">The ultimate journey. Spans the ancient cultural ruins, the misty mountain hiking peaks, eastern coast beaches, safaris, and wellness spas.</p>
+              </div>
+              
+              <div class="itinerary-meta">
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>14 Days / 13 Nights</span>
+                </div>
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <span>Complete Island Experience</span>
+                </div>
+                <div class="itinerary-meta-pill">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                  <span>Moderate - High</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 1</div>
+                <h4 class="timeline-title">Arrival &amp; Welcome Dinner</h4>
+                <p class="timeline-desc">Land in Colombo. Meet your private chauffeur-guide and settle into your premium hotel. Enjoy a welcome dinner.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 2</div>
+                <h4 class="timeline-title">Anuradhapura Ancient Kingdom</h4>
+                <p class="timeline-desc">Drive north to Anuradhapura, the island’s oldest royal capital dating back to the 4th century BC. See sacred ancient ruins.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 3</div>
+                <h4 class="timeline-title">Sigiriya Rock &amp; Clay Pots</h4>
+                <p class="timeline-desc">Climb the fortress of Sigiriya, then learn to cook authentic Sri Lankan curries at a local homestead.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 4</div>
+                <h4 class="timeline-title">Polonnaruwa Medieval Ruins</h4>
+                <p class="timeline-desc">Rent a bicycle to explore the archaeological ruins, grand stone carvings, and giant water pools of Polonnaruwa.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 5</div>
+                <h4 class="timeline-title">Trincomalee Beaches (East Coast)</h4>
+                <p class="timeline-desc">Drive east to Trincomalee. Settle into a beach resort on the white sands of Nilaveli. Rest and relax by the ocean.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 6</div>
+                <h4 class="timeline-title">Snorkeling Pigeon Island</h4>
+                <p class="timeline-desc">Take a boat to Pigeon Island Marine National Park to snorkel with blacktip reef sharks, green sea turtles, and colorful corals.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 7</div>
+                <h4 class="timeline-title">Dambulla Caves &amp; Kandy Hills</h4>
+                <p class="timeline-desc">Travel south-west to Kandy, stopping at Dambulla Cave Temple. Settle into Kandy and attend a sacred evening ceremony.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 8</div>
+                <h4 class="timeline-title">Temple of the Tooth &amp; Botanical Gardens</h4>
+                <p class="timeline-desc">Tour Kandy’s historic sites and stroll the Peradeniya Botanical Gardens, famous for orchid houses and giant palms.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 9</div>
+                <h4 class="timeline-title">Scenic Mountain Train Ride</h4>
+                <p class="timeline-desc">Board the train to Ella, traveling through tunnels, valleys, tea fields, and cloud forests.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 10</div>
+                <h4 class="timeline-title">Trekking Ella Peak</h4>
+                <p class="timeline-desc">Embark on a challenging trek up Ella Peak for panoramic views. Visit the Nine Arch Bridge to watch the train cross.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 11</div>
+                <h4 class="timeline-title">Udawalawe Elephant Sanctuary</h4>
+                <p class="timeline-desc">Journey to Udawalawe. Take a safari to see large herds of wild elephants drinking and bathing in the lake.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 12</div>
+                <h4 class="timeline-title">Galle Fort &amp; Colonial Streets</h4>
+                <p class="timeline-desc">Drive to the historical coastal fort of Galle. Settle in, explore, and dine on premium fresh seafood.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 13</div>
+                <h4 class="timeline-title">Coastal Spa &amp; Turtle Hatchery</h4>
+                <p class="timeline-desc">Unwind with an authentic Ayurvedic oil massage, visit a sea turtle hatchery, and relax on the gold sands of Bentota.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 14</div>
+                <h4 class="timeline-title">Colombo City Tour &amp; Departure</h4>
+                <p class="timeline-desc">A driving tour of Colombo’s Dutch Hospital shopping district and colonial landmarks before driving to the airport.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Travel Guide Accordions Section -->
+      <section class="section guide-section" id="guide-section">
+        <div class="container reveal">
+          <h2>Sri Lanka Travel Guide</h2>
+          <p style="text-align: center; max-width: 600px; margin: -40px auto 60px auto; font-family: var(--font-serif); font-size: 1.25rem; font-style: italic;">
+            Everything you need to know before packing your bags. Read our travel checklist to ensure a seamless tropical getaway.
+          </p>
+
+          <div class="guide-grid">
+            <!-- Left: Featured Image Column -->
+            <div class="guide-illustration">
+              <img 
+                src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" 
+                alt="Scenic Train in Sri Lanka Ella" 
+              />
+            </div>
+
+            <!-- Right: Accordions Column -->
+            <div class="accordion-list">
+              <!-- Item 1 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <h4>Visa &amp; Entry Requirements (ETA)</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Most tourists need an Electronic Travel Authorization (ETA) to enter Sri Lanka. You can easily apply online before traveling. Ensure your passport is valid for at least 6 months from your arrival date, and carry proof of a return flight ticket and sufficient travel funds.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                    <h4>Weather &amp; Best Time to Visit</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Sri Lanka has a tropical climate governed by two monsoon seasons. The southwest coast beaches and central hills are best from November to April, while the northeast coast (like Trincomalee) is sunny and dry from May to September. You can travel year-round because one side is always dry!
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                    <h4>Currency, Cards &amp; Tipping</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    The official currency is the Sri Lankan Rupee (LKR). While luxury hotels and restaurants accept Visa and Mastercard, small vendors, tuk-tuks, and local guides only accept cash. ATMs are widely available in cities. Tipping (approx. 10%) is highly appreciated by drivers, guides, and hotel staff.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"/></svg>
+                    <h4>Cultural Etiquette &amp; Clothing</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Sri Lankans are incredibly warm and hospitable. When visiting Buddhist and Hindu temples, always cover your shoulders and knees, and remove your footwear and hats before entering. Avoid taking photos with your back turned directly to a Buddha statue, as it is considered disrespectful. The traditional greeting is "Ayubowan" (meaning "May you live long"), said with palms pressed together at chest level.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 5 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <svg class="logo-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h4>Packing Essentials</h4>
+                  </div>
+                  <svg class="accordion-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    Pack light, breathable cotton or linen clothing for the hot coastal areas, but bring a warm sweater or light jacket for the cooler Highlands (like Nuwara Eliya, where temps can drop to 12°C). Slip-on shoes are ideal for temple visits, along with sun protection (hat, sunscreen) and high-quality insect repellent for safaris.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multi-step Trip Customizer Form Wizard -->
+      <section class="section inquiry-section" id="inquiry-section">
+        <div class="inquiry-bg-element"></div>
+        <div class="container reveal">
+          <h2>Plan Your Custom Sri Lankan Journey</h2>
+          <p style="text-align: center; max-width: 600px; margin: -40px auto 60px auto; font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: #b0c7c2;">
+            Tell us about your dream vacation, and our local travel curators will craft a personalized itinerary for you within 24 hours.
+          </p>
+
+          <div class="inquiry-container">
+            <!-- Form Block -->
+            <form id="wizard-form">
+              <!-- Steps Header Node Circles -->
+              <div class="wizard-steps">
+                <div class="wizard-step active" data-value="1">1</div>
+                <div class="wizard-step" data-value="2">2</div>
+                <div class="wizard-step" data-value="3">3</div>
+              </div>
+
+              <!-- Step 1 Parameters -->
+              <div class="form-step active" data-step="1">
+                <h3 style="color: var(--white); margin-bottom: 25px;">1. When &amp; how are you traveling?</h3>
+                
+                <div class="form-group">
+                  <label>Tentative Travel Date</label>
+                  <input type="date" name="startDate" />
+                  <span class="form-error"></span>
+                </div>
+
+                <div class="form-group-row">
+                  <div class="form-group">
+                    <label>Trip Duration (Days)</label>
+                    <select name="duration">
+                      <option value="5-7">5 - 7 Days</option>
+                      <option value="8-10">8 - 10 Days</option>
+                      <option value="11-14">11 - 14 Days</option>
+                      <option value="15+">15+ Days</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Number of Travelers</label>
+                    <select name="guests">
+                      <option value="1">Solo Traveler</option>
+                      <option value="2">Couple (2)</option>
+                      <option value="3-5">Small Group / Family (3-5)</option>
+                      <option value="6+">Large Group (6+)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Preferred Budget Tier (per person)</label>
+                  <select name="budget">
+                    <option value="budget">Value Explorer ($50-$100 / day)</option>
+                    <option value="midrange" selected>Midrange Premium ($100-$200 / day)</option>
+                    <option value="luxury">Luxury Boutique ($200+ / day)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Step 2 Preferences -->
+              <div class="form-step" data-step="2">
+                <h3 style="color: var(--white); margin-bottom: 10px;">2. Select your travel interests</h3>
+                <p style="color: #b0c7c2; font-size: 0.85rem; margin-bottom: 30px; font-style: italic;">Choose as many as you like. We will weave these themes into your itinerary.</p>
+
+                <div class="checkbox-grid">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="heritage" />
+                    <div class="custom-checkbox">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Ancient Temples</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="safari" />
+                    <div class="custom-checkbox">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Wildlife Safaris</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="hiking" />
+                    <div class="custom-checkbox">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Mountain Hikes</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="beaches" />
+                    <div class="custom-checkbox">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Sandy Beaches</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="wellness" />
+                    <div class="custom-checkbox">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Ayurveda &amp; Spa</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="interest" value="foodie" />
+                    <div class="custom-checkbox">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <span>Curry Cooking</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Step 3 Personal details -->
+              <div class="form-step" data-step="3">
+                <h3 style="color: var(--white); margin-bottom: 25px;">3. Where should we send your plan?</h3>
+
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input type="text" name="name" placeholder="John Doe" />
+                  <span class="form-error"></span>
+                </div>
+
+                <div class="form-group-row">
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="john@example.com" />
+                    <span class="form-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Your Home Country</label>
+                    <input type="text" name="country" placeholder="United Kingdom" />
+                    <span class="form-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Additional Requests &amp; Notes (Optional)</label>
+                  <textarea name="notes" rows="3" placeholder="E.g., vegetarian meals, travelling with toddlers, specific hotels..."></textarea>
+                </div>
+              </div>
+
+              <!-- Control buttons -->
+              <div class="form-navigation">
+                <button type="button" class="btn btn-secondary" id="wizard-prev-btn" style="display: none;">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 6px;"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                  <span>Back</span>
+                </button>
+                
+                <button type="button" class="btn btn-primary" id="wizard-next-btn">
+                  <span>Next Step</span>
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align: middle; margin-left: 6px;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+            </form>
+
+            <!-- Success Confirmation Block -->
+            <div class="success-state" id="wizard-success">
+              <div class="success-icon-wrapper">
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <h3>Thank You!</h3>
+              <p>Your inquiry has been successfully received. A dedicated local travel curator has been assigned to your request.</p>
+              <p style="font-size: 0.85rem; color: #b0c7c2; margin-top: -10px;">We will email you your personalized itinerary and pricing details shortly at <strong class="confirm-email"></strong>.</p>
+              
+              <button type="button" class="btn btn-outline-gold" id="wizard-reset-btn" style="margin-top: 15px;">
+                Plan Another Trip
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cinema Video Showcase Modal -->
+    <div class="video-modal-overlay" id="video-modal-overlay">
+      <div class="video-modal-box">
+        <button type="button" class="video-modal-close" id="video-modal-close" aria-label="Close video dialog">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="video-responsive-wrap">
+          <iframe id="hero-video-frame" src="https://www.youtube-nocookie.com/embed/S2p0j7e46h0?enablejsapi=1" title="Sri Lanka 4K Cinematic Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+    <script>
+      // Quick dynamic year update
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

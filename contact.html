@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Plan your custom luxury vacation. Chat on WhatsApp, get office details, maps, or fill our customized contact form." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+      /* Contact Subpage Styles */
+
+      /* Header language selector style */
+      .lang-selector-container {
+        position: relative;
+        display: inline-block;
+      }
+      .lang-selector-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        padding: 8px 12px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        height: 38px;
+      }
+      .lang-selector-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+      .lang-caret {
+        transition: transform 0.3s;
+      }
+      .lang-selector-container:hover .lang-caret {
+        transform: rotate(180deg);
+      }
+      .lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background-color: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 90px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1010;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+      .lang-selector-container:hover .lang-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .lang-dropdown a {
+        display: block;
+        padding: 10px 15px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        color: #b0c7c2;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-align: center;
+        font-weight: 500;
+      }
+      .lang-dropdown a:hover, .lang-dropdown a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Floating Language Selector Widget (Bottom Left) */
+      .floating-lang-selector {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 999;
+      }
+      .floating-lang-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--accent-gold);
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(200, 155, 60, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+      .floating-lang-btn svg {
+        margin-bottom: 2px;
+        width: 16px;
+        height: 16px;
+      }
+      .floating-lang-btn:hover {
+        background-color: var(--accent-gold-hover);
+        transform: scale(1.05);
+      }
+      .floating-lang-menu {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        background-color: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 140px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+      .floating-lang-selector:hover .floating-lang-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .floating-lang-menu a {
+        display: block;
+        padding: 12px 18px;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: #b0c7c2;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-align: left;
+      }
+      .floating-lang-menu a:hover, .floating-lang-menu a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Subpage Hero */
+      .subpage-hero {
+        position: relative;
+        height: 40vh;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+      .subpage-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(5, 20, 17, 0.4) 0%, rgba(5, 20, 17, 0.95) 100%);
+        z-index: 2;
+      }
+      .subpage-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        filter: brightness(0.65);
+      }
+      .subpage-hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 0 24px;
+        max-width: 800px;
+      }
+      .subpage-hero-content h1 {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        margin-bottom: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+      .subpage-hero-content p {
+        font-size: 1.1rem;
+        font-style: italic;
+        font-family: var(--font-serif);
+      }
+
+      /* Contact Layout Grid */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        margin-top: 60px;
+      }
+
+      /* Contact Form Card styling */
+      .contact-form-card {
+        background-color: #0c231f; /* Lighter luxury dark green */
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 50px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      }
+      .contact-form-card h3 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 30px;
+        position: relative;
+      }
+      .contact-form-card h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-gold);
+      }
+      .contact-form-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 24px;
+      }
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .form-field.full-width {
+        grid-column: span 2;
+      }
+      .form-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: var(--accent-gold);
+      }
+      .form-input, .form-select, .form-textarea {
+        background-color: rgba(5, 20, 17, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        padding: 14px 18px;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+      .form-input:focus, .form-select:focus, .form-textarea:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        background-color: rgba(5, 20, 17, 0.9);
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      
+      /* Checklist/Interests Selector */
+      .interests-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 12px;
+        margin-top: 5px;
+      }
+      .interest-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: var(--medium-text);
+        transition: color 0.2s;
+      }
+      .interest-checkbox input {
+        accent-color: var(--accent-gold);
+        width: 16px;
+        height: 16px;
+      }
+      .interest-checkbox:hover {
+        color: #ffffff;
+      }
+
+      /* Right Column Contact Details */
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .info-card {
+        background-color: rgba(11, 47, 39, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .info-card h4 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+      }
+      .info-card h4 svg {
+        color: var(--accent-gold);
+        flex-shrink: 0;
+      }
+      .info-card p {
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+
+      /* WhatsApp Quick Action Button */
+      .whatsapp-btn {
+        background-color: #25D366;
+        color: #ffffff;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 28px;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2);
+        transition: all 0.3s ease;
+      }
+      .whatsapp-btn:hover {
+        background-color: #20ba5a;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+      }
+
+      /* Map Container with Dark Theme filter */
+      .map-wrapper {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background-color: #0c231f;
+        padding: 8px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      }
+      .map-iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 60%; /* Aspect ratio */
+        height: 0;
+        overflow: hidden;
+      }
+      .map-iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        /* Elegant Custom Map Skinning */
+        filter: invert(90%) hue-rotate(180deg) grayscale(25%) contrast(115%);
+      }
+
+      /* Form success popup/state styling */
+      .form-success-container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 10px;
+        animation: fadeIn 0.5s ease forwards;
+      }
+      .success-icon-box {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(200, 155, 60, 0.1);
+        border: 2px solid var(--accent-gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-gold);
+        margin-bottom: 24px;
+      }
+      .form-success-container h4 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      .form-success-container p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      /* Luxury Registered Inquiry Dossier Card */
+      .inquiry-dossier-card {
+        background: rgba(5, 20, 17, 0.75);
+        border: 1px solid rgba(200, 155, 60, 0.3);
+        border-radius: 8px;
+        padding: 24px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 22px 0 10px 0;
+        text-align: left;
+      }
+      .inquiry-dossier-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 14px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .inquiry-dossier-title {
+        font-family: var(--font-heading);
+        font-size: 1.15rem;
+        color: var(--white);
+        margin: 3px 0 0 0;
+        font-weight: 600;
+      }
+      .inquiry-grid-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 24px;
+      }
+      .inquiry-data-row {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .inquiry-data-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--accent-gold);
+        font-weight: 600;
+      }
+      .inquiry-data-val {
+        font-size: 0.92rem;
+        color: var(--white);
+        font-weight: 500;
+      }
+      .inquiry-tag {
+        display: inline-block;
+        background: rgba(200, 155, 60, 0.12);
+        border: 1px solid rgba(200, 155, 60, 0.3);
+        color: var(--accent-gold);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.76rem;
+        font-weight: 500;
+      }
+      .inquiry-dispatch-alert {
+        background: rgba(46, 204, 113, 0.08);
+        border: 1px solid rgba(46, 204, 113, 0.3);
+        border-radius: 8px;
+        padding: 18px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 12px;
+        text-align: left;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .inquiry-actions-group {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin-top: 25px;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (max-width: 992px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+      }
+      @media (max-width: 768px) {
+        .contact-form-card {
+          padding: 30px 20px;
+        }
+        .contact-form-group {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .form-field.full-width {
+          grid-column: span 1;
+        }
+      }
+    </style>
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Kindred Booking Engine -->
+    <script src="./booking-engine.js"></script>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1920&q=80" alt="Galle Fort lighthouse at sunset" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Connect With a Destination Curator</h1>
+        <p>Bespoke planning starts with a conversation. Let us create a luxury itinerary tailored to your rhythm.</p>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container section" style="padding-top: 60px;">
+      <div class="contact-grid">
+        
+        <!-- Left Column: Inquiry Form -->
+        <section class="contact-form-wrapper">
+          <div class="contact-form-card" id="form-container">
+            <!-- Dynamic Inquired Item Banner -->
+            <div id="inquiry-context-banner" style="display: none; background: rgba(200, 155, 60, 0.12); border: 1px solid var(--accent-gold); border-radius: 6px; padding: 14px 18px; margin-bottom: 25px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <span style="font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; color: var(--accent-gold);" id="inquiry-context-type">✦ SPECIFIC INQUIRY</span>
+                <a href="contact.html" style="font-size: 0.72rem; color: #b0c7c2; text-decoration: underline;">Reset to General Inquiry</a>
+              </div>
+              <h4 id="inquiry-context-title" style="font-size: 1.25rem; color: var(--white); margin: 0 0 4px 0; font-family: var(--font-serif);"></h4>
+              <p id="inquiry-context-sub" style="font-size: 0.82rem; color: #b0c7c2; margin: 0; line-height: 1.4;"></p>
+            </div>
+
+            <h3>Start Your Journey</h3>
+            
+            <form id="contact-inquiry-form" onsubmit="handleInquirySubmit(event)">
+              <div class="contact-form-group">
+                <!-- Name -->
+                <div class="form-field">
+                  <label class="form-label" for="contact-name">Full Name *</label>
+                  <input class="form-input" type="text" id="contact-name" name="name" placeholder="E.g. Lord Alexander" required />
+                </div>
+                
+                <!-- Email -->
+                <div class="form-field">
+                  <label class="form-label" for="contact-email">Email Address *</label>
+                  <input class="form-input" type="email" id="contact-email" name="email" placeholder="alex@heritage-estate.com" required />
+                </div>
+              </div>
+
+              <div class="contact-form-group">
+                <!-- Phone -->
+                <div class="form-field">
+                  <label class="form-label" for="contact-phone">Contact Number</label>
+                  <input class="form-input" type="tel" id="contact-phone" name="phone" placeholder="+44 7700 900077" />
+                </div>
+                
+                <!-- Travel Date -->
+                <div class="form-field">
+                  <label class="form-label" for="contact-date">Preferred Travel Date</label>
+                  <input class="form-input" type="date" id="contact-date" name="travel_date" />
+                </div>
+              </div>
+
+              <div class="contact-form-group">
+                <!-- Duration -->
+                <div class="form-field">
+                  <label class="form-label" for="contact-duration">Expected Duration</label>
+                  <select class="form-select" id="contact-duration" name="duration">
+                    <option value="5-7">5 to 7 Days (Short Escape)</option>
+                    <option value="8-10" selected>8 to 10 Days (Bespoke Tour)</option>
+                    <option value="11-14">11 to 14 Days (Grand Explorer)</option>
+                    <option value="15+">15+ Days (Total Immersion)</option>
+                  </select>
+                </div>
+                
+                <!-- Guests -->
+                <div class="form-field">
+                  <label class="form-label" for="contact-guests">Number of Guests</label>
+                  <select class="form-select" id="contact-guests" name="guests">
+                    <option value="1">Solo Traveler</option>
+                    <option value="2" selected>Couple (2 Guests)</option>
+                    <option value="3-5">Small Family / Group (3-5)</option>
+                    <option value="6+">Private Party (6+)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Interests Checklist -->
+              <div class="form-field full-width" style="margin-bottom: 24px;">
+                <label class="form-label" style="margin-bottom: 12px; display: block;">Interests &amp; Preferences</label>
+                <div class="interests-grid">
+                  <label class="interest-checkbox">
+                    <input type="checkbox" name="interest" value="cultural" checked />
+                    Ancient Ruins
+                  </label>
+                  <label class="interest-checkbox">
+                    <input type="checkbox" name="interest" value="nature" checked />
+                    Misty Tea Hills
+                  </label>
+                  <label class="interest-checkbox">
+                    <input type="checkbox" name="interest" value="safari" />
+                    Leopard Safari
+                  </label>
+                  <label class="interest-checkbox">
+                    <input type="checkbox" name="interest" value="beaches" />
+                    Golden Coast
+                  </label>
+                  <label class="interest-checkbox">
+                    <input type="checkbox" name="interest" value="food" />
+                    Spice &amp; Cuisine
+                  </label>
+                </div>
+              </div>
+
+              <!-- Special Requests -->
+              <div class="form-field full-width" style="margin-bottom: 30px;">
+                <label class="form-label" for="contact-notes">Special Requests &amp; Accommodations</label>
+                <textarea class="form-textarea" id="contact-notes" name="notes" placeholder="Please describe any preferred boutique hotels, accessibility needs, dietary notes, or unique highlights you wish to experience..."></textarea>
+              </div>
+
+              <!-- Submit button -->
+              <div class="form-field full-width">
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 0.9rem; justify-content: center; letter-spacing: 1px;">
+                  Send Inquiry Form
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-left: 8px;"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Success State -->
+          <div class="contact-form-card form-success-container" id="success-container" style="display: none; width: 100%; box-sizing: border-box;">
+            <div class="success-icon-box">
+              <svg width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h4 style="color: var(--white); font-family: var(--font-serif); font-size: 2.1rem; margin-bottom: 6px;">Inquiry Registered Successfully</h4>
+            <p style="font-size: 0.95rem; color: var(--light-text); max-width: 620px; margin: 0 auto 15px auto; text-align: center;">
+              Thank you, <strong id="success-client-name" style="color: var(--accent-gold);">Traveler</strong>. Your custom Sri Lankan itinerary request has been formally logged and assigned to our Colombo concierge operations desk.
+            </p>
+
+            <div style="display: inline-block; background: rgba(200, 155, 60, 0.12); border: 1px dashed var(--accent-gold); padding: 8px 24px; border-radius: 6px; font-family: var(--font-heading); font-size: 1.45rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 2px; margin-bottom: 15px;" id="success-ref-id">
+              BK-XXXX
+            </div>
+
+            <!-- Transparency Notice: Where has your inquiry been sent? -->
+            <div class="inquiry-dispatch-alert">
+              <div style="color: #2ecc71; margin-top: 2px; flex-shrink: 0;">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div style="flex: 1;">
+                <h5 style="color: #fff; font-size: 0.92rem; margin: 0 0 4px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Where Your Inquiry Has Been Transmitted:</h5>
+                <ul style="margin: 0; padding-left: 18px; font-size: 0.83rem; color: #b0c7c2; line-height: 1.55;">
+                  <li><strong>Colombo Central Operations Desk:</strong> Registered in our live booking management database (tracked in real-time in agency admin).</li>
+                  <li><strong>Assigned Senior Curator:</strong> <span id="inq-assigned-curator">Ruwan Perera (Senior Ceylon Specialist)</span> is reviewing hotel allotments and route logistics.</li>
+                  <li><strong>Turnaround Expectation:</strong> You will receive a bespoke day-by-day itinerary proposal and quote within 24 hours.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Registered Inquiry Specifications Dossier Card -->
+            <div class="inquiry-dossier-card">
+              <div class="inquiry-dossier-header">
+                <div>
+                  <span style="font-size: 0.72rem; text-transform: uppercase; color: var(--accent-gold); font-weight: 600; letter-spacing: 1px;">OFFICIAL INQUIRY DOSSIER</span>
+                  <h4 class="inquiry-dossier-title">Registered Journey Specifications</h4>
+                </div>
+                <span class="inquiry-tag" style="background: rgba(46, 204, 113, 0.15); color: #2ecc71; border-color: rgba(46, 204, 113, 0.3);">
+                  Pending Curator Review
+                </span>
+              </div>
+
+              <div class="inquiry-grid-2col">
+                <div class="inquiry-data-row">
+                  <span class="inquiry-data-label">Lead Traveler</span>
+                  <span class="inquiry-data-val" id="inq-spec-name">-</span>
+                </div>
+                <div class="inquiry-data-row">
+                  <span class="inquiry-data-label">Contact Coordinates</span>
+                  <span class="inquiry-data-val" id="inq-spec-contact">-</span>
+                </div>
+                <div class="inquiry-data-row">
+                  <span class="inquiry-data-label">Preferred Commencing Date</span>
+                  <span class="inquiry-data-val" id="inq-spec-date">Flexible Dates</span>
+                </div>
+                <div class="inquiry-data-row">
+                  <span class="inquiry-data-label">Expected Duration</span>
+                  <span class="inquiry-data-val" id="inq-spec-duration">-</span>
+                </div>
+                <div class="inquiry-data-row">
+                  <span class="inquiry-data-label">Travel Party Configuration</span>
+                  <span class="inquiry-data-val" id="inq-spec-guests">-</span>
+                </div>
+                <div class="inquiry-data-row">
+                  <span class="inquiry-data-label">Estimated Investment Range</span>
+                  <span class="inquiry-data-val" id="inq-spec-cost" style="color: var(--accent-gold); font-weight: 700;">-</span>
+                </div>
+              </div>
+
+              <!-- Selected Themes / Preferences -->
+              <div style="margin-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 14px;">
+                <span class="inquiry-data-label" style="display: block; margin-bottom: 8px;">Selected Travel Themes &amp; Highlights</span>
+                <div id="inq-spec-interests" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <!-- Tags populated by JS -->
+                </div>
+              </div>
+
+              <!-- Special Requests / Notes -->
+              <div style="margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 14px;">
+                <span class="inquiry-data-label" style="display: block; margin-bottom: 4px;">Special Requests &amp; Accommodations</span>
+                <p id="inq-spec-notes" style="font-size: 0.86rem; color: #d0e2de; font-style: italic; line-height: 1.5; margin: 0;">
+                  None provided. Standard luxury concierge amenities apply.
+                </p>
+              </div>
+            </div>
+
+            <!-- Action & Transmission Buttons -->
+            <div class="inquiry-actions-group">
+              <!-- Send Direct via Gmail -->
+              <a href="#" id="inq-gmail-btn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #ea4335; border-color: #ea4335; color: #fff; padding: 12px 22px; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Send Copy via Gmail (Web)
+              </a>
+
+              <!-- WhatsApp Chat -->
+              <a href="#" id="inq-whatsapp-btn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; border-color: #25d366; color: #fff; padding: 12px 22px; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.112.553 4.095 1.516 5.824l-1.611 5.884 6.064-1.591c1.658.905 3.567 1.424 5.603 1.424 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+                Chat on WhatsApp
+              </a>
+
+              <!-- Track on Client Portal -->
+              <a href="#" id="inq-tracker-btn" class="btn btn-outline-gold" style="padding: 12px 20px; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Track on Client Portal
+              </a>
+
+              <!-- Return Home -->
+              <a href="index.html" class="btn btn-outline-gold" style="padding: 12px 18px; font-size: 0.84rem; border-color: rgba(255,255,255,0.2); color: var(--light-text);">
+                Return to Homepage
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Column: Info details, map & whatsapp -->
+        <aside class="contact-details">
+          
+          <!-- Immediate Whatsapp card -->
+          <div class="info-card" style="background: linear-gradient(135deg, rgba(11, 47, 39, 0.7) 0%, rgba(5, 20, 17, 0.9) 100%);">
+            <h4>
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.731-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.59 1.973 14.113.95 11.488.95c-5.442 0-9.866 4.372-9.87 9.802 0 1.714.475 3.393 1.374 4.881L1.933 21.05l5.59-1.464c-1.614.953-3.188 1.455-4.827 1.455h.003-.003z"/></svg>
+              WhatsApp Concierge
+            </h4>
+            <p>Need urgent planning assistance or traveling within the next 7 days? Speak directly with an active curator on WhatsApp.</p>
+            <a href="https://wa.me/94771234567" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <!-- Colombo Office card -->
+          <div class="info-card">
+            <h4>
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Colombo Head Office
+            </h4>
+            <p>
+              <strong>Kindred Travels HQ</strong><br>
+              450 Galle Road, Colombo 03,<br>
+              Sri Lanka
+            </p>
+            <p style="font-size: 0.85rem; color: var(--light-text); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+              Hours: Mon - Fri | 9:00 AM to 6:00 PM (LKR Time)<br>
+              Direct Tel: +94 11 234 5678<br>
+              Inquiries: hello@kindredtravels.lk
+            </p>
+          </div>
+
+          <!-- Custom Skin Iframe Google Map -->
+          <div class="map-wrapper">
+            <div class="map-iframe-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.78184615372!2d79.8475853153597!3d6.916682920387532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259419cf5c63f%3A0xc3cf9b8dc9119c43!2sGalle%20Rd%2C%20Colombo%2000300!5e0!3m2!1sen!2slk!4v1680000000000!5m2!1sen!2slk" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Kindred Travels Office Map Location">
+              </iframe>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Handle Inquiry Form Submission and store locally
+      function handleInquirySubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const name = form.querySelector('#contact-name').value.trim();
+        const email = form.querySelector('#contact-email').value.trim();
+        const phone = form.querySelector('#contact-phone').value.trim();
+        const travelDate = form.querySelector('#contact-date').value;
+        const duration = form.querySelector('#contact-duration').value;
+        const guests = form.querySelector('#contact-guests').value;
+        const notes = form.querySelector('#contact-notes').value.trim();
+        
+        // Map interests
+        const INTEREST_MAP = {
+          'cultural': 'Ancient Ruins & UNESCO Heritage',
+          'nature': 'Misty Tea Hills & Highlands',
+          'safari': 'Leopard & Wildlife Safari',
+          'beaches': 'Golden Coast & Whale Watching',
+          'food': 'Ceylon Spice & Culinary Masterclass'
+        };
+
+        const selectedInterests = [];
+        const selectedTitles = [];
+        form.querySelectorAll('input[name="interest"]:checked').forEach(cb => {
+          selectedInterests.push(cb.value);
+          selectedTitles.push(INTEREST_MAP[cb.value] || cb.value);
+        });
+
+        // Generate Booking/Inquiry Ref ID
+        const refId = 'BK-' + Math.floor(1000 + Math.random() * 9000);
+
+        // Estimate Cost and duration details
+        let dailyRate = 180;
+        let tripDays = 9;
+        let durationLabel = '8 to 10 Days (Bespoke Tour)';
+        if (duration === '5-7') { tripDays = 6; durationLabel = '5 to 7 Days (Short Escape)'; }
+        else if (duration === '8-10') { tripDays = 9; durationLabel = '8 to 10 Days (Bespoke Tour)'; }
+        else if (duration === '11-14') { tripDays = 12; durationLabel = '11 to 14 Days (Grand Explorer)'; }
+        else if (duration === '15+') { tripDays = 16; durationLabel = '15+ Days (Total Immersion)'; }
+
+        let guestMultiplier = 2;
+        let guestLabel = 'Couple (2 Guests)';
+        if (guests === '1') { guestMultiplier = 1; guestLabel = 'Solo Traveler (1 Guest)'; }
+        else if (guests === '2') { guestMultiplier = 2; guestLabel = 'Couple (2 Guests)'; }
+        else if (guests === '3-5') { guestMultiplier = 4; guestLabel = 'Small Family / Group (3-5 Guests)'; }
+        else if (guests === '6+') { guestMultiplier = 8; guestLabel = 'Private Party (6+ Guests)'; }
+
+        const totalCost = dailyRate * tripDays * guestMultiplier;
+        const curatorName = 'Ruwan Perera (Senior Ceylon Specialist)';
+
+        const inqItem = window.inquiredItemContext;
+        const inqItemName = inqItem ? inqItem.title : '';
+        const inqItemType = inqItem ? inqItem.type : 'Custom Tour Inquiry';
+
+        // Normalized inquiry record schema
+        const newInquiry = {
+          id: refId,
+          type: 'inquiry',
+          category: inqItemType,
+          packageName: inqItemName ? `Inquiry: ${inqItemName}` : ('Custom Tour Inquiry (' + (selectedTitles.join(', ') || 'Tailored Ceylon Voyage') + ')'),
+          inquiryTarget: inqItemName || 'General Custom Tour',
+          startDate: travelDate ? travelDate : 'Flexible Dates',
+          endDate: 'TBD (' + durationLabel + ')',
+          duration: durationLabel,
+          days: tripDays,
+          adults: guestMultiplier,
+          children: 0,
+          infants: 0,
+          guestsLabel: guestLabel,
+          tier: 'Bespoke Curated Tier',
+          roomType: 'Luxury Boutique Stays',
+          vehicle: 'Private AC Chauffeur Vehicle',
+          addons: selectedTitles,
+          interests: selectedTitles.join(', '),
+          cost: totalCost,
+          deposit: Math.round(totalCost * 0.25),
+          status: 'Pending Review',
+          paymentStatus: 'Inquiry Only',
+          curator: curatorName,
+          customer: {
+            name: name,
+            email: email,
+            phone: phone || 'Not provided',
+            country: 'Sri Lanka Travel Inquiry',
+            notes: notes || 'None specified'
+          },
+          notes: notes || '',
+          dateCreated: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+        };
+
+        // Persist safely in centralized store
+        try {
+          if (window.KindredBookingEngine && window.KindredBookingEngine.store) {
+            let bookings = window.KindredBookingEngine.store.getAll();
+            bookings.unshift(newInquiry);
+            window.KindredBookingEngine.store.saveAll(bookings);
+          } else {
+            let bookings = JSON.parse(localStorage.getItem('kindred_bookings') || '[]');
+            bookings.unshift(newInquiry);
+            localStorage.setItem('kindred_bookings', JSON.stringify(bookings));
+          }
+        } catch (e) {
+          console.error('Error saving inquiry:', e);
+        }
+
+        // Populate Success UI Fields
+        document.getElementById('success-client-name').textContent = name;
+        document.getElementById('success-ref-id').textContent = refId;
+        
+        const specName = document.getElementById('inq-spec-name');
+        if (specName) specName.textContent = name;
+
+        const specContact = document.getElementById('inq-spec-contact');
+        if (specContact) specContact.textContent = email + (phone ? ' • ' + phone : '');
+
+        const specDate = document.getElementById('inq-spec-date');
+        if (specDate) specDate.textContent = travelDate ? travelDate : 'Flexible Dates';
+
+        const specDuration = document.getElementById('inq-spec-duration');
+        if (specDuration) specDuration.textContent = durationLabel;
+
+        const specGuests = document.getElementById('inq-spec-guests');
+        if (specGuests) specGuests.textContent = guestLabel;
+
+        const specCost = document.getElementById('inq-spec-cost');
+        if (specCost) specCost.textContent = '$' + totalCost.toLocaleString() + ' USD (Approximate)';
+
+        const specNotes = document.getElementById('inq-spec-notes');
+        if (specNotes) specNotes.textContent = notes ? notes : 'None specified. Standard luxury concierge amenities apply.';
+
+        const interestsContainer = document.getElementById('inq-spec-interests');
+        if (interestsContainer) {
+          interestsContainer.innerHTML = '';
+          if (selectedTitles.length === 0) {
+            interestsContainer.innerHTML = '<span class="inquiry-tag">Standard Island Highlights</span>';
+          } else {
+            selectedTitles.forEach(title => {
+              const tag = document.createElement('span');
+              tag.className = 'inquiry-tag';
+              tag.textContent = title;
+              interestsContainer.appendChild(tag);
+            });
+          }
+        }
+
+        // Configure Direct Gmail Transmission URL
+        const inqSubject = inqItemName ? `Custom Inquiry: ${inqItemName} (Ref: ${refId}) - ${name}` : `Custom Ceylon Tour Inquiry (Ref: ${refId}) - ${name}`;
+        const inqBody = 
+`Dear Kindred Travels Ceylon Operations Team,
+
+I have submitted a custom tour planning inquiry via your website. Here are my trip specifications:
+
+INQUIRY REFERENCE: ${refId}
+--------------------------------------------------
+• Primary Traveler: ${name}
+• Client Email: ${email}
+• Client Phone / WhatsApp: ${phone || 'Not provided'}
+• Inquired Focus: ${inqItemName || 'Custom Route'}
+• Preferred Commencing Date: ${travelDate || 'Flexible Dates'}
+• Expected Duration: ${durationLabel}
+• Party Configuration: ${guestLabel}
+• Selected Themes & Highlights: ${selectedTitles.join(', ') || 'Custom Route'}
+• Estimated Investment: $${totalCost.toLocaleString()} USD
+• Special Curator Notes & Preferences:
+${notes || 'None specified. Looking forward to bespoke suggestions.'}
+--------------------------------------------------
+
+Kindly assign my inquiry to Senior Ceylon Specialist Ruwan Perera and reply with a custom day-by-day itinerary proposal and hotel recommendations.
+
+Warm regards,
+${name}
+${phone || ''}`;
+
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello@kindredtravels.lk&su=${encodeURIComponent(inqSubject)}&body=${encodeURIComponent(inqBody)}`;
+        const gmailBtn = document.getElementById('inq-gmail-btn');
+        if (gmailBtn) gmailBtn.href = gmailUrl;
+
+        // Configure WhatsApp Link
+        const waTargetText = inqItemName ? ` regarding "${inqItemName}"` : '';
+        const waText = encodeURIComponent(`Hello Kindred Travels! I have just registered a custom Ceylon tour inquiry${waTargetText} under Reference ${refId} for ${name}. Could you please connect me with a curator?`);
+        const waBtn = document.getElementById('inq-whatsapp-btn');
+        if (waBtn) waBtn.href = `https://wa.me/94112345678?text=${waText}`;
+
+        // Configure Tracker Link
+        const trackerBtn = document.getElementById('inq-tracker-btn');
+        if (trackerBtn) trackerBtn.href = `plan.html?mode=tracker&id=${refId}&email=${encodeURIComponent(email)}`;
+
+        // Switch to Success Display
+        document.getElementById('form-container').style.display = 'none';
+        const successContainer = document.getElementById('success-container');
+        successContainer.style.display = 'block';
+        successContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Send email via EmailJS if configured, falling back to FormSubmit
+        const storedConfig = JSON.parse(localStorage.getItem('kindred_emailjs_config') || '{}');
+        const isEmailJSConfigured = typeof emailjs !== 'undefined' && 
+                                    storedConfig.publicKey && 
+                                    storedConfig.serviceId && 
+                                    storedConfig.clientTemplate;
+
+        if (isEmailJSConfigured) {
+          emailjs.init(storedConfig.publicKey);
+          emailjs.send(storedConfig.serviceId, storedConfig.clientTemplate, {
+            booking_id: refId,
+            client_name: name,
+            client_email: email,
+            start_date: travelDate ? travelDate : 'Flexible dates',
+            duration: durationLabel,
+            guests: guestLabel,
+            budget: inqItemName ? `Inquiry for ${inqItemName}` : 'Custom Tour Inquiry',
+            interests: selectedTitles.join(', '),
+            notes: notes ? notes : 'None',
+            cost: totalCost.toLocaleString(),
+            status: 'Pending Review'
+          }).then(function(response) {
+            console.log('EMAILJS SUCCESS:', response.status, response.text);
+          }, function(error) {
+            console.error('EMAILJS FAILURE, falling back to FormSubmit:', error);
+            triggerFormSubmitFallback();
+          });
+        } else {
+          triggerFormSubmitFallback();
+        }
+
+        function triggerFormSubmitFallback() {
+          console.log('Sending silent confirmation email to agency at hello@kindredtravels.lk');
+          fetch("https://formsubmit.co/ajax/hello@kindredtravels.lk", {
+            method: "POST",
+            headers: 
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              "_subject": inqItemName ? `New Inquiry for ${inqItemName} - Ref: ${refId}` : `New custom trip planning request - Ref: ${refId}`,
+              "Reference ID": refId,
+              "Inquired Subject": inqItemName || 'General Custom Tour',
+              "Client Name": name,
+              "Client Email": email,
+              "email": email, // Required by FormSubmit for Autoresponder
+              "_replyto": email, // Allows direct replying to the client
+              "Client Phone": phone ? phone : 'Not provided',
+              "Expected Arrival": travelDate ? travelDate : 'Flexible dates',
+              "Duration Choice": durationLabel,
+              "Guest Category": guestLabel,
+              "Tour Interests": selectedTitles.join(', '),
+              "Curator Notes": notes ? notes : 'None',
+              "Estimated Cost (USD)": `$${totalCost.toLocaleString()}`,
+              "Status": "Pending Curator Assignment",
+              "_autoresponder": `Dear ${name},\n\nThank you for reaching out to Kindred Travels. We have successfully received your inquiry ${inqItemName ? 'for ' + inqItemName : ''}!\n\nHere is a summary of your inquiry details:\n----------------------------------------\nReference ID: ${refId}\nInquired Focus: ${inqItemName || 'Custom Route'}\nTravel Date: ${travelDate ? travelDate : 'Flexible dates'}\nDuration: ${durationLabel}\nTravelers: ${guestLabel}\nSelected Themes: ${selectedTitles.join(', ')}\nEstimated Cost: $${totalCost.toLocaleString()}\nSpecial Requests: ${notes ? notes : 'None'}\n----------------------------------------\n\nOur local travel specialists in Colombo are already reviewing your specifications. We will reach out to you with your personalized day-by-day path, availability, and boutique hotel recommendations shortly.\n\nWarm regards,\nThe Kindred Travels Team\nGalle Road, Colombo 03, Sri Lanka\nhello@kindredtravels.lk | +94 11 234 5678`
+            })
+          })
+          .then(response => response.json())
+          .then(data => console.log('Silent email report:', data))
+          .catch(err => console.error('Silent email error:', err));
+        }
+      }
+
+      // Initialize query parameter parsing for single-item inquiries (destinations, safaris, services, packages)
+      window.inquiredItemContext = null;
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const dest = params.get('dest');
+        const safari = params.get('safari');
+        const service = params.get('service') || params.get('inquiry');
+        const pkg = params.get('package') || params.get('pkg');
+        const theme = params.get('theme');
+        const durationParam = params.get('duration');
+        const guestsParam = params.get('guests');
+
+        const banner = document.getElementById('inquiry-context-banner');
+        const bannerType = document.getElementById('inquiry-context-type');
+        const bannerTitle = document.getElementById('inquiry-context-title');
+        const bannerSub = document.getElementById('inquiry-context-sub');
+        const notesArea = document.getElementById('contact-notes');
+
+        let itemType = '';
+        let itemTitle = '';
+        let itemSub = '';
+        let autoNote = '';
+
+        if (dest) {
+          itemType = 'DESTINATION INQUIRY';
+          itemTitle = dest;
+          itemSub = `Personalized route curation including ${dest}. Our senior island specialist will prepare optimal accommodation, transfer, and sight timings.`;
+          autoNote = `I am interested in including ${dest} in my Ceylon travel itinerary. Please advise on recommended length of stay, premier boutique hotels, and private guide arrangements.`;
+          
+          const destLower = dest.toLowerCase();
+          if (destLower.includes('kandy') || destLower.includes('sigiriya') || destLower.includes('jaffna') || destLower.includes('anuradhapura') || destLower.includes('polonnaruwa')) {
+            checkInterestCheckbox('cultural');
+          } else if (destLower.includes('ella') || destLower.includes('horton')) {
+            checkInterestCheckbox('nature');
+          } else if (destLower.includes('yala') || destLower.includes('udawalawe')) {
+            checkInterestCheckbox('safari');
+          } else if (destLower.includes('galle') || destLower.includes('mirissa') || destLower.includes('bentota') || destLower.includes('trinco') || destLower.includes('arugam')) {
+            checkInterestCheckbox('beaches');
+          }
+        } else if (safari) {
+          itemType = 'SAFARI EXCURSION INQUIRY';
+          itemTitle = safari;
+          itemSub = `Exclusive private 4x4 game safari in ${safari}. Tracker assignment, permit scheduling, and vehicle selection.`;
+          autoNote = `I would like to inquire about booking the ${safari} excursion. Please send details on private open-top jeeps, senior naturalist tracking, and best seasonal timings.`;
+          checkInterestCheckbox('safari');
+        } else if (service) {
+          itemType = 'BESPOKE CONCIERGE SERVICE';
+          itemTitle = service;
+          itemSub = `Custom logistic and concierge arrangement for ${service}. Certified SLTDA chauffeur, luxury fleet, and executive assistance.`;
+          autoNote = `I am inquiring about Kindred Travels' bespoke ${service} service. Please provide fleet availability, chauffeur credentials, and quotation details.`;
+          
+          const sLower = service.toLowerCase();
+          if (sLower.includes('safari')) checkInterestCheckbox('safari');
+          if (sLower.includes('honeymoon')) checkInterestCheckbox('beaches');
+        } else if (pkg) {
+          itemType = 'TOUR PACKAGE INQUIRY';
+          itemTitle = pkg;
+          itemSub = `Bespoke customization for the "${pkg}" itinerary. Adaptable pace, hotel tier pairing, and private guide.`;
+          autoNote = `I would like to inquire about customizing the "${pkg}" itinerary. Please share complete day-by-day availability, boutique hotel recommendations, and seasonal rate options.`;
+          
+          const pkgLower = pkg.toLowerCase();
+          if (pkgLower.includes('cultural') || pkgLower.includes('kingdom') || pkgLower.includes('heritage')) checkInterestCheckbox('cultural');
+          if (pkgLower.includes('highland') || pkgLower.includes('tea') || pkgLower.includes('surf')) checkInterestCheckbox('nature');
+          if (pkgLower.includes('safari') || pkgLower.includes('wild') || pkgLower.includes('elephant')) checkInterestCheckbox('safari');
+          if (pkgLower.includes('beach') || pkgLower.includes('coast')) checkInterestCheckbox('beaches');
+        }
+
+        if (itemTitle) {
+          window.inquiredItemContext = { type: itemType, title: itemTitle };
+          if (banner) {
+            bannerType.textContent = '✦ ' + itemType;
+            bannerTitle.textContent = itemTitle;
+            bannerSub.textContent = itemSub;
+            banner.style.display = 'block';
+          }
+          if (notesArea && !notesArea.value.trim()) {
+            notesArea.value = autoNote;
+          }
+        }
+
+        if (durationParam) {
+          const durSelect = document.getElementById('contact-duration');
+          if (durSelect) {
+            for (let i = 0; i < durSelect.options.length; i++) {
+              if (durSelect.options[i].value === durationParam) {
+                durSelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+        }
+
+        if (guestsParam) {
+          const guestSelect = document.getElementById('contact-guests');
+          if (guestSelect) {
+            for (let i = 0; i < guestSelect.options.length; i++) {
+              if (guestSelect.options[i].value === guestsParam) {
+                guestSelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+        }
+
+        function checkInterestCheckbox(val) {
+          const cb = document.querySelector(`input[name="interest"][value="${val}"]`);
+          if (cb) cb.checked = true;
+        }
+      });
+    </script>
+  </body>
+</html>

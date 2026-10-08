@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Information | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Payment information covering supported payment methods, transaction security protocols, billing schedules, and local currency guidelines." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    <style>
+      
+
+      
+
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--white);
+        font-family: var(--font-serif);
+      }
+
+      h2::after {
+        background-color: var(--accent-gold);
+      }
+
+      p {
+        color: var(--medium-text);
+      }
+
+      /* Override navbar to match dark theme */
+      
+      .navbar.scrolled {
+        background: rgba(5, 20, 17, 0.95) !important;
+      }
+      .logo, .nav-links a {
+        color: var(--white) !important;
+      }
+      .logo svg, .nav-links a:hover {
+        color: var(--accent-gold) !important;
+      }
+      .mobile-menu-btn {
+        color: var(--white) !important;
+      }
+
+      @media (max-width: 992px) {
+        
+        .nav-links a {
+          color: var(--white) !important;
+        }
+        .nav-links a:hover {
+          color: var(--accent-gold) !important;
+        }
+      }
+
+      /* Floating Language Selector Styling */
+      .lang-selector {
+        position: relative;
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .lang-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--white);
+        padding: 8px 14px;
+        font-size: 0.75rem;
+        font-family: var(--font-sans);
+        text-transform: uppercase;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .lang-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+      .lang-btn svg {
+        flex-shrink: 0;
+      }
+      .lang-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        background: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        width: 130px;
+        z-index: 1001;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+      .lang-dropdown.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      .lang-item {
+        display: block;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        color: var(--medium-text);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        text-align: left;
+      }
+      .lang-item:hover, .lang-item.active {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Compliance Layout */
+      .compliance-layout {
+        padding-top: 160px;
+        padding-bottom: 100px;
+      }
+      .compliance-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .compliance-card {
+        background: var(--panel-bg);
+        border: 1px solid var(--border-color);
+        padding: 50px;
+        margin-bottom: 40px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .compliance-card h3 {
+        font-size: 1.6rem;
+        color: var(--accent-gold);
+        margin-bottom: 24px;
+        font-weight: 500;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .compliance-card h3 svg {
+        color: var(--accent-gold);
+        flex-shrink: 0;
+      }
+      .compliance-card p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: var(--medium-text);
+      }
+      .compliance-card ul {
+        margin-bottom: 25px;
+        padding-left: 24px;
+      }
+      .compliance-card li {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 12px;
+        color: var(--medium-text);
+      }
+      .compliance-card strong {
+        color: var(--white);
+      }
+
+      .last-updated {
+        font-size: 0.85rem;
+        color: var(--light-text);
+        font-style: italic;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .compliance-card {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1545229765-7164b3a8a9a0?auto=format&fit=crop&w=1920&q=80" alt="Breathtaking mountain ridges in Ella, Sri Lanka" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Payment Information</h1>
+        <p>Supported payment methods, deposit schedules, currency exchanges, and security.</p>
+      </div>
+    </header>
+
+    <main class="compliance-layout">
+      <div class="compliance-container">
+        
+        <p class="last-updated">Last Updated: August 8, 2026</p>
+
+        <!-- Card 1: Supported Methods -->
+        <div class="compliance-card">
+          <h3>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+            1. Supported Payment Methods
+          </h3>
+          <p>
+            Kindred Travels provides three primary channels for processing booking payments:
+          </p>
+          <ul>
+            <li><strong>Credit &amp; Debit Cards:</strong> We accept Visa, MasterCard, and American Express. Card payments are executed via a secure, 3D-secure international merchant payment gateway. A standard **2.5% processing fee** is added to card transactions to cover administrative routing fees.</li>
+            <li><strong>International Telegraphic Transfer (Bank Wire):</strong> Direct bank transfers are accepted in USD or EUR to our local commercial bank accounts in Colombo, Sri Lanka. Complete SWIFT codes, IBAN numbers, and routing addresses are provided with your proforma invoice. Sending bank charges and intermediary clearing fees must be paid in full by the sender.</li>
+            <li><strong>Wise (formerly TransferWise):</strong> Clients can pay using Wise directly to our local bank account. Wise is our recommended transfer route as it offers the lowest conversion fees and near-instant processing.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Schedules -->
+        <div class="compliance-card">
+          <h3>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            2. Payment &amp; Deposit Schedules
+          </h3>
+          <p>
+            To prevent booking drops or room allocation releases, you must stick strictly to the following payment deadlines:
+          </p>
+          <ul>
+            <li><strong>Initial Payment:</strong> The <strong>30% non-refundable booking deposit</strong> is due within seven (7) business days of your approval of the final travel itinerary proposal.</li>
+            <li><strong>Final Balance:</strong> The remaining <strong>70% balance</strong> must be paid in full exactly thirty (30) days prior to your scheduled tour start date.</li>
+            <li><strong>Late Balances:</strong> If balance payments are not completed 30 days prior to arrival, Kindred Travels reserves the right to treat the booking as cancelled by the client. The standard cancellation charges will apply.</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Currency Exchange -->
+        <div class="compliance-card">
+          <h3>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            3. Currency Exchange &amp; Conversions
+          </h3>
+          <p>
+            All custom tour packages and accommodation prices are quoted in United States Dollars (USD) or Euros (EUR).
+          </p>
+          <p>
+            If you wish to make bank transfer payments in local Sri Lankan Rupees (LKR) or another major currency, you must request a quote calculation. The conversion rate applied is determined on the morning of your payment date using the official daily buying and selling exchange rates published by the <strong>Central Bank of Sri Lanka (CBSL)</strong>. We do not charge additional currency margins.
+          </p>
+        </div>
+
+        <!-- Card 4: Security -->
+        <div class="compliance-card">
+          <h3>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            4. Security Protocols
+          </h3>
+          <p>
+            Kindred Travels prioritizes your financial data security. We protect your billing information through the following standards:
+          </p>
+          <ul>
+            <li><strong>End-to-End Encryption:</strong> All card payments are routed through a 256-bit SSL encrypted gateway.</li>
+            <li><strong>PCI Compliance:</strong> Kindred Travels does not store, see, or retain your credit card numbers, CVV security codes, or banking passwords. Transactions are processed via tokenized methods hosted entirely by our gateway providers.</li>
+            <li><strong>Fraud Prevention:</strong> The gateway utilizes automated 3D-Secure 2.0 validation checks (e.g. Verified by Visa or Mastercard Identity Check) to ensure secure authentication.</li>
+          </ul>
+        </div>
+
+        <!-- Card 5: Local Tipping & Cash -->
+        <div class="compliance-card">
+          <h3>
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            5. Local Tipping &amp; Cash Guidelines
+          </h3>
+          <p>
+            While card payments are widely accepted in Colombo, Galle Fort, Ella, and large resorts, cash is essential for smaller expenses in regional Sri Lanka.
+          </p>
+          <p>
+            We recommend holding a reasonable amount of local Sri Lankan Rupees (LKR) cash for dining at local tea shops, purchasing roadside king coconuts, purchasing local crafts, and tipping your chauffeur-guides or safari jeep drivers. ATMs accepting international Visa and Mastercard are easily accessible in all main towns.
+          </p>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Language Dropdown Toggle
+      function toggleLangDropdown(event) {
+        event.stopPropagation();
+        const dropdown = document.getElementById('langDropdown');
+        dropdown.classList.toggle('active');
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('langDropdown');
+        if (dropdown && dropdown.classList.contains('active')) {
+          dropdown.classList.remove('active');
+        }
+      });
+    </script>
+  </body>
+</html>

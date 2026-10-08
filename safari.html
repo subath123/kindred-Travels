@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safari Experiences | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Embark on premium 4x4 safaris in Yala, Udawalawe, Wilpattu, and Bundala. Discover booking schedules, safety guides, and custom open-top jeeps." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      /* Safari Subpage Styles */
+
+      .safari-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .safari-card {
+        background: var(--panel-bg);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .safari-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .safari-img-wrapper {
+        position: relative;
+        height: 280px;
+      }
+
+      .safari-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .safari-card-content {
+        padding: 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .safari-title {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+
+      .safari-desc {
+        font-size: 0.9rem;
+        color: var(--medium-text);
+        margin-bottom: 24px;
+        flex-grow: 1;
+      }
+
+      .safari-specs {
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+        margin-bottom: 25px;
+        font-size: 0.85rem;
+      }
+
+      .safari-spec-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        color: var(--light-text);
+      }
+
+      .safari-spec-label {
+        font-weight: 600;
+        color: var(--accent-gold);
+      }
+
+      /* Timings & Safety panels */
+      .safari-info-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 80px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 60px;
+      }
+
+      .info-box {
+        background: rgba(11, 47, 39, 0.3);
+        border: 1px solid var(--border-color);
+        padding: 40px;
+        border-radius: 4px;
+      }
+
+      .info-box h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-box h3 svg {
+        color: var(--accent-gold);
+      }
+
+      .info-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .info-list li {
+        margin-bottom: 14px;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        display: flex;
+        gap: 10px;
+      }
+
+      .info-list li strong {
+        color: var(--accent-gold);
+        display: inline-block;
+        min-width: 120px;
+      }
+
+      .safety-list li::before {
+        content: "⚠";
+        color: #e67e22;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .jeep-list li::before {
+        content: "✓";
+        color: #2ecc71;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 992px) {
+        .safari-grid, .safari-info-panel {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1920&q=80" alt="Leopard walking in scrub forest Yala" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Into The Ceylon Wilds</h1>
+        <p>Expert-led private game drives in Sri Lanka's most biodiverse wildlife sanctuaries.</p>
+      </div>
+    </header>
+
+    <main class="container section" style="padding-top: 80px;">
+      
+      <!-- Safari grid -->
+      <div class="safari-grid">
+        <!-- 1. Yala Safari -->
+        <div class="safari-card reveal">
+          <div class="safari-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Leopard resting" class="safari-img" />
+          </div>
+          <div class="safari-card-content">
+            <h3 class="safari-title">Yala National Park Safari</h3>
+            <p class="safari-desc">
+              Sri Lanka's flagship reserve. A stunning dry-zone scrub forest directly bordering the Indian Ocean, famous for holding one of the highest densities of leopards in the world, alongside massive tuskers and bears.
+            </p>
+            <div class="safari-specs">
+              <div class="safari-spec-row"><span class="safari-spec-label">Key Wildlife:</span><span>Leopards, Sloth Bears, Elephants, Peacocks</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Best Months:</span><span>February to June (Dry Season)</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Terrain:</span><span>Semi-arid scrub forest, coastal dunes</span></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+              <a href="contact.html?safari=Yala+National+Park+Safari&service=Wildlife+Safari" class="btn btn-outline-gold" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Inquire Safari</a>
+              <a href="plan.html?pkg=safari-odyssey&safari=Yala&interests=Wildlife+Safaris" class="btn btn-primary" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Book / Plan</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Udawalawe Safari -->
+        <div class="safari-card reveal">
+          <div class="safari-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Elephant family walking" class="safari-img" />
+          </div>
+          <div class="safari-card-content">
+            <h3 class="safari-title">Udawalawe Elephant Sanctuary</h3>
+            <p class="safari-desc">
+              A wide-open savannah surrounding a massive reservoir, reminiscent of East African plains. Guaranteed sightings of wild elephant herds feeding, bathing, and traversing the open wetlands.
+            </p>
+            <div class="safari-specs">
+              <div class="safari-spec-row"><span class="safari-spec-label">Key Wildlife:</span><span>Elephants, Water Buffaloes, Crocodiles, Eagles</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Best Months:</span><span>Year-Round (Best July to October)</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Terrain:</span><span>Savannah grasslands, river wetlands</span></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+              <a href="contact.html?safari=Udawalawe+Elephant+Sanctuary&service=Wildlife+Safari" class="btn btn-outline-gold" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Inquire Safari</a>
+              <a href="plan.html?pkg=safari-odyssey&safari=Udawalawe&interests=Wildlife+Safaris" class="btn btn-primary" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Book / Plan</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Wilpattu Safari -->
+        <div class="safari-card reveal">
+          <div class="safari-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Jungle lake" class="safari-img" />
+          </div>
+          <div class="safari-card-content">
+            <h3 class="safari-title">Wilpattu Natural Forest</h3>
+            <p class="safari-desc">
+              Sri Lanka's largest and oldest national park. Famed for its unique "Willus" (natural rainwater-filled lakes) that act as watering holes for wildlife inside a thick, majestic evergreen forest.
+            </p>
+            <div class="safari-specs">
+              <div class="safari-spec-row"><span class="safari-spec-label">Key Wildlife:</span><span>Leopards, Sloth Bears, Sambar Deer, Barking Deer</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Best Months:</span><span>February to October</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Terrain:</span><span>Thick dry-zone forest, natural sand rim lakes</span></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+              <a href="contact.html?safari=Wilpattu+Natural+Forest&service=Wildlife+Safari" class="btn btn-outline-gold" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Inquire Safari</a>
+              <a href="plan.html?pkg=safari-odyssey&safari=Wilpattu&interests=Wildlife+Safaris" class="btn btn-primary" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Book / Plan</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Bundala Wetlands -->
+        <div class="safari-card reveal">
+          <div class="safari-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Water lagoon birds" class="safari-img" />
+          </div>
+          <div class="safari-card-content">
+            <h3 class="safari-title">Bundala Bird Sanctuary</h3>
+            <p class="safari-desc">
+              A globally recognized Ramsar wetland. An absolute paradise for bird watchers, hosting thousands of colorful migratory birds, including massive flocks of Greater Flamingoes.
+            </p>
+            <div class="safari-specs">
+              <div class="safari-spec-row"><span class="safari-spec-label">Key Wildlife:</span><span>Greater Flamingoes, Pelicans, Painted Storks, Crocs</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Best Months:</span><span>September to March (Migratory peaks)</span></div>
+              <div class="safari-spec-row"><span class="safari-spec-label">Terrain:</span><span>Coastal lagoons, salt pans, scrub lands</span></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+              <a href="contact.html?safari=Bundala+Bird+Sanctuary&service=Wildlife+Safari" class="btn btn-outline-gold" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Inquire Safari</a>
+              <a href="plan.html?pkg=safari-odyssey&safari=Bundala&interests=Wildlife+Safaris" class="btn btn-primary" style="text-align: center; padding: 10px 12px; font-size: 0.8rem;">Book / Plan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info panels -->
+      <div class="safari-info-panel">
+        <!-- Timings -->
+        <div class="info-box reveal">
+          <h3>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Safari Game Timings
+          </h3>
+          <ul class="info-list">
+            <li><strong>Morning Safari:</strong> 6:00 AM – 10:00 AM. (Best for active predators, cooler temperatures)</li>
+            <li><strong>Evening Safari:</strong> 3:00 PM – 6:00 PM. (Best for elephants gathering at watering lakes)</li>
+            <li><strong>Full-Day Expedition:</strong> 6:00 AM – 6:00 PM. (Includes premium picnic lunch inside park resting zones)</li>
+          </ul>
+        </div>
+
+        <!-- Jeep details -->
+        <div class="info-box reveal">
+          <h3>
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            4x4 Off-Road Vehicles
+          </h3>
+          <ul class="info-list jeep-list">
+            <li>Customized raised open-sided Toyota Land Cruisers or Hiluxes.</li>
+            <li>Fitted with safety roll cages and canvas sun protection.</li>
+            <li>Limited to a maximum of 6 passengers per vehicle for window views.</li>
+            <li>Equipped with beanbags for camera lenses and reference books.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Safety Rules -->
+      <div class="info-box reveal" style="margin-bottom: 80px; background-color: rgba(192, 57, 43, 0.05); border-color: rgba(192, 57, 43, 0.2);">
+        <h3 style="color: #e74c3c;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          Critical Park Safety Regulations
+        </h3>
+        <ul class="info-list safety-list">
+          <li><strong>Never disembark the vehicle:</strong> You must stay inside the safari jeep at all times, except in designated national park rest camp areas.</li>
+          <li><strong>Keep absolute silence:</strong> Keep voice volume to a minimum when tracking to avoid disturbing leopards, cubs, and nesting birds.</li>
+          <li><strong>Zero feeding or littering:</strong> Feeding wild animals is illegal. All snack packets and plastics must be kept inside the jeep trash bin.</li>
+          <li><strong>No camera flashes:</strong> Switch off flash on cameras and smartphones, as it can startle elephants and provoke defensive behaviors.</li>
+        </ul>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

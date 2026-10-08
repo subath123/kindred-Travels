@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Stories &amp; Insights | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Explore our high-end Sri Lankan travel blog. Get safari tips, visa guidance, packing advice, and guides on the best times to visit." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      
+
+      
+
+      /* Heading typography colors */
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--white);
+        font-family: var(--font-serif);
+      }
+      
+      p {
+        color: var(--medium-text);
+      }
+
+      /* Navbar Dark Adaptations */
+      
+
+      .navbar.scrolled {
+        background: rgba(5, 20, 17, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        border-color: var(--glass-border);
+      }
+
+      
+
+      .nav-links a {
+        color: var(--white);
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-gold);
+      }
+
+      .mobile-menu-btn {
+        color: var(--white);
+      }
+
+      /* Floating Language Selector styling */
+      .lang-selector {
+        position: relative;
+        display: inline-block;
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--white);
+        padding: 8px 14px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .lang-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+
+      .lang-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 5px;
+        background-color: #0b2f27;
+        border: 1px solid var(--border-color);
+        min-width: 100px;
+        display: none;
+        flex-direction: column;
+        z-index: 100;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+
+      .lang-selector:hover .lang-dropdown {
+        display: flex;
+      }
+
+      .lang-dropdown a {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        color: var(--medium-text);
+        text-decoration: none;
+        transition: all 0.3s;
+        text-align: left;
+      }
+
+      .lang-dropdown a:hover,
+      .lang-dropdown a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Blog Subpage Specific Styles */
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .blog-card {
+        background: rgba(11, 47, 39, 0.4);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .blog-img-wrapper {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+      }
+
+      .blog-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .blog-card:hover .blog-img {
+        transform: scale(1.06);
+      }
+
+      .blog-card-content {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .blog-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: var(--light-text);
+        margin-bottom: 12px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 12px;
+      }
+
+      .blog-category {
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      .blog-title {
+        font-size: 1.4rem;
+        color: var(--white);
+        margin-bottom: 12px;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+
+      .blog-excerpt {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--medium-text);
+        margin-bottom: 24px;
+        flex-grow: 1;
+      }
+
+      .blog-btn {
+        margin-top: auto;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Blog Full Article Modal Styles */
+      .blog-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(5, 20, 17, 0.98);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        padding: 20px;
+      }
+
+      .blog-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .blog-modal-content {
+        background-color: #0b2f27;
+        border: 1px solid var(--border-color);
+        width: 100%;
+        max-width: 900px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      }
+
+      .blog-modal-close {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: rgba(5, 20, 17, 0.7);
+        border: 1px solid var(--border-color);
+        color: var(--white);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s;
+      }
+
+      .blog-modal-close:hover {
+        background-color: var(--accent-gold);
+        border-color: var(--accent-gold);
+      }
+
+      .blog-modal-header {
+        position: relative;
+        height: 350px;
+        overflow: hidden;
+      }
+
+      .blog-modal-header img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .blog-modal-header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, #0b2f27 0%, rgba(11, 47, 39, 0.4) 100%);
+      }
+
+      .blog-modal-
+
+      .blog-modal-meta {
+        display: flex;
+        gap: 20px;
+        font-size: 0.8rem;
+        color: var(--light-text);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .blog-modal-title {
+        font-size: 2.2rem;
+        color: var(--white);
+        margin-bottom: 25px;
+        line-height: 1.25;
+      }
+
+      .blog-modal-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--medium-text);
+      }
+
+      .blog-modal-text p {
+        margin-bottom: 20px;
+        color: var(--medium-text);
+      }
+
+      .blog-modal-text h3 {
+        color: var(--white);
+        font-size: 1.5rem;
+        margin: 35px 0 15px 0;
+        font-family: var(--font-serif);
+      }
+
+      .blog-modal-text ul {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        list-style-type: square;
+      }
+
+      .blog-modal-text li {
+        margin-bottom: 8px;
+        color: var(--medium-text);
+      }
+
+      @media (max-width: 768px) {
+        .blog-modal-
+
+        .blog-modal-title {
+          font-size: 1.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=1920&q=80" alt="Lush green tea plantations of Nuwara Eliya" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>The Chronicler</h1>
+        <p>Bespoke travel stories, practical guidelines, and design insights from the teardrop island.</p>
+      </div>
+    </header>
+
+    <main class="container section" style="padding-top: 60px;">
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+        <!-- 1. Best Time to Visit -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Beautiful tropical beach sunset" class="blog-img" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-meta">
+              <span class="blog-category">Planning</span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="blog-title">Best Time to Visit Sri Lanka</h3>
+            <p class="blog-excerpt">
+              Navigating Sri Lanka's dual monsoon system can be tricky, but with the right planning, you can find sunny skies and calm seas at any time of the year. Here is our month-by-month guide to planning your perfect luxury holiday.
+            </p>
+            <button class="btn btn-outline-gold blog-btn" onclick="openArticle('best-time')">Read Article</button>
+          </div>
+        </div>
+
+        <!-- 2. Top 10 Places -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Sigiriya rock fortress landscape" class="blog-img" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-meta">
+              <span class="blog-category">Inspiration</span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="blog-title">Top 10 Places to Visit in Ceylon</h3>
+            <p class="blog-excerpt">
+              From the ancient ruins of Sigiriya to the misty heights of Ella and the historic ramparts of Galle Fort, discover the ten most spectacular destinations you must include in your Sri Lankan itinerary.
+            </p>
+            <button class="btn btn-outline-gold blog-btn" onclick="openArticle('top-10')">Read Article</button>
+          </div>
+        </div>
+
+        <!-- 3. Yala Safari Guide -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Leopard walking in Yala National Park" class="blog-img" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-meta">
+              <span class="blog-category">Adventure</span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="blog-title">Yala Safari Guide: In Search of the Leopard</h3>
+            <p class="blog-excerpt">
+              Yala National Park boasts one of the highest leopard densities in the world. Our safari experts share their secrets on when to go, how to book the best jeeps, and tips for photographing these elusive big cats.
+            </p>
+            <button class="btn btn-outline-gold blog-btn" onclick="openArticle('yala-safari')">Read Article</button>
+          </div>
+        </div>
+
+        <!-- 4. Travel Tips -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Local train tracks on a sunny day" class="blog-img" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-meta">
+              <span class="blog-category">Practical</span>
+              <span>7 min read</span>
+            </div>
+            <h3 class="blog-title">Sri Lanka Travel Tips for First-Timers</h3>
+            <p class="blog-excerpt">
+              Essential advice for your first visit to the teardrop island. Learn about currency exchange, navigating by tuk-tuk, cultural etiquette at sacred temples, and what to expect from local cuisine.
+            </p>
+            <button class="btn btn-outline-gold blog-btn" onclick="openArticle('travel-tips')">Read Article</button>
+          </div>
+        </div>
+
+        <!-- 5. Visa Guide -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Beautiful view of Galle Lighthouse" class="blog-img" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-meta">
+              <span class="blog-category">Guidelines</span>
+              <span>4 min read</span>
+            </div>
+            <h3 class="blog-title">Visa &amp; ETA Guide: A Hassle-Free Entry</h3>
+            <p class="blog-excerpt">
+              Getting your Electronic Travel Authorization (ETA) for Sri Lanka is straightforward if you know the steps. Find out the latest policies, costs, and guidelines to ensure a smooth arrival at Colombo airport.
+            </p>
+            <button class="btn btn-outline-gold blog-btn" onclick="openArticle('visa-guide')">Read Article</button>
+          </div>
+        </div>
+
+        <!-- 6. Packing Guide -->
+        <div class="blog-card">
+          <div class="blog-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=800&q=80" alt="Scenic tea field view" class="blog-img" />
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-meta">
+              <span class="blog-category">Preparation</span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="blog-title">Bespoke Packing Guide: Coast to Highlands</h3>
+            <p class="blog-excerpt">
+              Sri Lanka's diverse climates require smart packing. Our detailed checklist covers everything you need, from lightweight beachwear and temple-appropriate clothing to warm layers for the misty highlands.
+            </p>
+            <button class="btn btn-outline-gold blog-btn" onclick="openArticle('packing-guide')">Read Article</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Article Reading Modal -->
+    <div class="blog-modal" id="blog-article-modal">
+      <div class="blog-modal-content">
+        <button class="blog-modal-close" aria-label="Close Article" onclick="closeArticle()">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="blog-modal-header">
+          <div class="blog-modal-header-overlay"></div>
+          <img src="" alt="" id="modal-article-img" />
+        </div>
+        <div class="blog-modal-body">
+          <div class="blog-modal-meta">
+            <span id="modal-article-category" style="color: var(--accent-gold); font-weight: 600;">Category</span>
+            <span>&bull;</span>
+            <span id="modal-article-readtime">5 min read</span>
+            <span>&bull;</span>
+            <span id="modal-article-date">Date</span>
+          </div>
+          <h2 class="blog-modal-title" id="modal-article-title">Article Title</h2>
+          <div class="blog-modal-text" id="modal-article-text">
+            <!-- Dynamic Inject Content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      // Update year in footer
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Complete blog article data pool
+      const ARTICLES = {
+        'best-time': {
+          title: 'Best Time to Visit Sri Lanka',
+          category: 'Planning',
+          date: 'August 5, 2026',
+          readtime: '6 min read',
+          img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+          content: `
+            <p>Sri Lanka is a tropical destination that can be visited year-round, but because of its unique geography, it experiences two distinct monsoon seasons that affect different parts of the island at different times. If you plan your itinerary correctly, you can easily ensure sunny days and warm swimming waters throughout your trip.</p>
+            
+            <h3>Understanding the Monsoons</h3>
+            <p>The island's climate is dominated by two main monsoonal systems:</p>
+            <ul>
+              <li><strong>The Yala Monsoon (Southwest Monsoon):</strong> This monsoon runs from May to August and brings rain to the southwestern coast (including Colombo, Galle, Weligama, and Bentota) and the central hill country. During this time, the northeast coast (Trincomalee and Pasikudah) is dry, sunny, and perfect for beach days.</li>
+              <li><strong>The Maha Monsoon (Northeast Monsoon):</strong> Running from November to February, this monsoon brings wind and rain to the northeast coast and the cultural triangle. Meanwhile, the southwest coasts dry up, offering pristine golden beaches, clear blue waters, and excellent conditions for surfing and whale watching.</li>
+            </ul>
+
+            <h3>Month-by-Month Recommendations</h3>
+            <p><strong>December to April:</strong> This is the peak tourist season for the southwestern beaches and the hill country. Places like Galle Fort, Mirissa, Weligama, and Ella enjoy bright sunny mornings and cooler breezes. It is also the best time for hiking Adam's Peak or Horton Plains.</p>
+            <p><strong>May to September:</strong> Shift your gaze to the East Coast. Beaches like Nilaveli in Trincomalee are spectacular during these months. The ocean is as flat as a swimming pool, offering top-tier snorkeling at Pigeon Island. The dry weather also makes this an excellent time for cycling through the ancient ruins of Anuradhapura and Polonnaruwa.</p>
+            <p><strong>October and November:</strong> This is the inter-monsoonal period, which is typically the wettest and most unpredictable time island-wide. However, it is also when luxury resorts offer their best rates, making it ideal for a luxury wellness retreat in Kandy or a spa getaway inside a colonial fort hotel.</p>
+          `
+        },
+        'top-10': {
+          title: 'Top 10 Places to Visit in Ceylon',
+          category: 'Inspiration',
+          date: 'July 28, 2026',
+          readtime: '8 min read',
+          img: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80',
+          content: `
+            <p>Sri Lanka packs an incredible variety of landscapes, historic ruins, and wildlife sanctuaries into a compact island. To help you plan your ultimate route, our luxury curators have assembled the ten absolute must-visit destinations:</p>
+            
+            <h3>1. Sigiriya Rock Fortress</h3>
+            <p>A towering 200-meter volcanic plug that holds the ruins of an ancient 5th-century palace citadel on its flat summit. Climb past giant carved lion paws and ancient frescoes to witness panoramic jungle views.</p>
+            
+            <h3>2. Ella &amp; The Nine Arch Bridge</h3>
+            <p>Nestled in the misty highlands, Ella is a hiking paradise. Walk the railway tracks to witness the iconic colonial-era Nine Arch Bridge, surrounded by dense green tea bushes and pine trees.</p>
+
+            <h3>3. Galle Dutch Fort</h3>
+            <p>A living museum and UNESCO World Heritage site. Wander cobblestone alleys lined with Dutch-colonial buildings, boutique shops, art studios, and trendy cafes, all bordered by thick ocean ramparts.</p>
+
+            <h3>4. Yala National Park</h3>
+            <p>The ultimate safari destination. Boasting one of the highest densities of leopards in the world, Yala offers a thrilling opportunity to track big cats, sloth bears, and massive herds of elephants.</p>
+
+            <h3>5. Nuwara Eliya (Tea Country)</h3>
+            <p>Known as "Little England," this highland town features cool crispy air, colonial golf clubs, manicured gardens, and historical Tudor-style estates surrounded by emerald tea valleys.</p>
+
+            <h3>6. Trincomalee &amp; Pigeon Island</h3>
+            <p>The crown jewel of the east coast. Trincomalee offers white-sand beaches, historical clifftop temples, and pristine coral reefs filled with sea turtles and reef sharks at Pigeon Island marine park.</p>
+
+            <h3>7. Sacred Temple of the Tooth Relic, Kandy</h3>
+            <p>Located in the royal hill capital of Kandy, this golden-roofed temple houses Sri Lanka's most sacred relic—a tooth of the Buddha, making it the spiritual heart of the nation.</p>
+
+            <h3>8. Mirissa Beach &amp; Coconut Tree Hill</h3>
+            <p>A picturesque crescent beach famous for its relaxed vibe, surfing waves, whale-watching expeditions, and the highly photographed palm-covered dome of Coconut Tree Hill.</p>
+
+            <h3>9. Polonnaruwa Ruins</h3>
+            <p>The second ancient kingdom of Sri Lanka. Rent a bicycle and explore the sprawling archaeological park featuring colossal stone-carved Buddha statues and royal palace ruins.</p>
+
+            <h3>10. Horton Plains &amp; World's End</h3>
+            <p>A high-altitude cloud forest plateau offering a scenic trek to a sheer 880-meter drop-off cliff known as World's End, often shrouded in dramatic rolling fog.</p>
+          `
+        },
+        'yala-safari': {
+          title: 'Yala Safari Guide: In Search of the Leopard',
+          category: 'Adventure',
+          date: 'July 15, 2026',
+          readtime: '5 min read',
+          img: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1200&q=80',
+          content: `
+            <p>Tracking the Sri Lankan leopard (Panthera pardus kotiya) in the scrub jungles of Yala National Park is one of the most thrilling wildlife experiences in Asia. However, a successful safari requires preparation and understanding of the park's dynamics.</p>
+            
+            <h3>Understanding Yala's Blocks</h3>
+            <p>Yala is divided into five blocks, but Block 1 (Yala West) is the primary zone for leopard sightings. It features a mixture of light forest, scrublands, brackish lagoons, and coastal dunes, providing the perfect camouflage for big cats.</p>
+            
+            <h3>When to Plan Your Safari</h3>
+            <p>The best time of day for a safari is early morning (6:00 AM to 9:00 AM) or late afternoon (3:30 PM to 6:00 PM) when the temperature cools down and leopards actively hunt or climb trees. The dry season (February to June) is particularly rewarding, as animals gather around shrinking watering holes, making them easier to spot.</p>
+
+            <h3>Luxury Safari Tips</h3>
+            <ul>
+              <li><strong>Book a Private Jeep:</strong> Avoid shared public jeeps. A private customized 4x4 jeep allows you to set your own pace, choose your routes, and ensures a quiet, personalized experience.</li>
+              <li><strong>Hire an Expert Naturalist:</strong> Having an experienced tracker who understands animal behaviors, tracks footprints, and listens for monkey alarm calls makes a massive difference in finding leopards.</li>
+              <li><strong>Stay Close to the Park:</strong> To catch the sunrise entry, stay in a luxury tented lodge near the park gates (like Wild Coast Tented Lodge) which offers immediate early access.</li>
+            </ul>
+          `
+        },
+        'travel-tips': {
+          title: 'Sri Lanka Travel Tips for First-Timers',
+          category: 'Practical',
+          date: 'July 2, 2026',
+          readtime: '7 min read',
+          img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
+          content: `
+            <p>Visiting Sri Lanka for the first time is an enchanting experience, but knowing a few practical tips beforehand will help you travel like a seasoned explorer.</p>
+            
+            <h3>1. Currency &amp; Payments</h3>
+            <p>The local currency is the Sri Lankan Rupee (LKR). While luxury hotels and fine dining restaurants accept international credit cards (Visa/Mastercard), cash is absolutely essential for tuk-tuks, local markets, tips, and entry tickets. Carry small-denomination notes when traveling into rural areas.</p>
+            
+            <h3>2. Navigating the Island</h3>
+            <p>For short distances, three-wheeled tuk-tuks are the most fun and convenient transport. Ensure you agree on a price before getting in, or use local ride-hailing apps like PickMe in Colombo and Kandy. For long distances, hiring a private vehicle with an English-speaking driver-guide is the most comfortable and informative way to explore.</p>
+
+            <h3>3. Cultural and Temple Etiquette</h3>
+            <p>When entering Buddhist or Hindu temples, you must dress modestly. Both shoulders and knees must be covered. You must remove your shoes and hats before entering the sacred grounds. Avoid taking photos with your back turned directly to a Buddha statue, as this is considered highly disrespectful.</p>
+
+            <h3>4. Savoring the Cuisine</h3>
+            <p>Sri Lankan food is flavorful, aromatic, and famously spicy. Rice and curry is the national staple, served with various vegetable dishes, dhal, and spicy sambols. If you have a sensitive palate, always ask for your dishes to be prepared "mild" or "white curry." Be sure to try hoppers (pancakes) for breakfast and drink fresh King Coconuts daily.</p>
+          `
+        },
+        'visa-guide': {
+          title: 'Visa & ETA Guide: A Hassle-Free Entry',
+          category: 'Guidelines',
+          date: 'June 20, 2026',
+          readtime: '4 min read',
+          img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80',
+          content: `
+            <p>Preparing your travel documentation is the first step toward a relaxing holiday. Entering Sri Lanka is highly straightforward if you secure your tourist visa beforehand.</p>
+            
+            <h3>Obtaining the ETA Online</h3>
+            <p>Most international travelers require an Electronic Travel Authorization (ETA) to enter Sri Lanka for tourism. You can apply for this online via the official government portal (eta.gov.lk). The standard tourist ETA is typically issued for 30 days or 180 days (depending on your nationality) and allows double entry.</p>
+
+            <h3>Essential Entry Requirements</h3>
+            <p>When arriving at Bandaranaike International Airport (CMB) in Colombo, ensure you have the following ready:</p>
+            <ul>
+              <li><strong>Passport Validity:</strong> Your passport must be valid for at least 6 months from your date of arrival.</li>
+              <li><strong>Return Ticket:</strong> A confirmed return or onward flight ticket out of Sri Lanka.</li>
+              <li><strong>Evidence of Funds:</strong> Sufficient funds to cover your stay (though rarely checked, it is a formal requirement).</li>
+              <li><strong>Printed ETA:</strong> Keep a printed copy of your approved ETA confirmation email handy for immigration officers.</li>
+            </ul>
+
+            <h3>Visa Fees &amp; Approvals</h3>
+            <p>The online visa fee ranges from $35 to $75 depending on your nationality. Processing times are usually fast, with approvals often arriving via email within 24 to 48 hours. We strongly advise applying at least one week before your departure date.</p>
+          `
+        },
+        'packing-guide': {
+          title: 'Bespoke Packing Guide: Coast to Highlands',
+          category: 'Preparation',
+          date: 'June 10, 2026',
+          readtime: '5 min read',
+          img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=1200&q=80',
+          content: `
+            <p>Packing for Sri Lanka requires preparing for two entirely different climates. You will experience hot, humid tropical coastlines, and cool, misty highland valleys where temperatures can drop significantly in the evening.</p>
+            
+            <h3>For the Tropical Coasts (Galle, Mirissa, Trincomalee)</h3>
+            <p>Focus on lightweight, breathable clothing. Linen and cotton shirts, shorts, sundresses, and swimwear are essential. Bring high-quality sunscreen, a wide-brimmed sun hat, sunglasses, and sandals. A waterproof dry bag is highly recommended for boat trips or snorkeling excursions.</p>
+            
+            <h3>For the Misty Highlands (Nuwara Eliya, Hatton, Ella)</h3>
+            <p>Temperatures in Nuwara Eliya and Hatton can drop to 12°C (54°F) in the evening. Pack a warm fleece, a light windbreaker or raincoat, long pants, and socks. If you plan to hike Ella Rock or Horton Plains, sturdy trail running shoes or hiking boots with good grip are essential.</p>
+
+            <h3>Temple Visits</h3>
+            <p>You must cover your shoulders and knees. Pack a few lightweight sarongs or scarves that you can easily wrap around your waist or shoulders before entering temple complexes. Slipping on socks is also recommended, as temple stone paths can get extremely hot in the sun.</p>
+
+            <h3>Health &amp; Electronics</h3>
+            <p>Carry high-strength mosquito repellent containing DEET, a basic first-aid kit, and personal medications. Sri Lanka uses Type G (three-square pin) and Type D (round pin) electrical outlets, so a universal travel adapter is a must-pack item.</p>
+          `
+        }
+      };
+
+      // Modal nodes
+      const modal = document.getElementById('blog-article-modal');
+      const mImg = document.getElementById('modal-article-img');
+      const mCategory = document.getElementById('modal-article-category');
+      const mReadtime = document.getElementById('modal-article-readtime');
+      const mDate = document.getElementById('modal-article-date');
+      const mTitle = document.getElementById('modal-article-title');
+      const mText = document.getElementById('modal-article-text');
+
+      function openArticle(key) {
+        const article = ARTICLES[key];
+        if (!article) return;
+
+        mImg.src = article.img;
+        mImg.alt = article.title;
+        mCategory.textContent = article.category;
+        mReadtime.textContent = article.readtime;
+        mDate.textContent = article.date;
+        mTitle.textContent = article.title;
+        mText.innerHTML = article.content;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeArticle() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'unset';
+      }
+
+      // Close modal on clicking backdrop
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeArticle();
+        }
+      });
+    </script>
+  </body>
+</html>

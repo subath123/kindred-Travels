@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wonders Showcase Preview</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      body {
+        background-color: #061716;
+        padding: 40px 0;
+      }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Destinations Grid Section: Pinterest Timed Card Opening Showcase -->
+    <section class="section destinations-section wonders-showcase-section" id="destinations-section" style="padding-top: 20px;">
+      <div class="container">
+        <div class="wonders-section-header">
+          <span class="wonders-badge-pill">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ICONIC EXPEDITIONS &amp; WONDERS
+          </span>
+          <h2 class="wonders-main-title">Unveil Sri Lanka's Wonders</h2>
+          <p class="wonders-sub-title">
+            From misty mountains to sundrenched shores, explore six distinct worlds packed into one tropical island paradise.
+          </p>
+        </div>
+
+        <!-- Pinterest Timed Card Opening Showcase Stage -->
+        <div class="wonders-stage-viewport" id="wonders-viewport">
+          <!-- Background Backdrop with Ambient Vignette -->
+          <div class="wonders-stage-backdrop" id="wonders-backdrop" style="background-image: url('./sigiriya1.jpg');"></div>
+          <div class="wonders-stage-vignette"></div>
+
+          <!-- Stage Body: Left Editorial + Right Floating Cards Deck -->
+          <div class="wonders-stage-inner">
+            <!-- Left Column: Editorial Headline & Actions -->
+            <div class="wonders-stage-info">
+              <div class="wonders-stage-eyebrow">
+                <span class="eyebrow-accent-dash"></span>
+                <span id="wonders-eyebrow-text">Cultural Triangle • UNESCO Heritage</span>
+              </div>
+
+              <h3 class="wonders-display-title" id="wonders-display-title">
+                SIGIRIYA<br>CITADEL
+              </h3>
+
+              <p class="wonders-display-desc" id="wonders-display-desc">
+                Rise above emerald jungle canopies to the legendary 5th-century palace fortress of King Kasyapa, crowning a sheer 200-meter monolith adorned with celestial frescoes and ancient royal water gardens.
+              </p>
+
+              <!-- Meta Pills -->
+              <div class="wonders-meta-pills" id="wonders-meta-pills">
+                <span class="meta-pill">5th-Century Fortress</span>
+                <span class="meta-pill">200m Monolith</span>
+                <span class="meta-pill">Mirror Wall Frescoes</span>
+              </div>
+
+              <!-- Action Button Group (Bookmark / Inquire + Discover Location) -->
+              <div class="wonders-stage-actions">
+                <a href="contact.html?dest=Sigiriya" class="btn-wonders-bookmark" id="wonders-bookmark-btn" title="Quick Inquiry for Sigiriya" aria-label="Inquire this sanctuary">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                </a>
+
+                <button type="button" class="btn-wonders-discover" id="wonders-discover-btn">
+                  <span>DISCOVER LOCATION</span>
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column: Horizontal Floating Preview Cards Deck -->
+            <div class="wonders-cards-deck">
+              <div class="wonders-cards-scroll" id="wonders-cards-scroll">
+                <!-- Card 1: Sigiriya -->
+                <div class="wonders-preview-card active" data-dest="sigiriya" data-index="0" role="button" tabindex="0">
+                  <div class="card-img-wrap">
+                    <img src="./sigiriya1.jpg" alt="Sigiriya Rock Citadel" loading="lazy" />
+                    <div class="card-gradient"></div>
+                  </div>
+                  <div class="card-caption">
+                    <span class="card-region">Cultural Triangle</span>
+                    <h4 class="card-name">SIGIRIYA CITADEL</h4>
+                  </div>
+                </div>
+
+                <!-- Card 2: Ella -->
+                <div class="wonders-preview-card" data-dest="ella" data-index="1" role="button" tabindex="0">
+                  <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Ella Highlands Train" loading="lazy" />
+                    <div class="card-gradient"></div>
+                  </div>
+                  <div class="card-caption">
+                    <span class="card-region">Misty Highlands</span>
+                    <h4 class="card-name">ELLA NINE ARCH</h4>
+                  </div>
+                </div>
+
+                <!-- Card 3: Yala (Authentic Leopard photography) -->
+                <div class="wonders-preview-card" data-dest="yala" data-index="2" role="button" tabindex="0">
+                  <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Yala Leopard Wilderness" loading="lazy" />
+                    <div class="card-gradient"></div>
+                  </div>
+                  <div class="card-caption">
+                    <span class="card-region">Wildlife Safari</span>
+                    <h4 class="card-name">YALA LEOPARDS</h4>
+                  </div>
+                </div>
+
+                <!-- Card 4: Galle -->
+                <div class="wonders-preview-card" data-dest="galle" data-index="3" role="button" tabindex="0">
+                  <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Galle Fort Ramparts" loading="lazy" />
+                    <div class="card-gradient"></div>
+                  </div>
+                  <div class="card-caption">
+                    <span class="card-region">Southern Coast</span>
+                    <h4 class="card-name">GALLE DUTCH FORT</h4>
+                  </div>
+                </div>
+
+                <!-- Card 5: Kandy -->
+                <div class="wonders-preview-card" data-dest="kandy" data-index="4" role="button" tabindex="0">
+                  <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Kandy Temple of the Tooth" loading="lazy" />
+                    <div class="card-gradient"></div>
+                  </div>
+                  <div class="card-caption">
+                    <span class="card-region">Royal Citadel</span>
+                    <h4 class="card-name">KANDY SACRED TOOTH</h4>
+                  </div>
+                </div>
+
+                <!-- Card 6: Mirissa -->
+                <div class="wonders-preview-card" data-dest="mirissa" data-index="5" role="button" tabindex="0">
+                  <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=800&q=80" alt="Mirissa Whale Sanctuary" loading="lazy" />
+                    <div class="card-gradient"></div>
+                  </div>
+                  <div class="card-caption">
+                    <span class="card-region">Tropical Coast</span>
+                    <h4 class="card-name">MIRISSA BLUE COVE</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Bar & Timed Progress Strip -->
+          <div class="wonders-stage-controls">
+            <!-- Navigation Circle Buttons (< and >) -->
+            <div class="wonders-nav-arrows">
+              <button type="button" class="wonders-circle-btn" id="wonders-prev-btn" aria-label="Previous wonder destination">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button type="button" class="wonders-circle-btn" id="wonders-next-btn" aria-label="Next wonder destination">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+
+            <!-- Timed Opening Progress Bar -->
+            <div class="wonders-timer-wrapper" title="Timed card opening cycle">
+              <div class="wonders-timer-bar" id="wonders-timer-bar"></div>
+            </div>
+
+            <!-- Display Slide Counter (01 / 06) -->
+            <div class="wonders-counter-badge" id="wonders-counter-badge">
+              <span class="counter-num-active" id="wonders-counter-num">01</span>
+              <span class="counter-num-total">/ 06</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Details Modal Backdrop -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="modal-img-container">
+          <img src="" alt="" class="modal-img" />
+          <div class="modal-img-overlay">
+            <div class="modal-header-info">
+              <span class="dest-card-tag" style="display: inline-block; margin-bottom: 8px;"></span>
+              <h3></h3>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-meta-grid">
+            <div class="meta-item"><div><div class="meta-label">Best Time</div><div class="meta-value"></div></div></div>
+            <div class="meta-item"><div><div class="meta-label">Weather</div><div class="meta-value"></div></div></div>
+            <div class="meta-item"><div><div class="meta-label">Suggested Stay</div><div class="meta-value"></div></div></div>
+          </div>
+          <p class="modal-description"></p>
+          <ul class="highlights-list"></ul>
+          <div class="modal-footer-actions">
+            <a href="#" class="btn btn-primary" id="modal-inquire-btn">Inquire This Sanctuary</a>
+            <a href="#" class="btn btn-secondary" id="modal-plan-btn">Customize in Plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

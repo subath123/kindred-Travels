@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link class="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo &amp; Media Gallery | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="View beautiful captures of wildlife, beaches, historical architecture, mountains, and luxury guest experiences across Sri Lanka." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      /* Gallery Subpage Styles */
+
+      /* Navbar Dark Adaptations */
+      .navbar {
+        background: var(--glass-bg);
+        border-color: var(--glass-border);
+      }
+
+      .navbar.scrolled {
+        background: rgba(5, 20, 17, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        border-color: var(--glass-border);
+      }
+
+      .logo {
+        color: var(--white);
+      }
+
+      .nav-links a {
+        color: var(--white);
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-gold);
+      }
+
+      .mobile-menu-btn {
+        color: var(--white);
+      }
+
+      /* Floating Language Selector styling */
+      .lang-selector {
+        position: relative;
+        display: inline-block;
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--white);
+        padding: 8px 14px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .lang-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+
+      .lang-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 5px;
+        background-color: #0b2f27;
+        border: 1px solid var(--border-color);
+        min-width: 100px;
+        display: none;
+        flex-direction: column;
+        z-index: 100;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+
+      .lang-selector:hover .lang-dropdown {
+        display: flex;
+      }
+
+      .lang-dropdown a {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        color: var(--medium-text);
+        text-decoration: none;
+        transition: all 0.3s;
+        text-align: left;
+      }
+
+      .lang-dropdown a:hover,
+      .lang-dropdown a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Gallery Subpage Specific Styles */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-bottom: 80px;
+      }
+
+      .gallery-item {
+        position: relative;
+        height: 280px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        display: none;
+      }
+
+      .gallery-item.show {
+        display: block;
+        animation: filterCardReveal 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(5, 20, 17, 0.9) 0%, rgba(5, 20, 17, 0.2) 60%, rgba(5, 20, 17, 0) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 24px;
+        z-index: 2;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-tag {
+        font-size: 0.65rem;
+        color: var(--accent-gold);
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+      }
+
+      .gallery-title {
+        font-size: 1.2rem;
+        color: var(--white);
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .gallery-location {
+        font-size: 0.8rem;
+        color: var(--light-text);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .video-play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background-color: rgba(200, 155, 60, 0.9);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(200, 155, 60, 0.4);
+      }
+
+      .gallery-item:hover .video-play-icon {
+        background-color: var(--white);
+        color: var(--primary-deep);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      /* Lightbox Modal Styles */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(5, 20, 17, 0.98);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .lightbox.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .lightbox-content-wrapper {
+        position: relative;
+        max-width: 85%;
+        max-height: 75%;
+      }
+
+      .lightbox-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      }
+
+      .lightbox-caption {
+        margin-top: 20px;
+        text-align: center;
+        max-width: 600px;
+      }
+
+      .lightbox-caption h4 {
+        font-size: 1.5rem;
+        color: var(--white);
+        margin-bottom: 6px;
+      }
+
+      .lightbox-caption p {
+        color: var(--light-text);
+        font-size: 0.9rem;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: transparent;
+        border: none;
+        color: var(--white);
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .lightbox-close:hover {
+        color: var(--accent-gold);
+      }
+
+      /* Video Player Modal Styles */
+      .video-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(5, 20, 17, 0.98);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .video-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .video-wrapper {
+        width: 80%;
+        max-width: 900px;
+        aspect-ratio: 16/9;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      }
+
+      .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .video-wrapper {
+          width: 95%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80" alt="Pristine beach with palm trees in Trincomalee" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Capturing Ceylon</h1>
+        <p>A visual chronicle of rolling tea highlands, sun-drenched shores, and luxury retreats.</p>
+      </div>
+    </header>
+
+    <main class="container section" style="padding-top: 60px;">
+      <!-- Category Filter Chips -->
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All Memories</button>
+        <button class="chip" data-filter="wildlife">Wildlife</button>
+        <button class="chip" data-filter="beaches">Beaches</button>
+        <button class="chip" data-filter="culture">Culture</button>
+        <button class="chip" data-filter="mountains">Mountains</button>
+        <button class="chip" data-filter="luxury-hotels">Luxury Hotels</button>
+        <button class="chip" data-filter="guest-experiences">Guest Experiences</button>
+        <button class="chip" data-filter="videos">Videos</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <!-- 1. Wildlife - Leopard -->
+        <div class="gallery-item dest-item show" data-category="wildlife" onclick="openLightbox('https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1200&q=80', 'The Elusive Ceylon Leopard', 'Yala National Park')">
+          <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80" alt="Ceylon Leopard in Yala" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Wildlife</span>
+            <h3 class="gallery-title">The Elusive Ceylon Leopard</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Yala National Park</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Beaches - Mirissa -->
+        <div class="gallery-item dest-item show" data-category="beaches" onclick="openLightbox('https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1200&q=80', 'Coconut Tree Hill', 'Mirissa Coastline')">
+          <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=800&q=80" alt="Coconut Tree Hill Mirissa" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Beaches</span>
+            <h3 class="gallery-title">Coconut Tree Hill</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Mirissa Coastline</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Culture - Sigiriya -->
+        <div class="gallery-item dest-item show" data-category="culture" onclick="openLightbox('https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80', 'Sigiriya Rock Citadel', 'Cultural Triangle')">
+          <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Lion Rock Citadel" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Culture</span>
+            <h3 class="gallery-title">Sigiriya Rock Citadel</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Cultural Triangle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Mountains - Tea Fields -->
+        <div class="gallery-item dest-item show" data-category="mountains" onclick="openLightbox('https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=1200&q=80', 'Emerald Tea Valleys', 'Nuwara Eliya Highlands')">
+          <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=800&q=80" alt="Highland Tea Estates Nuwara Eliya" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Mountains</span>
+            <h3 class="gallery-title">Emerald Tea Valleys</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Nuwara Eliya Highlands</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Luxury Hotels - Tea Trails -->
+        <div class="gallery-item dest-item show" data-category="luxury-hotels" onclick="openLightbox('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80', 'Colonial Tea Planter Bungalow', 'Ceylon Tea Trails, Hatton')">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Luxury Tea Bungalow Hatton" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Luxury Hotels</span>
+            <h3 class="gallery-title">Colonial Tea Planter Bungalow</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Ceylon Tea Trails, Hatton</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Guest Experiences - Tea Plucking -->
+        <div class="gallery-item dest-item show" data-category="guest-experiences" onclick="openLightbox('https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=1200&q=80', 'Traditional Tea Leaves Selection', 'Hatton Tea Plantations')">
+          <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=800&q=80" alt="Tea harvesting guest experience" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Guest Experiences</span>
+            <h3 class="gallery-title">Traditional Tea Leaves Selection</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Hatton Tea Plantations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Wildlife - Elephants -->
+        <div class="gallery-item dest-item show" data-category="wildlife" onclick="openLightbox('https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&w=1200&q=80', 'Wild Elephants Herd Crossing', 'Minneriya National Park')">
+          <img src="https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&w=800&q=80" alt="Wild Elephants in Minneriya" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Wildlife</span>
+            <h3 class="gallery-title">Wild Elephants Herd Crossing</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Minneriya National Park</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Beaches - Stilt Fishermen -->
+        <div class="gallery-item dest-item show" data-category="beaches" onclick="openLightbox('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80', 'Traditional Stilt Fishing', 'Koggala Shallow Coastline')">
+          <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Stilt Fishermen Koggala" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Beaches</span>
+            <h3 class="gallery-title">Traditional Stilt Fishing</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Koggala Shallow Coastline</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Culture - Sacred Kandy Stupa / Temple -->
+        <div class="gallery-item dest-item show" data-category="culture" onclick="openLightbox('https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80', 'Sacred Temple of the Tooth Relic', 'Kandy Royal Capital')">
+          <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Tooth Relic Temple Kandy" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Culture</span>
+            <h3 class="gallery-title">Sacred Temple of the Tooth Relic</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Kandy Royal Capital</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Mountains - Ella Rock Views -->
+        <div class="gallery-item dest-item show" data-category="mountains" onclick="openLightbox('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80', 'Hiking Ella Peak Sunset', 'Ella Misty Mountains')">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Ella Rock hiking peak view" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Mountains</span>
+            <h3 class="gallery-title">Hiking Ella Peak Sunset</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Ella Misty Mountains</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Luxury Hotels - Amanwella Pool -->
+        <div class="gallery-item dest-item show" data-category="luxury-hotels" onclick="openLightbox('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80', 'Infinity Pool overlooking the Ocean', 'Amanwella, Tangalle')">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" alt="Luxury Amanwella Pool View" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Luxury Hotels</span>
+            <h3 class="gallery-title">Infinity Pool overlooking the Ocean</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Amanwella, Tangalle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Guest Experiences - Local Cooking Masterclass -->
+        <div class="gallery-item dest-item show" data-category="guest-experiences" onclick="openLightbox('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80', 'Organic Ceylon Spice Cooking', 'Hiriwadunna Farm Lodge')">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Traditional clay-pot cooking experience" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Guest Experiences</span>
+            <h3 class="gallery-title">Organic Ceylon Spice Cooking</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Hiriwadunna Farm Lodge</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Video Card 1 -->
+        <div class="gallery-item dest-item show" data-category="videos" onclick="playVideoModal('https://www.w3schools.com/html/mov_bbb.mp4', 'Discover Sri Lanka - A Cinematic Journey')">
+          <div class="video-play-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Cinematic video thumb" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Videos</span>
+            <h3 class="gallery-title">Cinematic Sri Lanka</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Islandwide Coastlines &amp; Hills</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Video Card 2 -->
+        <div class="gallery-item dest-item show" data-category="videos" onclick="playVideoModal('https://www.w3schools.com/html/movie.mp4', 'Ceylon Highlands and Tea Trails')">
+          <div class="video-play-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=800&q=80" alt="Misty hills video thumb" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Videos</span>
+            <h3 class="gallery-title">Highland Mist &amp; Trains</h3>
+            <div class="gallery-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Hatton to Ella Train Corridor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="gallery-lightbox">
+      <button class="lightbox-close" aria-label="Close Lightbox" onclick="closeLightbox()">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="lightbox-content-wrapper">
+        <img src="" alt="" class="lightbox-img" id="lightbox-img-node" />
+      </div>
+      <div class="lightbox-caption">
+        <h4 id="lightbox-title-node">Image Caption Title</h4>
+        <p id="lightbox-location-node">Image Location Description</p>
+      </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="gallery-video-modal" onclick="closeVideoModal(event)">
+      <button class="lightbox-close" aria-label="Close Video Player" onclick="closeVideoModalDirect()">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="video-wrapper">
+        <video id="lightbox-video-node" controls src=""></video>
+      </div>
+    </div>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      // Update year in footer
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Category filter logic
+      const chips = document.querySelectorAll('.chip');
+      const items = document.querySelectorAll('.gallery-item');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          // Remove active class from all chips
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+
+          const filter = chip.getAttribute('data-filter');
+
+          items.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'block';
+              item.classList.add('show');
+            } else {
+              item.style.display = 'none';
+              item.classList.remove('show');
+            }
+          });
+        });
+      });
+
+      // Lightbox functionality
+      const lightbox = document.getElementById('gallery-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img-node');
+      const lightboxTitle = document.getElementById('lightbox-title-node');
+      const lightboxLocation = document.getElementById('lightbox-location-node');
+
+      function openLightbox(src, title, location) {
+        lightboxImg.src = src;
+        lightboxImg.alt = title;
+        lightboxTitle.textContent = title;
+        lightboxLocation.textContent = location;
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'unset';
+        lightboxImg.src = '';
+      }
+
+      // Close lightbox on clicking backdrop
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Video modal functionality
+      const videoModal = document.getElementById('gallery-video-modal');
+      const videoNode = document.getElementById('lightbox-video-node');
+
+      function playVideoModal(src, title) {
+        videoNode.src = src;
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        videoNode.play();
+      }
+
+      function closeVideoModalDirect() {
+        videoModal.classList.remove('active');
+        document.body.style.overflow = 'unset';
+        videoNode.pause();
+        videoNode.src = '';
+      }
+
+      function closeVideoModal(e) {
+        if (e.target === videoModal) {
+          closeVideoModalDirect();
+        }
+      }
+    </script>
+  </body>
+</html>

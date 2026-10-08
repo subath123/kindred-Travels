@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxury Hotels &amp; Sanctuaries | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Discover Sri Lanka's finest luxury hotels, boutique bungalows, private villas, and eco-glamping sites. Curated accommodations for a premium travel experience." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      
+
+      
+
+      /* Heading typography colors */
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--white);
+        font-family: var(--font-serif);
+      }
+      
+      p {
+        color: var(--medium-text);
+      }
+
+      /* Navbar Dark Adaptations */
+      
+
+      .navbar.scrolled {
+        background: rgba(5, 20, 17, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        border-color: var(--glass-border);
+      }
+
+      
+
+      .nav-links a {
+        color: var(--white);
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-gold);
+      }
+
+      .mobile-menu-btn {
+        color: var(--white);
+      }
+
+      /* Floating Language Selector styling */
+      .lang-selector {
+        position: relative;
+        display: inline-block;
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--white);
+        padding: 8px 14px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .lang-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+
+      .lang-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 5px;
+        background-color: #0b2f27;
+        border: 1px solid var(--border-color);
+        min-width: 100px;
+        display: none;
+        flex-direction: column;
+        z-index: 100;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+
+      .lang-selector:hover .lang-dropdown {
+        display: flex;
+      }
+
+      .lang-dropdown a {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        color: var(--medium-text);
+        text-decoration: none;
+        transition: all 0.3s;
+        text-align: left;
+      }
+
+      .lang-dropdown a:hover,
+      .lang-dropdown a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Hotels Subpage Specific Styles */
+      .hotels-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .hotel-card {
+        background: rgba(11, 47, 39, 0.4);
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hotel-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent-gold);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .hotel-img-wrapper {
+        position: relative;
+        height: 260px;
+        overflow: hidden;
+      }
+
+      .hotel-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .hotel-card:hover .hotel-img {
+        transform: scale(1.06);
+      }
+
+      .hotel-price-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(5, 20, 17, 0.85);
+        color: var(--accent-gold);
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 5px 12px;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(200, 155, 60, 0.3);
+      }
+
+      .hotel-card-content {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .hotel-tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: var(--accent-gold);
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .hotel-title {
+        font-size: 1.5rem;
+        color: var(--white);
+        margin-bottom: 10px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .hotel-location {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--light-text);
+        margin-bottom: 18px;
+      }
+
+      .hotel-location svg {
+        color: var(--accent-gold);
+        flex-shrink: 0;
+      }
+
+      .hotel-desc {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--medium-text);
+        margin-bottom: 24px;
+        flex-grow: 1;
+      }
+
+      .hotel-amenities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+        margin-bottom: 25px;
+      }
+
+      .amenity-tag {
+        font-size: 0.75rem;
+        color: var(--light-text);
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 4px 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .hotel-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Hotel inquiry form section */
+      .hotel-inquiry-box {
+        background: rgba(11, 47, 39, 0.5);
+        border: 1px solid var(--border-color);
+        padding: 50px;
+        max-width: 800px;
+        margin: 40px auto 0 auto;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      }
+
+      .hotel-inquiry-box h3 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        text-align: center;
+      }
+
+      .hotel-inquiry-box p {
+        text-align: center;
+        max-width: 500px;
+        margin: 0 auto 35px auto;
+        font-size: 0.9rem;
+        color: var(--medium-text);
+      }
+
+      @media (max-width: 768px) {
+        .hotels-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .hotel-inquiry-box {
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80" alt="Luxury swimming pool resort overlooking the ocean" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Ceylon's Finest Sanctuaries</h1>
+        <p>From historical tea bungalows to oceanfront villas, discover the peak of luxury accommodation.</p>
+      </div>
+    </header>
+
+    <main class="container section" style="padding-top: 60px;">
+      <!-- Category Filter Chips -->
+      <div class="filter-chips">
+        <button class="chip active" data-filter="all">All Sanctuaries</button>
+        <button class="chip" data-filter="luxury-hotel">Luxury Hotels</button>
+        <button class="chip" data-filter="boutique-hotel">Boutique Hotels</button>
+        <button class="chip" data-filter="villa">Villas</button>
+        <button class="chip" data-filter="beach-resort">Beach Resorts</button>
+        <button class="chip" data-filter="eco-glamping">Eco Lodges &amp; Glamping</button>
+      </div>
+
+      <!-- Hotels Grid -->
+      <div class="hotels-grid">
+        <!-- 1. Ceylon Tea Trails (Boutique Hotel) -->
+        <div class="hotel-card dest-item show" data-category="boutique-hotel">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Ceylon Tea Trails Bungalow" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Boutique Hotel &amp; Heritage</span>
+            <h3 class="hotel-title">Ceylon Tea Trails</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Hatton, Central Highlands</span>
+            </div>
+            <p class="hotel-desc">
+              Perched at an altitude of 1,250 meters in the tea country of Sri Lanka, this legendary resort comprises five restored colonial-era tea planter bungalows. Enjoy private butler service, gourmet garden-to-table cuisine, and guided tours of tea rolling hills.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Private Butler</span>
+              <span class="amenity-tag">Infinity Pool</span>
+              <span class="amenity-tag">Tea Factory Tour</span>
+              <span class="amenity-tag">Ayurvedic Spa</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Ceylon Tea Trails')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 2. Amanwella (Beach Resort) -->
+        <div class="hotel-card dest-item show" data-category="beach-resort">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" alt="Amanwella Resort Tangalle" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Luxury Beach Resort</span>
+            <h3 class="hotel-title">Amanwella</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Tangalle, Southern Coast</span>
+            </div>
+            <p class="hotel-desc">
+              A serene beach sanctuary situated on a crescent of golden sand bordered by coconut palms. Amanwella features modernist architecture that pays homage to Geoffrey Bawa, with floor-to-ceiling glass and private plunge pools in every single suite.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Private Plunge Pool</span>
+              <span class="amenity-tag">Ocean Views</span>
+              <span class="amenity-tag">Coconut Grove Spa</span>
+              <span class="amenity-tag">Private Beach</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Amanwella')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 3. Cape Weligama (Villa / Luxury Hotel) -->
+        <div class="hotel-card dest-item show" data-category="villa">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80" alt="Cape Weligama Cliff Residences" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Luxury Residences &amp; Villas</span>
+            <h3 class="hotel-title">Cape Weligama</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Weligama, Southern Coast</span>
+            </div>
+            <p class="hotel-desc">
+              Perched dramatically on a headland cliff rising 40 meters above the Indian Ocean, Cape Weligama features lavish residence blocks grouped around shared infinity pools, alongside an iconic crescent-shaped main pool looking out to the horizon.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Cliffside Dining</span>
+              <span class="amenity-tag">Crescent Pool</span>
+              <span class="amenity-tag">Private Pavilions</span>
+              <span class="amenity-tag">Surfing School</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Cape Weligama')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 4. Wild Coast Tented Lodge (Eco Lodges & Glamping) -->
+        <div class="hotel-card dest-item show" data-category="eco-glamping">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Wild Coast Tented Lodge Yala" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Luxury Safari Glamping</span>
+            <h3 class="hotel-title">Wild Coast Tented Lodge</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Yala National Park, Southeast</span>
+            </div>
+            <p class="hotel-desc">
+              Where the wild jungle meets the roaring ocean, this unique lodge features organic tented suites (called 'Cocoons' and 'Urchins') that mimic the surrounding boulders. Enjoy gourmet bush dining, daily safari game drives, and absolute conservation values.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Cocoon Tents</span>
+              <span class="amenity-tag">4x4 Safaris</span>
+              <span class="amenity-tag">Eco-sustainable</span>
+              <span class="amenity-tag">Gourmet Bush Dining</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Wild Coast Tented Lodge')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 5. Santani Wellness Resort (Eco Lodges & Glamping / Boutique Hotel) -->
+        <div class="hotel-card dest-item show" data-category="eco-glamping">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Santani Wellness Resort Kandy" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Wellness &amp; Eco Retreat</span>
+            <h3 class="hotel-title">Santani Wellness Resort</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Kandy Hills, Central Zone</span>
+            </div>
+            <p class="hotel-desc">
+              Built on the values of minimal design and absolute harmony with nature, Santani sits on a former tea estate surrounded by misty mountains. Savor customized Ayurvedic menus, yoga pavilions floating over valleys, and a world-class tri-level spa.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Ayurvedic Spa</span>
+              <span class="amenity-tag">Yoga Pavilion</span>
+              <span class="amenity-tag">Minimal Design</span>
+              <span class="amenity-tag">Customized Meals</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Santani Wellness Resort')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 6. Galle Fort Hotel (Boutique Hotel / Heritage) -->
+        <div class="hotel-card dest-item show" data-category="boutique-hotel">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1605538032432-a9f0c8d9baac?auto=format&fit=crop&w=800&q=80" alt="Galle Fort Hotel Historic Court" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Colonial Heritage &amp; Boutique</span>
+            <h3 class="hotel-title">Galle Fort Hotel</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Galle Fort, Southern Coast</span>
+            </div>
+            <p class="hotel-desc">
+              Housed in a grand 300-year-old Dutch merchant mansion inside the UNESCO-listed Galle Fort. The hotel boasts period antiques, high ceilings, a tranquil central courtyard pool, and a boutique lounge offering Ceylon tea and classic gin cocktails.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Heritage Suites</span>
+              <span class="amenity-tag">Courtyard Pool</span>
+              <span class="amenity-tag">Fine Dining</span>
+              <span class="amenity-tag">Historic Tours</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Galle Fort Hotel')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 7. Kahanda Kanda (Villa / Boutique Hotel) -->
+        <div class="hotel-card dest-item show" data-category="villa">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80" alt="Kahanda Kanda Hillside Villas" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Private Hillside Villas</span>
+            <h3 class="hotel-title">Kahanda Kanda</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Galle Hills, Southern Coast</span>
+            </div>
+            <p class="hotel-desc">
+              Overlooking a lush tea plantation and the pristine waters of Koggala Lake, Kahanda Kanda is a boutique hotel featuring twelve unique villas. Known for elegant interior design, absolute privacy, tropical gardens, and fresh local organic seafood menus.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Tea Field Views</span>
+              <span class="amenity-tag">Absolute Privacy</span>
+              <span class="amenity-tag">Organic Restaurant</span>
+              <span class="amenity-tag">Infinity Pool</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Kahanda Kanda')">Inquire About Stay</a>
+          </div>
+        </div>
+
+        <!-- 8. Tri Hotel (Eco Lodges & Glamping / Luxury Hotel) -->
+        <div class="hotel-card dest-item show" data-category="luxury-hotel">
+          <div class="hotel-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80" alt="Tri Hotel Koggala Lakefront" class="hotel-img" />
+            <div class="hotel-price-badge">$$$$</div>
+          </div>
+          <div class="hotel-card-content">
+            <span class="hotel-tag">Sustainable Eco-Luxury</span>
+            <h3 class="hotel-title">Tri Hotel</h3>
+            <div class="hotel-location">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Koggala Lake, Southern Coast</span>
+            </div>
+            <p class="hotel-desc">
+              Sri Lanka's premier design-forward lakefront sanctuary, situated on the banks of Lake Koggala. Built using local materials and powered by sustainable energy, Tri features spiral geometry layout, a central water tower, and gorgeous lakeside villas.
+            </p>
+            <div class="hotel-amenities">
+              <span class="amenity-tag">Lakefront Pool</span>
+              <span class="amenity-tag">Water Tower Suites</span>
+              <span class="amenity-tag">Solar Powered</span>
+              <span class="amenity-tag">Ayurvedic Wellness</span>
+            </div>
+            <a href="#hotel-inquiry-section" class="btn btn-outline-gold hotel-btn" onclick="prefillHotel('Tri Hotel')">Inquire About Stay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Hotel Inquiry Form -->
+      <section class="hotel-inquiry-box" id="hotel-inquiry-section">
+        <h3>Tailor Your Luxury Stay</h3>
+        <p>Submit your preferred sanctuaries and dates, and our luxury curators will verify rates and design your accommodation route.</p>
+        
+        <form id="hotel-inquiry-form" onsubmit="submitHotelInquiry(event)">
+          <div class="form-group">
+            <label>Selected Sanctuary / Sanctuaries</label>
+            <input type="text" id="inquiry-hotel-name" placeholder="E.g., Ceylon Tea Trails, Amanwella" required />
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Arrival Date</label>
+              <input type="date" required />
+            </div>
+            <div class="form-group">
+              <label>Nights of Stay</label>
+              <select required>
+                <option value="1-3">1 - 3 Nights</option>
+                <option value="4-7" selected>4 - 7 Nights</option>
+                <option value="8-11">8 - 11 Nights</option>
+                <option value="12+">12+ Nights</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Number of Rooms</label>
+              <select required>
+                <option value="1" selected>1 Room</option>
+                <option value="2">2 Rooms</option>
+                <option value="3-4">3 - 4 Rooms</option>
+                <option value="5+">5+ Rooms</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Guests Profile</label>
+              <select required>
+                <option value="single">Solo Traveler</option>
+                <option value="couple" selected>Couple</option>
+                <option value="family">Family (with Kids)</option>
+                <option value="group">Corporate / Friends Group</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" required placeholder="John Doe" />
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" required placeholder="john@example.com" />
+            </div>
+            <div class="form-group">
+              <label>Contact Phone Number</label>
+              <input type="tel" placeholder="+1 234 567 8900" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Special Arrangements (Helicopter transfers, dietary requests, spa booking, tours)</label>
+            <textarea rows="3" placeholder="E.g., I would like to book a helicopter transfer from Colombo International Airport directly to Tea Trails, and require vegan dining options."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; letter-spacing: 1.5px;">Submit Luxury Inquiry</button>
+        </form>
+
+        <div id="hotel-inquiry-success" style="display: none; text-align: center; color: var(--accent-gold); padding: 20px 0;">
+          <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--seafoam); margin-bottom: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <h4>Inquiry Submitted Successfully!</h4>
+          <p style="color: var(--white); margin-top: 5px;">A personal travel curator has been notified and will email you with villa availability within 12 hours.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      // Update year in footer
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Category filter logic
+      const chips = document.querySelectorAll('.chip');
+      const cards = document.querySelectorAll('.hotel-card');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          // Remove active class from all chips
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+
+          const filter = chip.getAttribute('data-filter');
+
+          cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'flex';
+              card.classList.add('show');
+            } else {
+              card.style.display = 'none';
+              card.classList.remove('show');
+            }
+          });
+        });
+      });
+
+      // Pre-fill hotel name in inquiry form
+      function prefillHotel(hotelName) {
+        document.getElementById('inquiry-hotel-name').value = hotelName;
+        // Scroll to form smoothly
+        document.getElementById('hotel-inquiry-section').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Inquiry submission handling
+      function submitHotelInquiry(e) {
+        e.preventDefault();
+        const form = document.getElementById('hotel-inquiry-form');
+        const successBox = document.getElementById('hotel-inquiry-success');
+        
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+      }
+
+      // --- URL Query Parameters Handling for Hotels Search ---
+      const hotelParams = new URLSearchParams(window.location.search);
+      const typeParam = hotelParams.get('type');
+      const regionParam = hotelParams.get('region');
+      const guestsParam = hotelParams.get('guests');
+      const datesParam = hotelParams.get('dates');
+
+      if (typeParam && typeParam !== 'all') {
+        const matchingChip = document.querySelector(`.chip[data-filter="${typeParam}"]`);
+        if (matchingChip) {
+          matchingChip.click();
+        }
+      }
+
+      if (regionParam && regionParam !== 'all') {
+        const regLower = regionParam.toLowerCase().replace(/[^a-z0-9]/g, '');
+        let matchedFirstCard = false;
+        cards.forEach(card => {
+          const locText = (card.querySelector('.hotel-location') ? card.querySelector('.hotel-location').textContent : '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          const descText = (card.querySelector('.hotel-desc') ? card.querySelector('.hotel-desc').textContent : '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          if (locText.includes(regLower) || descText.includes(regLower) || regLower.includes(locText)) {
+            card.classList.add('card-search-highlight');
+            if (!matchedFirstCard) {
+              matchedFirstCard = true;
+              setTimeout(() => {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }, 400);
+            }
+          }
+        });
+      } else if (typeParam) {
+        const grid = document.querySelector('.hotels-grid');
+        if (grid) {
+          setTimeout(() => {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 350);
+        }
+      }
+
+      if (guestsParam || datesParam) {
+        const msgField = document.getElementById('inquiry-message') || document.querySelector('#hotel-inquiry-form textarea');
+        if (msgField) {
+          const notes = [];
+          if (regionParam && regionParam !== 'all') notes.push(`Region preference: ${regionParam}`);
+          if (datesParam) notes.push(`Travel dates: ${datesParam}`);
+          if (guestsParam) notes.push(`Party size: ${guestsParam} guests`);
+          if (notes.length > 0) {
+            msgField.value = notes.join(' | ') + (msgField.value ? '\n' + msgField.value : '');
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

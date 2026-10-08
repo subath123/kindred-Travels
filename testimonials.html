@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traveler Reviews &amp; Stories | Kindred Travels Sri Lanka</title>
+    <meta name="description" content="Read reviews, see real traveler photos, watch video feedback, or submit your own Sri Lanka travel review." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+      /* Testimonials Subpage Styles */
+
+      /* Header language selector style */
+      .lang-selector-container {
+        position: relative;
+        display: inline-block;
+      }
+      .lang-selector-btn {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        padding: 8px 12px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s;
+        height: 38px;
+      }
+      .lang-selector-btn:hover {
+        border-color: var(--accent-gold);
+        color: var(--accent-gold);
+      }
+      .lang-caret {
+        transition: transform 0.3s;
+      }
+      .lang-selector-container:hover .lang-caret {
+        transform: rotate(180deg);
+      }
+      .lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background-color: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 90px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1010;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+      .lang-selector-container:hover .lang-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .lang-dropdown a {
+        display: block;
+        padding: 10px 15px;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        color: #b0c7c2;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-align: center;
+        font-weight: 500;
+      }
+      .lang-dropdown a:hover, .lang-dropdown a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Floating Language Selector Widget (Bottom Left) */
+      .floating-lang-selector {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 999;
+      }
+      .floating-lang-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--accent-gold);
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(200, 155, 60, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+      .floating-lang-btn svg {
+        margin-bottom: 2px;
+        width: 16px;
+        height: 16px;
+      }
+      .floating-lang-btn:hover {
+        background-color: var(--accent-gold-hover);
+        transform: scale(1.05);
+      }
+      .floating-lang-menu {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        background-color: #0b2f27;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 140px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+      .floating-lang-selector:hover .floating-lang-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .floating-lang-menu a {
+        display: block;
+        padding: 12px 18px;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: #b0c7c2;
+        text-decoration: none;
+        transition: all 0.2s;
+        text-align: left;
+      }
+      .floating-lang-menu a:hover, .floating-lang-menu a.active {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold);
+      }
+
+      /* Subpage Hero */
+      .subpage-hero {
+        position: relative;
+        height: 40vh;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+      .subpage-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(5, 20, 17, 0.4) 0%, rgba(5, 20, 17, 0.95) 100%);
+        z-index: 2;
+      }
+      .subpage-hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        filter: brightness(0.7);
+      }
+      .subpage-hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 0 24px;
+        max-width: 800px;
+      }
+      .subpage-hero-content h1 {
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        margin-bottom: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+      .subpage-hero-content p {
+        font-size: 1.1rem;
+        font-style: italic;
+        font-family: var(--font-serif);
+      }
+
+      /* Grid for statistics */
+      .stat-summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: -30px;
+        margin-bottom: 80px;
+        position: relative;
+        z-index: 10;
+      }
+      .stat-card {
+        background-color: #0c231f;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      }
+      .stat-number {
+        font-size: 2.2rem;
+        color: var(--accent-gold);
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--medium-text);
+        font-weight: 600;
+      }
+
+      /* Submissions container */
+      .reviews-layout-grid {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 50px;
+      }
+
+      /* Reviews feed */
+      .reviews-feed-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .review-card-item {
+        background-color: #0c231f;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+      }
+      .review-card-item:hover {
+        border-color: rgba(200, 155, 60, 0.3);
+        transform: translateY(-2px);
+      }
+      .review-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+      .review-author-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .author-avatar-placeholder {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(200, 155, 60, 0.15);
+        border: 1px solid var(--accent-gold);
+        color: var(--accent-gold);
+        font-family: var(--font-sans);
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .author-details h4 {
+        font-size: 1rem;
+        font-family: var(--font-sans);
+        color: #ffffff;
+        font-weight: 600;
+      }
+      .author-details p {
+        font-size: 0.8rem;
+        color: var(--light-text);
+        margin-top: 2px;
+      }
+      .review-rating-box {
+        display: flex;
+        gap: 4px;
+        color: var(--accent-gold);
+      }
+
+      .review-trip-tag {
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--accent-gold);
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .review-text-content {
+        line-height: 1.8;
+        color: var(--medium-text);
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+      }
+
+      /* Review photo attachment grid */
+      .review-photos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .review-photo-item {
+        position: relative;
+        padding-bottom: 75%;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .review-photo-item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+        filter: brightness(0.9);
+      }
+      .review-photo-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Submit Review Form Card */
+      .submit-review-card {
+        background-color: #0c231f;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 40px 30px;
+        height: fit-content;
+        position: sticky;
+        top: 130px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      }
+      .submit-review-card h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 24px;
+        position: relative;
+      }
+      .submit-review-card h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 40px;
+        height: 2px;
+        background-color: var(--accent-gold);
+      }
+
+      /* Star Selector Widget */
+      .star-selector {
+        display: flex;
+        gap: 8px;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.15);
+        margin-bottom: 20px;
+      }
+      .star-selector span {
+        transition: color 0.2s;
+      }
+      .star-selector span:hover, .star-selector span.selected {
+        color: var(--accent-gold);
+      }
+
+      .form-field-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+      .form-field-item label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: var(--accent-gold);
+      }
+      .form-field-item input, .form-field-item select, .form-field-item textarea {
+        background-color: rgba(5, 20, 17, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        padding: 12px 15px;
+        font-family: var(--font-sans);
+        font-size: 0.9rem;
+        transition: all 0.3s;
+      }
+      .form-field-item input:focus, .form-field-item select:focus, .form-field-item textarea:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        background-color: rgba(5, 20, 17, 0.9);
+      }
+      .form-field-item textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+
+      /* Mock Video Reviews Carousel Layout */
+      .video-reviews-section {
+        background-color: rgba(11, 47, 39, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 80px 40px;
+        margin-top: 100px;
+      }
+      .video-section-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 50px auto;
+      }
+      .video-section-header h3 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      .video-reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+      .video-card-item {
+        background-color: #0c231f;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        cursor: pointer;
+      }
+      .video-thumbnail-box {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect ratio */
+        overflow: hidden;
+      }
+      .video-thumbnail-box img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+        filter: brightness(0.75);
+      }
+      .video-card-item:hover .video-thumbnail-box img {
+        transform: scale(1.05);
+      }
+      .play-btn-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgba(200, 155, 60, 0.95);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px rgba(200, 155, 60, 0.4);
+        transition: all 0.3s;
+      }
+      .video-card-item:hover .play-btn-circle {
+        background-color: #ffffff;
+        color: var(--accent-gold);
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      .video-meta-info {
+        padding: 24px;
+      }
+      .video-meta-info h4 {
+        font-size: 1.1rem;
+        font-family: var(--font-sans);
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .video-meta-info p {
+        font-size: 0.8rem;
+        color: var(--light-text);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Video Modal Overlay */
+      .video-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(5, 20, 17, 0.95);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .video-modal-content {
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        background-color: #0c231f;
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 8px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      }
+      .video-modal-close {
+        position: absolute;
+        top: -45px;
+        right: 0;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .video-modal-close:hover {
+        color: var(--accent-gold);
+      }
+
+      @media (max-width: 992px) {
+        .stat-summary-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        .reviews-layout-grid {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+        .submit-review-card {
+          position: relative;
+          top: 0;
+        }
+        .video-reviews-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+      }
+      @media (max-width: 576px) {
+        .stat-summary-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+        .review-card-item {
+          padding: 24px;
+        }
+        .review-photos-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+        <!-- Floating Navigation Bar -->
+    <nav class="navbar">
+      <a href="index.html" class="logo" style="gap: 0;">
+        <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Desktop & Mobile Links -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Home</a></li>
+        <li><a href="about.html" class="nav-about">About</a></li>
+        <li><a href="destinations.html" class="nav-destinations">Destinations</a></li>
+        <li><a href="packages.html" class="nav-packages">Packages</a></li>
+        <li><a href="safari.html" class="nav-safari">Safari</a></li>
+        <li><a href="services.html" class="nav-services">Services</a></li>
+        <li class="nav-dropdown-wrapper">
+          <a href="#" class="nav-dropdown-trigger">Explore More <span class="chevron">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="hotels.html" class="nav-hotels">Hotels</a></li>
+            <li><a href="guide.html" class="nav-guide">Travel Guide</a></li>
+            <li><a href="gallery.html" class="nav-gallery">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-testimonials">Testimonials</a></li>
+            <li><a href="blog.html" class="nav-blog">Travel Blog</a></li>
+            <li><a href="faq.html" class="nav-faq">FAQ Help</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-contact">Contact</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <a href="plan.html" class="btn btn-primary nav-plan" style="padding: 10px 22px; font-size: 0.75rem; font-weight: 600;">
+          Plan Your Trip
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="subpage-hero-overlay"></div>
+      <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80" alt="Scenic beach at Mirissa, Sri Lanka" class="subpage-hero-bg" />
+      <div class="subpage-hero-content">
+        <h1>Traveler Stories &amp; Testimonials</h1>
+        <p>Real feedback and captured memories from clients who explored Sri Lanka with Kindred Travels.</p>
+      </div>
+    </header>
+
+    <!-- Stat banner section -->
+    <div class="container">
+      <div class="stat-summary-grid">
+        <div class="stat-card">
+          <div class="stat-number">4.9 / 5</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1,200+</div>
+          <div class="stat-label">Happy Guests</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Recommend Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Active Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="container section" style="padding-top: 0;">
+      <div class="reviews-layout-grid">
+        
+        <!-- Left: Local Storage + Mock Reviews Feed -->
+        <section class="reviews-feed-container">
+          <h3 style="font-size: 1.8rem; margin-bottom: 20px; font-weight: 500;">Guest Reviews</h3>
+          
+          <div id="dynamic-reviews-list">
+            <!-- JavaScript renders active reviews here -->
+          </div>
+        </section>
+
+        <!-- Right: Submit Form Card -->
+        <aside>
+          <div class="submit-review-card">
+            <h3>Leave a Review</h3>
+            <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 10px; margin-bottom: 20px; line-height: 1.5;">
+              Share your travel experience. Your feedback helps other premium explorers map their journeys.
+            </p>
+            
+            <form id="submission-review-form" onsubmit="handleReviewSubmit(event)">
+              <!-- Stars selection -->
+              <div class="form-field-item">
+                <label>Overall Rating *</label>
+                <div class="star-selector" id="rating-star-selector">
+                  <span onclick="setRating(1)">★</span>
+                  <span onclick="setRating(2)">★</span>
+                  <span onclick="setRating(3)">★</span>
+                  <span onclick="setRating(4)">★</span>
+                  <span onclick="setRating(5)" class="selected">★</span>
+                </div>
+                <input type="hidden" id="selected-rating" name="rating" value="5" />
+              </div>
+
+              <!-- Name -->
+              <div class="form-field-item">
+                <label for="review-author">Your Name *</label>
+                <input type="text" id="review-author" name="author" placeholder="E.g. Sophia Carter" required />
+              </div>
+
+              <!-- Tour Itinerary -->
+              <div class="form-field-item">
+                <label for="review-itinerary">Which Itinerary Did You Book?</label>
+                <select id="review-itinerary" name="itinerary">
+                  <option value="cultural-heritage">Cultural Triangle &amp; Heritage Tour</option>
+                  <option value="tea-hills">Highlands &amp; Tea Estates Escape</option>
+                  <option value="safari-wildlife">Wildlife, Safari &amp; Nature Explorer</option>
+                  <option value="coastline">South Coast Luxury &amp; Beaches</option>
+                  <option value="bespoke-custom" selected>Custom Bespoke Tour Proposal</option>
+                </select>
+              </div>
+
+              <!-- Text Content -->
+              <div class="form-field-item">
+                <label for="review-text">Review Content *</label>
+                <textarea id="review-text" name="text" placeholder="Tell us about your chauffeur, hotels, meals, and favorite spots..." required></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.85rem; letter-spacing: 0.5px;">
+                Submit Review
+              </button>
+            </form>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- Video Reviews Section -->
+    <section class="video-reviews-section">
+      <div class="container">
+        <div class="video-section-header">
+          <h3>Video Travel Diaries</h3>
+          <p>Watch video diaries and vlogs recorded by our travelers during their luxury tour of Sri Lanka.</p>
+        </div>
+
+        <div class="video-reviews-grid">
+          <!-- Video Card 1 -->
+          <div class="video-card-item" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+            <div class="video-thumbnail-box">
+              <img src="https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=800&q=80" alt="Scenic mountains in Ella" />
+              <div class="play-btn-circle">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="margin-left: 4px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-meta-info">
+              <h4>Misty Highlands &amp; Nine Arch Bridge Vlogs</h4>
+              <p>Alex &amp; Emily (United Kingdom)</p>
+            </div>
+          </div>
+
+          <!-- Video Card 2 -->
+          <div class="video-card-item" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+            <div class="video-thumbnail-box">
+              <img src="https://images.unsplash.com/photo-1563189336-d7318a6e87a2?auto=format&fit=crop&w=800&q=80" alt="Wildlife elephant safari" />
+              <div class="play-btn-circle">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="margin-left: 4px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-meta-info">
+              <h4>Chasing Leopards in Yala National Park</h4>
+              <p>The Weber Family (Germany)</p>
+            </div>
+          </div>
+
+          <!-- Video Card 3 -->
+          <div class="video-card-item" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+            <div class="video-thumbnail-box">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Tropical coast beach sunset" />
+              <div class="play-btn-circle">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="margin-left: 4px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-meta-info">
+              <h4>Coastal Retreat: Galle &amp; Weligama Beaches</h4>
+              <p>Yuki &amp; Haru (Japan)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal Container -->
+    <div class="video-modal-overlay" id="yt-video-modal" onclick="closeVideoModal(event)">
+      <div class="video-modal-content">
+        <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
+        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+          <iframe 
+            id="modal-youtube-iframe"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            src="" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Structure -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+        <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <!-- Column 1 Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="gap: 0;">
+            <img src="./logo.svg" alt="Kindred Travels Logo" style="height: 68px; width: auto; object-fit: contain;">
+          </a>
+          <p class="footer-logo-sub">A collection of local experts and curators designing the definitive luxury travel route in Sri Lanka.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-2.8 0-5 2.2-5 5v2z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41a4.87 4.87 0 0 1 1.77 1.15c.5.5.81 1 .97 1.78.16.41.36 1.04.4 2.2.07 1.28.08 1.66.08 4.86s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22a4.87 4.87 0 0 1-1.15 1.77c-.5.5-1 .81-1.78.97-.41.16-1.04.36-2.2.4-1.28.07-1.66.08-4.86.08s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41a4.87 4.87 0 0 1-1.77-1.15c-.5-.5-.81-1-.97-1.78-.16-.41-.36-1.04-.4-2.2C2.01 15.2 2 14.82 2 11.62s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.16-.42.47-.73.97-1.15.5-.5 1-.81 1.78-.97.41-.16 1.04-.36 2.2-.4.12-.06.5-.07 4.85-.07zM12 0C8.74 0 8.33.02 7.05.08c-1.28.06-2.15.26-2.92.56a7 7 0 0 0-2.54 1.66 7 7 0 0 0-1.66 2.54C-.34 5.6-.54 6.47-.6 7.75c-.06 1.28-.08 1.69-.08 4.95s.02 4.1.08 5.38c.06 1.28.26 2.15.56 2.92a7 7 0 0 0 1.66 2.54c.78.78 1.63 1.25 2.54 1.66.77.3 1.64.5 2.92.56 1.28.06 1.69.08 4.95.08s4.1-.02 5.38-.08c1.28-.06 2.15-.26 2.92-.56a7 7 0 0 0 2.54-1.66 7 7 0 0 0 1.66-2.54c.3-.77.5-1.64.56-2.92.06-1.28.08-1.69.08-4.95s-.02-4.1-.08-5.38c-.06-1.28-.26-2.15-.56-2.92a7 7 0 0 0-1.66-2.54 7 7 0 0 0-2.54-1.66c-.77-.3-1.64-.5-2.92-.56C15.67.02 15.26 0 12 0zm0 5.66a5.96 5.96 0 1 0 0 11.92 5.96 5.96 0 0 0 0-11.92zm0 9.75a3.79 3.79 0 1 1 0-7.58 3.79 3.79 0 0 1 0 7.58zm6.2-9.76a1.39 1.39 0 1 1-2.78 0 1.39 1.39 0 0 1 2.78 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Youtube">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.8c-.3-1-1.1-1.8-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.5c-1 .3-1.8 1.1-2.1 2.1C0 8.7 0 12 0 12s0 3.3.5 5.2c.3 1 1.1 1.8 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.2.5-5.2s0-3.3-.5-5.2zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.6c-.9.4-1.8.7-2.8.8 1-.6 1.8-1.6 2.2-2.7-1 .6-2 1-3.1 1.2-.9-1-2.2-1.6-3.6-1.6-2.7 0-5 2.2-5 5 0 .4 0 .8.1 1.1C7.7 8.1 4.1 6.1 1.7 3.1c-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.2 2.2 4.1-.8 0-1.6-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.9-.4.1-.9.2-1.4.2-.3 0-.7 0-1-.1.6 2 2.5 3.5 4.7 3.5-1.7 1.3-3.9 2.1-6.3 2.1-.4 0-.8 0-1.2-.1 2.2 1.4 4.9 2.2 7.7 2.2 9.3 0 14.3-7.7 14.3-14.3v-.7c1-.7 1.8-1.6 2.5-2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2 Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+            <li><a href="safari.html">Safari Experiences</a></li>
+            <li><a href="services.html">Services Catalog</a></li>
+            <li><a href="hotels.html">Luxury Accommodations</a></li>
+            <li><a href="guide.html">Travel Guide</a></li>
+            <li><a href="gallery.html">Photo Gallery</a></li>
+            <li><a href="testimonials.html">Client Reviews</a></li>
+            <li><a href="blog.html">Travel Stories</a></li>
+            <li><a href="faq.html">FAQ Help</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul style="color: var(--light-text); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px;">
+            <li>Galle Road, Colombo 03,</li>
+            <li>Sri Lanka</li>
+            <li style="margin-top: 10px;">Email: hello@kindredtravels.lk</li>
+            <li>Phone: +94 11 234 5678</li>
+          </ul>
+        </div>
+
+        <!-- Column 4 Newsletter -->
+        <div class="footer-col" style="min-width: 240px;">
+          <h5>Newsletter</h5>
+          <p style="font-size: 0.85rem; margin-bottom: 16px; color: var(--light-text);">
+            Subscribe to receive curated itineraries, travel stories, and exclusive seasonal offers.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '&lt;span style=&quot;color: var(--seafoam); font-size: 0.9rem; display: flex; align-items: center; gap: 8px;&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;&gt;&lt;/polyline&gt;&lt;/svg&gt; Subscribed successfully!&lt;/span&gt;'">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          &copy; <span id="footer-year">2026</span> Kindred Travels. All rights reserved. Built with love in Sri Lanka.
+        </div>
+        <div class="footer-terms">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="booking-policy.html">Booking Policy</a>
+          <a href="payment.html">Payments</a>
+          <a href="admin.html" style="margin-left: 15px; color: var(--accent-gold); font-weight: 600; text-decoration: none;">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script>
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+      // Initial Mock reviews list
+      const baseReviews = [
+        {
+          id: 1,
+          author: "Rebecca & Mark Davis",
+          origin: "Melbourne, Australia",
+          itinerary: "Tea Hills & South Coast Luxury",
+          text: "Our 10-day tour arranged by Kindred Travels was absolutely flawless. Our chauffeur-guide, Saman, was incredibly informative and drove safely. The boutique tea estates in Nuwara Eliya and the private villa in Weligama exceeded our expectations. A highly professional outfit!",
+          rating: 5,
+          date: "Jul 15, 2026",
+          photos: [
+            "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=400&q=80",
+            "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=400&q=80"
+          ]
+        },
+        {
+          id: 2,
+          author: "François Dubois",
+          origin: "Paris, France",
+          itinerary: "Cultural Triangle Heritage",
+          text: "Visiting Sigiriya, Polonnaruwa, and Dambulla caves was a lifelong dream. The guides organized by Kindred Travels at each location were certified archeologists, providing deep historical insights. Chauffeur services were punctual and clean. Five stars!",
+          rating: 5,
+          date: "Jun 28, 2026",
+          photos: [
+            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=400&q=80"
+          ]
+        }
+      ];
+
+      // Load from localStorage or save initial list
+      function loadReviews() {
+        let reviewsList = [];
+        try {
+          const stored = localStorage.getItem('kindred_reviews');
+          if (stored) {
+            reviewsList = JSON.parse(stored);
+          } else {
+            reviewsList = baseReviews;
+            localStorage.setItem('kindred_reviews', JSON.stringify(baseReviews));
+          }
+        } catch (e) {
+          reviewsList = baseReviews;
+        }
+        renderReviews(reviewsList);
+      }
+
+      // Render list items dynamically
+      function renderReviews(reviews) {
+        const feed = document.getElementById('dynamic-reviews-list');
+        feed.innerHTML = '';
+        
+        // Reverse array to show newest review first
+        const sorted = [...reviews].reverse();
+
+        sorted.forEach(rev => {
+          // Generate stars
+          let starsHtml = '';
+          for (let i = 0; i < 5; i++) {
+            starsHtml += i < rev.rating ? '★' : '☆';
+          }
+
+          // Author Initial
+          const initial = rev.author ? rev.author.charAt(0) : 'T';
+
+          // Photo grid if photos exist
+          let photosGridHtml = '';
+          if (rev.photos && rev.photos.length > 0) {
+            photosGridHtml = `<div class="review-photos-grid" style="margin-top: 15px;">`;
+            rev.photos.forEach(p => {
+              photosGridHtml += `
+                <div class="review-photo-item">
+                  <img src="${p}" alt="Travel Photo" />
+                </div>
+              `;
+            });
+            photosGridHtml += `</div>`;
+          }
+
+          const card = document.createElement('div');
+          card.className = 'review-card-item reveal active';
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+          card.innerHTML = `
+            <div class="review-card-header">
+              <div class="review-author-info">
+                <div class="author-avatar-placeholder">${initial}</div>
+                <div class="author-details">
+                  <h4>${rev.author}</h4>
+                  <p>${rev.origin ? rev.origin : 'Verified Traveler'} &bull; ${rev.date}</p>
+                </div>
+              </div>
+              <div class="review-rating-box">${starsHtml}</div>
+            </div>
+            <span class="review-trip-tag">${rev.itinerary}</span>
+            <p class="review-text-content">"${rev.text}"</p>
+            ${photosGridHtml}
+          `;
+          feed.appendChild(card);
+        });
+      }
+
+      // Rating selector click logic
+      function setRating(ratingValue) {
+        document.getElementById('selected-rating').value = ratingValue;
+        const stars = document.querySelectorAll('#rating-star-selector span');
+        stars.forEach((star, index) => {
+          if (index < ratingValue) {
+            star.classList.add('selected');
+          } else {
+            star.classList.remove('selected');
+          }
+        });
+      }
+
+      // Add dynamic submission to local storage and update list
+      function handleReviewSubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const author = form.querySelector('#review-author').value.trim();
+        const itinerarySelect = form.querySelector('#review-itinerary');
+        const itineraryLabel = itinerarySelect.options[itinerarySelect.selectedIndex].text;
+        const rating = parseInt(form.querySelector('#selected-rating').value);
+        const text = form.querySelector('#review-text').value.trim();
+
+        const newRev = {
+          id: Date.now(),
+          author: author,
+          origin: "Verified Traveler",
+          itinerary: itineraryLabel,
+          text: text,
+          rating: rating,
+          date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+          photos: [] // Custom uploads mock
+        };
+
+        try {
+          let reviewsList = JSON.parse(localStorage.getItem('kindred_reviews') || '[]');
+          reviewsList.push(newRev);
+          localStorage.setItem('kindred_reviews', JSON.stringify(reviewsList));
+          renderReviews(reviewsList);
+        } catch (e) {
+          console.error(e);
+        }
+
+        // Reset form
+        form.reset();
+        setRating(5);
+        
+        // Show alerts feedback
+        alert('Thank you! Your travel review has been submitted successfully.');
+      }
+
+      // Modal management for Youtube embeds
+      function openVideoModal(url) {
+        const modal = document.getElementById('yt-video-modal');
+        const iframe = document.getElementById('modal-youtube-iframe');
+        iframe.src = url;
+        modal.style.display = 'flex';
+      }
+
+      function closeVideoModal(event) {
+        // Close if click is outside modal-content or on X button
+        if (event.target.id === 'yt-video-modal' || event.target.className === 'video-modal-close' || event.target.textContent === '×') {
+          const modal = document.getElementById('yt-video-modal');
+          const iframe = document.getElementById('modal-youtube-iframe');
+          iframe.src = '';
+          modal.style.display = 'none';
+        }
+      }
+
+      // Boot load
+      window.onload = loadReviews;
+    </script>
+  </body>
+</html>
